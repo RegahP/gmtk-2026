@@ -1,9 +1,22 @@
 [gd_scene format=3 uid="uid://bkf8kfj4bgkkk"]
 
-[node name="Node3D" type="Node3D" unique_id=639514220]
+[sub_resource type="QuadMesh" id="QuadMesh_ts572"]
 
-[node name="Control" type="Control" parent="." unique_id=942323068]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ts572"]
+
+[node name="Main" type="Node3D" unique_id=639514220]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1656749848]
+transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, 3, 0, -3, -1.3113416e-07, 0, 0, 0)
+mesh = SubResource("QuadMesh_ts572")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1311990634]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1435772775]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_ts572")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=614142750]
+transform = Transform3D(0.7071068, -0.35355338, 0.61237246, 0, 0.8660254, 0.50000006, -0.7071068, -0.35355338, 0.61237246, 2, 2, 2)
+projection = 1
+size = 2.0
