@@ -17,8 +17,9 @@ size = Vector3(0.05, 0.4, 0.2)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ff686"]
 
-[node name="roomBase" type="Node3D" unique_id=639514220]
+[node name="roomBase" type="Node3D" unique_id=639514220 node_paths=PackedStringArray("doors")]
 script = ExtResource("1_niymf")
+doors = [NodePath("floor/exitdoorleft"), NodePath("floor/exitdoorright"), NodePath("floor/exitdoorcenter")]
 
 [node name="floor" type="StaticBody3D" parent="." unique_id=874893180]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14999527, 0)
@@ -70,4 +71,17 @@ nextRoomId = 1
 [node name="Area3D" type="Area3D" parent="floor/exitdoorright" unique_id=1500336479]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor/exitdoorright/Area3D" unique_id=1314771766]
+shape = SubResource("SphereShape3D_ff686")
+
+[node name="exitdoorcenter" type="MeshInstance3D" parent="floor" unique_id=295085229]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.35, 0)
+visible = false
+mesh = SubResource("BoxMesh_xvblb")
+script = ExtResource("2_ff686")
+localDoorId = 2
+nextRoomId = 1
+
+[node name="Area3D" type="Area3D" parent="floor/exitdoorcenter" unique_id=170406054]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/exitdoorcenter/Area3D" unique_id=28977720]
 shape = SubResource("SphereShape3D_ff686")

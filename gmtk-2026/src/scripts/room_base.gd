@@ -1,13 +1,22 @@
 extends Node3D
 
-@onready var doorLeft: DoorData = $floor/exitdoorleft
-@onready var doorRight: DoorData = $floor/exitdoorright
+@export var doors: Array[DoorData]
 
 signal doorPicked(nextRoomId: int)
 
 func _ready() -> void:
-	doorLeft.picked.connect(_loadroomdoor)
-	doorRight.picked.connect(_loadroomdoor)
+	for door in doors:
+		door.picked.connect(_loadroomdoor)
 
 func _loadroomdoor(nextRoomId: int) -> void:
 	doorPicked.emit(nextRoomId)
+
+func _setdoor_nextroomids(roomIds: Vector2i) -> void:
+	if (roomIds.y != -1):
+		doors[0]._set_nextroomid(roomIds.x)
+		doors[1]._set_nextroomid(roomIds.y)
+	else:
+		doors[0].visible = false
+		doors[1].visible = false
+		doors[2].visible = true
+		doors[2]._set_nextroomid(roomIds.x)

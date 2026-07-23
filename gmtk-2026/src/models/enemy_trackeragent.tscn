@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bb8rsavnbw5mx"]
+
+[ext_resource type="PackedScene" uid="uid://183lkt2aux3t" path="res://src/models/mobmodel_TRACKER_AGENT.glb" id="1_0eo6c"]
+[ext_resource type="Script" uid="uid://bjp1k6ocw7bop" path="res://src/scripts/enemy_trackeragent.gd" id="2_jb8v8"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0eo6c"]
+height = 0.6999512
+radius = 0.3
+
+[node name="enemy_trackeragent" type="CharacterBody3D" unique_id=1622673865]
+script = ExtResource("2_jb8v8")
+health = 8.0
+speed = 0.1
+
+[node name="mobmodel_TRACKER_AGENT" parent="." unique_id=926685796 instance=ExtResource("1_0eo6c")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0.21712369)
+
+[node name="tracker agent" parent="mobmodel_TRACKER_AGENT" index="1" unique_id=488591873]
+transform = Transform3D(-5.0337007e-08, 3.0808086, -5.0337007e-08, 0, -1.3466642e-07, -1.1515765, -1.1515765, -1.3466642e-07, 2.2003004e-15, 0, 4.3788853, -2.718462)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1532499648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2208252, 0)
+shape = SubResource("CylinderShape3D_0eo6c")
+
+[editable path="mobmodel_TRACKER_AGENT"]

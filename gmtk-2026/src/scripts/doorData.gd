@@ -15,19 +15,23 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	if playerInside:
-		if Input.is_action_pressed("interact"):
+		if Input.is_action_just_pressed("interact"):
 			print("door picked")
-			picked.emit(nextRoomId)
+			print("_______________________")
 			playerInside = false
+			picked.emit(nextRoomId)
 
 func _on_door_entered(body: Node3D) -> void:
 	if (body.name == "player"):
-		print("door entered")
+		# print("door entered")
 		playerInside = true
 		entered.emit(localDoorId)
 	
 func _on_door_exited(body: Node3D) -> void:
 	if (body.name == "player"):
-		print("door exited")
+		# print("door exited")
 		playerInside = false
 		exited.emit(localDoorId)
+
+func _set_nextroomid(roomId: int) -> void:
+	nextRoomId = roomId
