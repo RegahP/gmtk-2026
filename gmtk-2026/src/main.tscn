@@ -1,22 +1,26 @@
 [gd_scene format=3 uid="uid://bkf8kfj4bgkkk"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_ts572"]
+[ext_resource type="PackedScene" uid="uid://d2ad2p1i4xtg7" path="res://src/player.tscn" id="1_eewff"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ts572"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_eewff"]
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gh0ne"]
+size = Vector3(3, 0.3, 3)
 
 [node name="Main" type="Node3D" unique_id=639514220]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1656749848]
-transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, 3, 0, -3, -1.3113416e-07, 0, 0, 0)
-mesh = SubResource("QuadMesh_ts572")
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1302385430]
+transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.7071068, 0.7071068, -0.7071068, -0.5, 0.5, 0, 0, 0)
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1311990634]
+[node name="floor" type="StaticBody3D" parent="." unique_id=874893180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14999527, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1435772775]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
-shape = SubResource("CapsuleShape3D_ts572")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor" unique_id=252939490]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("BoxShape3D_eewff")
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=614142750]
-transform = Transform3D(0.7071068, -0.35355338, 0.61237246, 0, 0.8660254, 0.50000006, -0.7071068, -0.35355338, 0.61237246, 2, 2, 2)
-projection = 1
-size = 2.0
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor" unique_id=1948164620]
+mesh = SubResource("BoxMesh_gh0ne")
+
+[node name="player" parent="." unique_id=1037035893 instance=ExtResource("1_eewff")]
