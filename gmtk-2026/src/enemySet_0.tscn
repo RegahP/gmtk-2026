@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c50m2wqcexp8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qovca"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="enemySet_0" type="Node3D" unique_id=639514220]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1125574105]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.68873286, 0.1, 0.46291113)
+mesh = SubResource("BoxMesh_qovca")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1653621476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15146375, 0.09999988, 0.69301856)
+mesh = SubResource("BoxMesh_qovca")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=201924438]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.61671317, 0.1, 0.9157131)
+mesh = SubResource("BoxMesh_qovca")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=1385813072]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3786335, 0.1, -0.8162004)
+mesh = SubResource("BoxMesh_qovca")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=152406744]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9159026, 0.09999988, -0.58609295)
+mesh = SubResource("BoxMesh_qovca")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="." unique_id=445921836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4506532, 0.1, -0.36339843)
+mesh = SubResource("BoxMesh_qovca")

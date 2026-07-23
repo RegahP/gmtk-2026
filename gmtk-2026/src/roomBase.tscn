@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://c5jxvxuskenln"]
+
+[ext_resource type="Script" uid="uid://f51jpmnkwf8o" path="res://src/scripts/room_base.gd" id="1_niymf"]
+[ext_resource type="Script" uid="uid://b6ioxcahnqgnr" path="res://src/scripts/doorData.gd" id="2_ff686"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xvblb"]
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_niymf"]
+size = Vector3(0.05, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gh0ne"]
+size = Vector3(3, 0.3, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xvblb"]
+size = Vector3(0.05, 0.6, 0.3)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ff686"]
+
+[node name="roomBase" type="Node3D" unique_id=639514220]
+script = ExtResource("1_niymf")
+
+[node name="floor" type="StaticBody3D" parent="." unique_id=874893180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14999527, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor" unique_id=252939490]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("BoxShape3D_xvblb")
+
+[node name="wallleft" type="CollisionShape3D" parent="floor" unique_id=218306745]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.5, 0, 0)
+shape = SubResource("BoxShape3D_niymf")
+
+[node name="wallright" type="CollisionShape3D" parent="floor" unique_id=1713116393]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.5, 0, 0)
+shape = SubResource("BoxShape3D_niymf")
+
+[node name="wallfront" type="CollisionShape3D" parent="floor" unique_id=1756795054]
+transform = Transform3D(-1.3113416e-07, 0, -3, 0, 3, 0, 3, 0, -1.3113416e-07, 6.556708e-08, 0, -1.5)
+shape = SubResource("BoxShape3D_niymf")
+
+[node name="wallback" type="CollisionShape3D" parent="floor" unique_id=1693561665]
+transform = Transform3D(-1.3113416e-07, 0, -3, 0, 3, 0, 3, 0, -1.3113416e-07, -6.556708e-08, 0, 1.5)
+shape = SubResource("BoxShape3D_niymf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor" unique_id=1948164620]
+mesh = SubResource("BoxMesh_gh0ne")
+
+[node name="entrancedoor" type="MeshInstance3D" parent="floor" unique_id=95359321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.45, 0)
+mesh = SubResource("BoxMesh_xvblb")
+
+[node name="exitdoorleft" type="MeshInstance3D" parent="floor" unique_id=1430600400]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.45, -0.6)
+mesh = SubResource("BoxMesh_xvblb")
+script = ExtResource("2_ff686")
+
+[node name="Area3D" type="Area3D" parent="floor/exitdoorleft" unique_id=1756814616]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/exitdoorleft/Area3D" unique_id=177884366]
+shape = SubResource("SphereShape3D_ff686")
+
+[node name="exitdoorright" type="MeshInstance3D" parent="floor" unique_id=1801861095]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.45, 0.6)
+mesh = SubResource("BoxMesh_xvblb")
+script = ExtResource("2_ff686")
+localDoorId = 1
+nextRoomId = 1
+
+[node name="Area3D" type="Area3D" parent="floor/exitdoorright" unique_id=1500336479]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/exitdoorright/Area3D" unique_id=1314771766]
+shape = SubResource("SphereShape3D_ff686")
