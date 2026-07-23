@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bkf8kfj4bgkkk"]
 
 [ext_resource type="PackedScene" uid="uid://d2ad2p1i4xtg7" path="res://src/player.tscn" id="1_eewff"]
+[ext_resource type="Script" uid="uid://dcu0akvpcuwk" path="res://src/scripts/camera_3d.gd" id="2_gh0ne"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eewff"]
 size = Vector3(1, 0.1, 1)
@@ -24,3 +25,10 @@ shape = SubResource("BoxShape3D_eewff")
 mesh = SubResource("BoxMesh_gh0ne")
 
 [node name="player" parent="." unique_id=1037035893 instance=ExtResource("1_eewff")]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=884260794 node_paths=PackedStringArray("follow_target")]
+transform = Transform3D(0.7071068, -0.35355338, 0.61237246, 0, 0.8660254, 0.50000006, -0.7071068, -0.35355338, 0.61237246, 2, 2, 2)
+projection = 1
+size = 2.0
+script = ExtResource("2_gh0ne")
+follow_target = NodePath("../player")
