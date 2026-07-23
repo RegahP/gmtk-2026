@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bur25qsrx35y4"]
+
+[ext_resource type="Script" uid="uid://cvr7voxuycerr" path="res://src/scripts/pedestal.gd" id="1_4eluf"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ankkb"]
+top_radius = 0.1
+bottom_radius = 0.05
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rwf7n"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_s40bw"]
+radius = 0.05
+height = 0.1
+
+[node name="pedestal" type="Node3D" unique_id=639514220]
+script = ExtResource("1_4eluf")
+
+[node name="mesh" type="MeshInstance3D" parent="." unique_id=1125574105]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("CylinderMesh_ankkb")
+
+[node name="Area3D" type="Area3D" parent="mesh" unique_id=1147237237]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mesh/Area3D" unique_id=448407025]
+shape = SubResource("SphereShape3D_rwf7n")
+
+[node name="item" type="MeshInstance3D" parent="." unique_id=2112523218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+mesh = SubResource("SphereMesh_s40bw")

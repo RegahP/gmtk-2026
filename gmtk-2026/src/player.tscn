@@ -3,11 +3,15 @@
 [ext_resource type="Script" uid="uid://bjo4dw82qxcaq" path="res://src/scripts/player.gd" id="1_lowyb"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lowyb"]
+radius = 0.3
+height = 1.5
 
 [sub_resource type="BoxMesh" id="BoxMesh_lowyb"]
-size = Vector3(0.5, 0.5, 0.5)
+size = Vector3(0.3, 0.3, 0.3)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ts572"]
+radius = 0.3
+height = 1.5
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1697551590]
 script = ExtResource("1_lowyb")
@@ -15,13 +19,13 @@ script = ExtResource("1_lowyb")
 [node name="pivot" type="Node3D" parent="." unique_id=1815740439]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="pivot" unique_id=658231162]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.2, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.15, 0)
 mesh = SubResource("CapsuleMesh_lowyb")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="pivot" unique_id=263847600]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.3, -0.1)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.25, -0.05)
 mesh = SubResource("BoxMesh_lowyb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1721941811]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.2, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.15, 0)
 shape = SubResource("CapsuleShape3D_ts572")

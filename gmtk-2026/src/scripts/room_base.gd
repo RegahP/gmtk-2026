@@ -10,6 +10,4 @@ func _ready() -> void:
 	doorRight.picked.connect(_loadroomdoor)
 
 func _loadroomdoor(nextRoomId: int) -> void:
-	print(doorLeft != null)
-	print("loading room " + str(nextRoomId))
 	doorPicked.emit(nextRoomId)

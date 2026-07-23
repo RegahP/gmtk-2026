@@ -13,7 +13,7 @@ size = Vector3(0.05, 1, 1)
 size = Vector3(3, 0.3, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xvblb"]
-size = Vector3(0.05, 0.6, 0.3)
+size = Vector3(0.05, 0.4, 0.2)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ff686"]
 
@@ -47,11 +47,11 @@ shape = SubResource("BoxShape3D_niymf")
 mesh = SubResource("BoxMesh_gh0ne")
 
 [node name="entrancedoor" type="MeshInstance3D" parent="floor" unique_id=95359321]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.45, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.35, 0)
 mesh = SubResource("BoxMesh_xvblb")
 
 [node name="exitdoorleft" type="MeshInstance3D" parent="floor" unique_id=1430600400]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.45, -0.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.35, -0.6)
 mesh = SubResource("BoxMesh_xvblb")
 script = ExtResource("2_ff686")
 
@@ -61,7 +61,7 @@ script = ExtResource("2_ff686")
 shape = SubResource("SphereShape3D_ff686")
 
 [node name="exitdoorright" type="MeshInstance3D" parent="floor" unique_id=1801861095]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.45, 0.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.35, 0.6)
 mesh = SubResource("BoxMesh_xvblb")
 script = ExtResource("2_ff686")
 localDoorId = 1
