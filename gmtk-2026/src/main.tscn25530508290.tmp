@@ -8,13 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://c50m2wqcexp8" path="res://src/enemySet_0.tscn" id="3_fyndt"]
 [ext_resource type="PackedScene" uid="uid://bur25qsrx35y4" path="res://src/pedestal.tscn" id="4_kmhfv"]
 [ext_resource type="Texture2D" uid="uid://dwf2aus5gmr8x" path="res://src/textures/youdied.png" id="7_rlaii"]
-[ext_resource type="Texture2D" uid="uid://bskr33laj8ssi" path="res://src/textures/machine.png" id="8_kf8lf"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_mgm53"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uewes"]
-transparency = 1
-albedo_texture = ExtResource("8_kf8lf")
 
 [sub_resource type="LabelSettings" id="LabelSettings_kmhfv"]
 font_size = 48
@@ -44,12 +37,6 @@ projection = 1
 size = 2.0
 script = ExtResource("2_gh0ne")
 follow_target = NodePath("../player")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D" unique_id=338927597]
-transform = Transform3D(-1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.785, 0.265, -10)
-visible = false
-mesh = SubResource("QuadMesh_mgm53")
-surface_material_override/0 = SubResource("StandardMaterial3D_uewes")
 
 [node name="CountdownUI" type="Control" parent="." unique_id=2120144187]
 layout_mode = 3

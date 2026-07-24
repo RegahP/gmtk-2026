@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var countDownTime = 11
+@export var countDownTime: int
 @onready var timerLabel: Label = $CountdownUI/Label
 @onready var timerUi: Timer = $CountdownUI/Timer
 @onready var deathscreenUi: Panel = $DeathscreenUI/Panel
@@ -9,6 +9,7 @@ var roomCount: int
 @export var roomIdsByCount: Array[Vector2i] = []
 
 @export var roomBases: Array[PackedScene]
+@export var machineRoom: PackedScene
 @export var enemySets: Array[PackedScene]
 @export var pedestal: PackedScene
 @export var player: Node3D
@@ -20,7 +21,7 @@ var currPedestal: Node3D
 func _ready() -> void:
 	_loadroom(-1)
 	
-	timerUi.wait_time = countDownTime
+	timerUi.wait_time = countDownTime + 1
 	timerUi.start()
 	timerUi.timeout.connect(_on_timer_timeout)
 	timerUi.timeout.connect(player._on_timer_timeout)
@@ -42,14 +43,16 @@ func _on_timer_timeout() -> void:
 func _loadroom(nextRoomId: int) -> void:
 	_reset_player_pos()
 	_clear_room()
-	_add_roombase()
 	
 	if (nextRoomId == -2): # invalid room
-		print("invalid room")
-		return
+		_add_machineroom()
+		print("machine room")
 	
 	if (nextRoomId == -1): # init room
 		print("init room")
+	
+	if (nextRoomId >= -1):
+		_add_roombase()
 	
 	if (nextRoomId == 0): # hostile room
 		_add_enemyset()
@@ -76,6 +79,11 @@ func _add_roombase() -> void:
 	currRoomBase._setdoor_nextroomids(_get_roomidsbycount())
 	add_child(currRoomBase)
 	print("added roombase")
+
+func _add_machineroom() -> void:
+	currRoomBase = machineRoom.instantiate()
+	add_child(currRoomBase)
+	print("added machineroom")
 
 func _add_enemyset() -> void:
 	currEnemySet = enemySets[_randi(enemySets.size())].instantiate()
