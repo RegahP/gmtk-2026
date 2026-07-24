@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://dcu0akvpcuwk" path="res://src/scripts/camera_3d.gd" id="2_gh0ne"]
 [ext_resource type="PackedScene" uid="uid://c50m2wqcexp8" path="res://src/enemySet_0.tscn" id="3_fyndt"]
 [ext_resource type="PackedScene" uid="uid://bur25qsrx35y4" path="res://src/pedestal.tscn" id="4_kmhfv"]
-[ext_resource type="PackedScene" uid="uid://bb8rsavnbw5mx" path="res://src/models/enemy_trackeragent.tscn" id="7_rlaii"]
 
 [node name="Main" type="Node3D" unique_id=639514220 node_paths=PackedStringArray("player")]
 script = ExtResource("1_3cfgd")
@@ -28,7 +27,3 @@ projection = 1
 size = 2.0
 script = ExtResource("2_gh0ne")
 follow_target = NodePath("../player")
-
-[node name="enemy_trackeragent" parent="." unique_id=1622673865 instance=ExtResource("7_rlaii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
-speed = 0.0

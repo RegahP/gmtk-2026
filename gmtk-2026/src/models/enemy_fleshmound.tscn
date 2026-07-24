@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dy86lkp33kciy"]
+
+[ext_resource type="Script" uid="uid://ciua2sj8umca5" path="res://src/scripts/enemy_fleshmound.gd" id="1_ml2bp"]
+[ext_resource type="PackedScene" uid="uid://bc8dasom0u8gp" path="res://src/models/fleshmound.glb" id="2_ml2bp"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lke40"]
+height = 0.1
+radius = 0.18
+
+[node name="enemy_fleshmound" type="CharacterBody3D" unique_id=1622673865]
+collision_layer = 2
+script = ExtResource("1_ml2bp")
+health = 8.0
+speed = 0.1
+
+[node name="fleshmound" parent="." unique_id=1536687203 instance=ExtResource("2_ml2bp")]
+
+[node name="fleshmound" parent="fleshmound" index="0" unique_id=681569111]
+transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, -0.084329724, 0.05623561, 0.0041656718)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1532499648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("CylinderShape3D_lke40")
+
+[editable path="fleshmound"]
