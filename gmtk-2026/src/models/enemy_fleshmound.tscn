@@ -10,7 +10,6 @@ radius = 0.18
 [node name="enemy_fleshmound" type="CharacterBody3D" unique_id=1622673865]
 collision_layer = 2
 script = ExtResource("1_ml2bp")
-health = 8.0
 speed = 0.1
 
 [node name="fleshmound" parent="." unique_id=1536687203 instance=ExtResource("2_ml2bp")]

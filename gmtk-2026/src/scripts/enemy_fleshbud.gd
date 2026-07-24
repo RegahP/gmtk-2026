@@ -4,6 +4,7 @@ var body: Node3D
 var time: float
 var is_moving := true
 var can_attack := true
+var attack_range: float
 
 func _ready() -> void:
 	super()
@@ -26,7 +27,7 @@ func _physics_process(delta: float) -> void:
 
 	if distance <= attack_range:
 		is_moving = false
-		_attack_player()
+		#_attack_player()
 	else:
 		is_moving = true
 

@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://br8rm4s0264ax" path="res://src/roomBase_machine.tscn" id="3_5mrjc"]
 [ext_resource type="PackedScene" uid="uid://c50m2wqcexp8" path="res://src/enemySet_0.tscn" id="3_fyndt"]
 [ext_resource type="PackedScene" uid="uid://bur25qsrx35y4" path="res://src/pedestal.tscn" id="4_kmhfv"]
+[ext_resource type="PackedScene" uid="uid://fh6tbcx472k4" path="res://src/models/enemy_homunculimb.tscn" id="7_5mrjc"]
 [ext_resource type="Texture2D" uid="uid://dwf2aus5gmr8x" path="res://src/textures/youdied.png" id="7_rlaii"]
 [ext_resource type="Script" uid="uid://c73gaou3tfp63" path="res://src/scripts/attackData.gd" id="7_uewes"]
 [ext_resource type="Texture2D" uid="uid://bskr33laj8ssi" path="res://src/textures/machine.png" id="8_kf8lf"]
@@ -31,6 +32,7 @@ bg_color = Color(0, 0, 0, 0.5019608)
 [node name="Main" type="Node3D" unique_id=639514220 node_paths=PackedStringArray("player")]
 script = ExtResource("1_3cfgd")
 countDownTime = 180
+roomIdsByCount = Array[Vector2i]([Vector2i(0, 1), Vector2i(0, 0), Vector2i(2, 0), Vector2i(1, -1), Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, -1), Vector2i(1, -1)])
 roomBases = Array[PackedScene]([ExtResource("1_5q4o7")])
 machineRoom = ExtResource("3_5mrjc")
 enemySets = Array[PackedScene]([ExtResource("3_fyndt")])
@@ -120,5 +122,7 @@ grow_vertical = 2
 texture = ExtResource("7_rlaii")
 
 [node name="enemy_fleshbud" parent="." unique_id=1622673865 instance=ExtResource("10_mgm53")]
+
+[node name="enemy_homunculimb" parent="." unique_id=1444291850 instance=ExtResource("7_5mrjc")]
 
 [editable path="player"]

@@ -29,6 +29,7 @@ func _physics_process(delta: float) -> void:
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
 		$pivot.basis = Basis.looking_at(direction)
+		#attack_controller.weapon.basis = Basis.looking_at(direction)
 	
 	target_velocity.x = direction.x * speed
 	target_velocity.z = direction.z * speed

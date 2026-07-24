@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://f51jpmnkwf8o" path="res://src/scripts/room_base.gd" id="1_niymf"]
 [ext_resource type="Script" uid="uid://b6ioxcahnqgnr" path="res://src/scripts/doorData.gd" id="2_ff686"]
+[ext_resource type="PackedScene" uid="uid://c1oiy0sk52685" path="res://src/models/wallsdetail.glb" id="2_opjxc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xvblb"]
 size = Vector3(1, 0.1, 1)
@@ -47,6 +48,12 @@ shape = SubResource("BoxShape3D_niymf")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor" unique_id=1948164620]
 mesh = SubResource("BoxMesh_gh0ne")
 
+[node name="wallsdetail" parent="floor" unique_id=811325706 instance=ExtResource("2_opjxc")]
+transform = Transform3D(0.149, 0, 0, 0, 0.149, 0, 0, 0, 0.149, 0, 0, 0)
+
+[node name="Plane" parent="floor/wallsdetail" index="1" unique_id=1137877769]
+visible = false
+
 [node name="entrancedoor" type="MeshInstance3D" parent="floor" unique_id=95359321]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.35, 0)
 mesh = SubResource("BoxMesh_xvblb")
@@ -85,3 +92,5 @@ nextRoomId = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor/exitdoorcenter/Area3D" unique_id=28977720]
 shape = SubResource("SphereShape3D_ff686")
+
+[editable path="floor/wallsdetail"]

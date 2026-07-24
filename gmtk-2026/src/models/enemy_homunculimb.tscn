@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://fh6tbcx472k4"]
+
+[ext_resource type="Script" uid="uid://hlpr2x64yklq" path="res://src/scripts/enemy_homunculimb.gd" id="1_kig60"]
+[ext_resource type="PackedScene" uid="uid://bvta6lbcyheta" path="res://src/models/homunculimb.glb" id="2_kq6po"]
+[ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/health.gd" id="3_xo4jp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xo4jp"]
+size = Vector3(0.3, 0.2, 0.15)
+
+[node name="enemy_homunculimb" type="CharacterBody3D" unique_id=1622673865]
+script = ExtResource("1_kig60")
+speed = 0.3
+
+[node name="homunculimb" parent="." unique_id=1229656122 instance=ExtResource("2_kq6po")]
+transform = Transform3D(0.055, 0, 0, 0, 0.055, 0, 0, 0, 0.055, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1532499648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_xo4jp")
+
+[node name="Health" type="Node" parent="." unique_id=1072188802]
+script = ExtResource("3_xo4jp")
+
+[editable path="homunculimb"]
