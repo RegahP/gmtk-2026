@@ -19,6 +19,9 @@ var currEnemySet: Node3D
 var currPedestal: Node3D
 
 func _ready() -> void:
+	player = %player
+	print(player)
+	
 	_loadroom(-1)
 	
 	timerUi.wait_time = countDownTime + 1

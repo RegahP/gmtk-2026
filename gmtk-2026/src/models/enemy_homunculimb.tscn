@@ -2,14 +2,28 @@
 
 [ext_resource type="Script" uid="uid://hlpr2x64yklq" path="res://src/scripts/enemy_homunculimb.gd" id="1_kig60"]
 [ext_resource type="PackedScene" uid="uid://bvta6lbcyheta" path="res://src/models/homunculimb.glb" id="2_kq6po"]
-[ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/health.gd" id="3_xo4jp"]
+[ext_resource type="Script" path="res://src/scripts/health.gd" id="3_xo4jp"]
+[ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="4_4bvpi"]
+[ext_resource type="Resource" uid="uid://b5j7fip46se6e" path="res://src/resources/homunculimb_attack.tres" id="5_jm5yg"]
+[ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="6_x458h"]
+[ext_resource type="Script" uid="uid://bcs5two2yu1o" path="res://src/scripts/enemy_hitbox.gd" id="7_t2bg5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xo4jp"]
 size = Vector3(0.3, 0.2, 0.15)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_3imdb"]
+radius = 0.6
+
 [node name="enemy_homunculimb" type="CharacterBody3D" unique_id=1622673865]
 script = ExtResource("1_kig60")
+leap_range = 1.0
+leap_cooldown = 1.0
 speed = 0.3
+attack_range = 0.3
+attack_cooldown = 1.0
+
+[node name="Health" type="Node" parent="." unique_id=1072188802]
+script = ExtResource("3_xo4jp")
 
 [node name="homunculimb" parent="." unique_id=1229656122 instance=ExtResource("2_kq6po")]
 transform = Transform3D(0.055, 0, 0, 0, 0.055, 0, 0, 0, 0.055, 0, 0, 0)
@@ -18,7 +32,20 @@ transform = Transform3D(0.055, 0, 0, 0, 0.055, 0, 0, 0, 0.055, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 shape = SubResource("BoxShape3D_xo4jp")
 
-[node name="Health" type="Node" parent="." unique_id=1072188802]
-script = ExtResource("3_xo4jp")
+[node name="AttackController" type="Node" parent="." unique_id=1434899864]
+script = ExtResource("4_4bvpi")
+light_attack = ExtResource("5_jm5yg")
+
+[node name="Weapon" type="Node3D" parent="." unique_id=1138143893]
+script = ExtResource("6_x458h")
+metadata/_custom_type_script = "uid://di2aq3omvm40x"
+
+[node name="Hitbox" type="Area3D" parent="Weapon" unique_id=1924859129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+monitoring = false
+script = ExtResource("7_t2bg5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=1078278038]
+shape = SubResource("SphereShape3D_3imdb")
 
 [editable path="homunculimb"]

@@ -9,13 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bur25qsrx35y4" path="res://src/pedestal.tscn" id="4_kmhfv"]
 [ext_resource type="PackedScene" uid="uid://fh6tbcx472k4" path="res://src/models/enemy_homunculimb.tscn" id="7_5mrjc"]
 [ext_resource type="Texture2D" uid="uid://dwf2aus5gmr8x" path="res://src/textures/youdied.png" id="7_rlaii"]
-[ext_resource type="Script" uid="uid://c73gaou3tfp63" path="res://src/scripts/attackData.gd" id="7_uewes"]
+[ext_resource type="Resource" uid="uid://8gg1mntvripk" path="res://src/resources/player_attack1.tres" id="7_uewes"]
 [ext_resource type="Texture2D" uid="uid://bskr33laj8ssi" path="res://src/textures/machine.png" id="8_kf8lf"]
-[ext_resource type="PackedScene" uid="uid://bj4cyql3urax5" path="res://src/models/enemy_fleshbud.tscn" id="10_mgm53"]
-
-[sub_resource type="Resource" id="Resource_kqbth"]
-script = ExtResource("7_uewes")
-metadata/_custom_type_script = "uid://c73gaou3tfp63"
 
 [sub_resource type="QuadMesh" id="QuadMesh_mgm53"]
 
@@ -46,7 +41,7 @@ transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.7071068, 0.707
 unique_name_in_owner = true
 
 [node name="AttackController" parent="player" index="2" unique_id=1355845323]
-light_attack = SubResource("Resource_kqbth")
+attackData = ExtResource("7_uewes")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=884260794 node_paths=PackedStringArray("follow_target")]
 transform = Transform3D(0.70710677, -0.3535534, 0.6123724, 0, 0.8660254, 0.50000006, -0.70710677, -0.3535534, 0.6123724, 2, 1.75, 2)
@@ -121,8 +116,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_rlaii")
 
-[node name="enemy_fleshbud" parent="." unique_id=1622673865 instance=ExtResource("10_mgm53")]
-
-[node name="enemy_homunculimb" parent="." unique_id=1444291850 instance=ExtResource("7_5mrjc")]
+[node name="enemy_homunculimb" parent="." unique_id=1622673865 instance=ExtResource("7_5mrjc")]
 
 [editable path="player"]

@@ -21,14 +21,14 @@ func attack(data: AttackData):
 	hitbox.current_damage = damage
 
 	hitbox.monitoring = true
-	print("hitbox enabled")
+	#print("hitbox enabled")
 	
 	await get_tree().physics_frame
 	
-	print("Bodies:", hitbox.get_overlapping_bodies())
+	#print("Bodies:", hitbox.get_overlapping_bodies())
 
 	await get_tree().create_timer(0.2).timeout
 
 	hitbox.monitoring = false
-	print("hitbox disabled")
+	#print("hitbox disabled")
 	

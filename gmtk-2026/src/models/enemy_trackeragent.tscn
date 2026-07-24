@@ -2,15 +2,28 @@
 
 [ext_resource type="PackedScene" uid="uid://183lkt2aux3t" path="res://src/models/mobmodel_TRACKER_AGENT.glb" id="1_0eo6c"]
 [ext_resource type="Script" uid="uid://bjp1k6ocw7bop" path="res://src/scripts/enemy_trackeragent.gd" id="2_jb8v8"]
+[ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/enemy_health.gd" id="2_q2owi"]
+[ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="4_ofghd"]
+[ext_resource type="Resource" uid="uid://c54v4bbduuckp" path="res://src/resources/trackeragent_attack.tres" id="5_h7cth"]
+[ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="6_vh3ax"]
+[ext_resource type="Script" uid="uid://bcs5two2yu1o" path="res://src/scripts/enemy_hitbox.gd" id="7_ief4b"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0eo6c"]
 height = 0.6999512
 radius = 0.3
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_g7abn"]
+radius = 0.6
+
 [node name="enemy_trackeragent" type="CharacterBody3D" unique_id=1622673865]
 script = ExtResource("2_jb8v8")
-health = 8.0
-speed = 0.1
+attack_range = 0.5
+attack_windup = 0.5
+attack_cooldown = 1.2
+
+[node name="Health" type="Node" parent="." unique_id=1924828349]
+script = ExtResource("2_q2owi")
+max_health = 8.0
 
 [node name="mobmodel_TRACKER_AGENT" parent="." unique_id=926685796 instance=ExtResource("1_0eo6c")]
 transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0.21712369)
@@ -21,5 +34,21 @@ transform = Transform3D(-5.0337007e-08, 3.0808086, -5.0337007e-08, 0, -1.3466642
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1532499648]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2208252, 0)
 shape = SubResource("CylinderShape3D_0eo6c")
+
+[node name="AttackController" type="Node" parent="." unique_id=1550604174]
+script = ExtResource("4_ofghd")
+light_attack = ExtResource("5_h7cth")
+
+[node name="Weapon" type="Node3D" parent="." unique_id=341413794]
+script = ExtResource("6_vh3ax")
+metadata/_custom_type_script = "uid://di2aq3omvm40x"
+
+[node name="Hitbox" type="Area3D" parent="Weapon" unique_id=1179545156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+monitoring = false
+script = ExtResource("7_ief4b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=195397446]
+shape = SubResource("SphereShape3D_g7abn")
 
 [editable path="mobmodel_TRACKER_AGENT"]

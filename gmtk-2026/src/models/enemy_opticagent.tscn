@@ -2,16 +2,30 @@
 
 [ext_resource type="Script" uid="uid://eok2yga4einq" path="res://src/scripts/enemy_opticagent.gd" id="1_hkga2"]
 [ext_resource type="PackedScene" uid="uid://djiud8u7tx5c5" path="res://src/models/modmodel_OPTIC_AGENT.glb" id="2_hkga2"]
+[ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/enemy_health.gd" id="2_rd1fl"]
+[ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="4_65syu"]
+[ext_resource type="Resource" uid="uid://c730b8q3pdaay" path="res://src/resources/opticagent_attack.tres" id="5_hwkkn"]
+[ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="6_b1hcx"]
+[ext_resource type="Script" uid="uid://bcs5two2yu1o" path="res://src/scripts/enemy_hitbox.gd" id="7_gwovt"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0eo6c"]
 height = 0.5
 radius = 0.15
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_ql8if"]
+radius = 0.6
+
 [node name="enemy_opticagent" type="CharacterBody3D" unique_id=1622673865]
 collision_layer = 2
 script = ExtResource("1_hkga2")
-health = 4.0
 speed = 0.2
+attack_range = 0.25
+attack_windup = 0.5
+attack_cooldown = 0.8
+
+[node name="Health" type="Node" parent="." unique_id=630045776]
+script = ExtResource("2_rd1fl")
+max_health = 5.0
 
 [node name="modmodel_OPTIC_AGENT" parent="." unique_id=40847803 instance=ExtResource("2_hkga2")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
@@ -28,5 +42,21 @@ transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1532499648]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 shape = SubResource("CylinderShape3D_0eo6c")
+
+[node name="AttackController" type="Node" parent="." unique_id=1756029465]
+script = ExtResource("4_65syu")
+light_attack = ExtResource("5_hwkkn")
+
+[node name="Weapon" type="Node3D" parent="." unique_id=202694196]
+script = ExtResource("6_b1hcx")
+metadata/_custom_type_script = "uid://di2aq3omvm40x"
+
+[node name="Hitbox" type="Area3D" parent="Weapon" unique_id=1043417812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+monitoring = false
+script = ExtResource("7_gwovt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=1297875902]
+shape = SubResource("SphereShape3D_ql8if")
 
 [editable path="modmodel_OPTIC_AGENT"]

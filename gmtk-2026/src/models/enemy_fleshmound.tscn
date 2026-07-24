@@ -2,15 +2,30 @@
 
 [ext_resource type="Script" uid="uid://ciua2sj8umca5" path="res://src/scripts/enemy_fleshmound.gd" id="1_ml2bp"]
 [ext_resource type="PackedScene" uid="uid://bc8dasom0u8gp" path="res://src/models/fleshmound.glb" id="2_ml2bp"]
+[ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/enemy_health.gd" id="2_mq5bb"]
+[ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="4_4jy0c"]
+[ext_resource type="Resource" uid="uid://nmam56tr4qqy" path="res://src/resources/fleshmound_attack.tres" id="5_k3ph4"]
+[ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="6_hr776"]
+[ext_resource type="Script" uid="uid://bcs5two2yu1o" path="res://src/scripts/enemy_hitbox.gd" id="7_iftcu"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lke40"]
 height = 0.1
 radius = 0.18
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_iblbf"]
+radius = 0.6
+
 [node name="enemy_fleshmound" type="CharacterBody3D" unique_id=1622673865]
 collision_layer = 2
 script = ExtResource("1_ml2bp")
 speed = 0.1
+attack_range = 0.25
+attack_windup = 0.5
+attack_cooldown = 1.2
+
+[node name="Health" type="Node" parent="." unique_id=1838159398]
+script = ExtResource("2_mq5bb")
+max_health = 8.0
 
 [node name="fleshmound" parent="." unique_id=1536687203 instance=ExtResource("2_ml2bp")]
 
@@ -20,5 +35,21 @@ transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1532499648]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 shape = SubResource("CylinderShape3D_lke40")
+
+[node name="AttackController" type="Node" parent="." unique_id=1669553779]
+script = ExtResource("4_4jy0c")
+light_attack = ExtResource("5_k3ph4")
+
+[node name="Weapon" type="Node3D" parent="." unique_id=1987529354]
+script = ExtResource("6_hr776")
+metadata/_custom_type_script = "uid://di2aq3omvm40x"
+
+[node name="Hitbox" type="Area3D" parent="Weapon" unique_id=1258992025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+monitoring = false
+script = ExtResource("7_iftcu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=1134446879]
+shape = SubResource("SphereShape3D_iblbf")
 
 [editable path="fleshmound"]

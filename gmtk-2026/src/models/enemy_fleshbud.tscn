@@ -12,18 +12,23 @@
 height = 0.1
 radius = 0.1
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3xhws"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_p3yur"]
+radius = 0.4
 
 [node name="enemy_fleshbud" type="CharacterBody3D" unique_id=1622673865]
 script = ExtResource("1_lke40")
-speed = 0.2
+speed = 0.6
+attack_range = 0.25
+attack_windup = 0.5
+attack_cooldown = 0.8
 
 [node name="Health" type="Node" parent="." unique_id=1072188802]
 script = ExtResource("3_5xk3l")
+max_health = 5.0
 
 [node name="fleshbud" parent="." unique_id=1424116867 instance=ExtResource("2_5xk3l")]
 
-[node name="fleshbud" parent="fleshbud" index="0" unique_id=505744576]
+[node name="fleshbud" parent="fleshbud" index="0" unique_id=1142915648]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.002257347, 0, 0.060452566)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1532499648]
@@ -39,10 +44,11 @@ script = ExtResource("6_p3yur")
 metadata/_custom_type_script = "uid://di2aq3omvm40x"
 
 [node name="Hitbox" type="Area3D" parent="Weapon" unique_id=504544519]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
 monitoring = false
 script = ExtResource("7_0w3fk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=774312299]
-shape = SubResource("BoxShape3D_3xhws")
+shape = SubResource("SphereShape3D_p3yur")
 
 [editable path="fleshbud"]

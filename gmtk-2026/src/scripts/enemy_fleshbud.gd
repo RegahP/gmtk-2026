@@ -2,12 +2,6 @@ extends EnemyBase
 
 var body: Node3D
 var time: float
-var is_moving := true
-var can_attack := true
-@export var attack_range: float = 1.5
-@export var attack_cooldown: float = 1.2
-
-@onready var attack_controller: EnemyAttackController = $AttackController
 
 func _ready() -> void:
 	super()
@@ -29,17 +23,8 @@ func _physics_process(delta: float) -> void:
 	var distance = global_position.distance_to(player.global_position)
 
 	if distance <= attack_range:
-		is_moving = false
-		print("is_moving false")
-		
-		if can_attack:
-			_attack_player()
-		else:
-			is_moving = true
-			print("is_moving true")
-			
-	else:
-		is_moving = true
+		if (is_moving):
+			_attack_windup()
 
 	if is_moving:
 		var direction = global_position.direction_to(player.global_position)
@@ -50,21 +35,11 @@ func _physics_process(delta: float) -> void:
 
 		var angle = atan2(my_pos.x - target_pos.x, my_pos.z - target_pos.z)
 		body.global_rotation.y = angle
+		attack_controller.weapon.rotation.y = angle
 		
-		target_velocity.x = direction.x * speed + sin(time * 2) * .25
-		target_velocity.z = direction.z * speed + sin(time * 3) * .25
+		target_velocity.x = direction.x * speed + sin(time * 2) * .15
+		target_velocity.z = direction.z * speed + sin(time * 3) * .15
 		
 		_enemy_move()
 	else:
 		target_velocity = Vector3.ZERO
-		
-func _attack_player() -> void:
-	can_attack = false
-	print("can_attack is false")
-	
-	attack_controller.attack()
-	await get_tree().create_timer(attack_cooldown).timeout
-	
-	can_attack = true
-	print("can_attack is true")
-	
