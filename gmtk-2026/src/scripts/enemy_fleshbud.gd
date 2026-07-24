@@ -2,9 +2,6 @@ extends EnemyBase
 
 var body: Node3D
 var time: float
-var is_moving := true
-@export var attack_range: float = .25
-@export var attack_cooldown: float = .5
 
 func _ready() -> void:
 	super()
@@ -26,9 +23,8 @@ func _physics_process(delta: float) -> void:
 	var distance = global_position.distance_to(player.global_position)
 
 	if distance <= attack_range:
-		_attack_player()
-	else:
-		is_moving = true
+		if (is_moving):
+			_attack_windup()
 
 	if is_moving:
 		var direction = global_position.direction_to(player.global_position)
@@ -47,12 +43,3 @@ func _physics_process(delta: float) -> void:
 		_enemy_move()
 	else:
 		target_velocity = Vector3.ZERO
-		
-func _attack_player() -> void:
-	is_moving = false
-	
-	attack_controller.attack()
-	await get_tree().create_timer(attack_cooldown).timeout
-	
-	is_moving = true
-	
