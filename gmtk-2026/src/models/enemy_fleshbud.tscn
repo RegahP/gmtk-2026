@@ -24,7 +24,7 @@ attack_cooldown = 0.8
 
 [node name="Health" type="Node" parent="." unique_id=1072188802]
 script = ExtResource("3_5xk3l")
-max_health = 5.0
+max_health = 10.0
 
 [node name="fleshbud" parent="." unique_id=1424116867 instance=ExtResource("2_5xk3l")]
 

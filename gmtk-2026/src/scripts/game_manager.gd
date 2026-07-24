@@ -103,6 +103,7 @@ func _add_pedestal() -> void:
 	currPedestal = pedestal.instantiate()
 	add_child(currPedestal)
 	# currPedestal.loadbioupgrade
+	# currPedestal.picked.connect(func that changes player atkctrl's attackdata)
 	print("added pedestal")
 
 func _reset_player_pos() -> void:

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bjo4dw82qxcaq" path="res://src/scripts/player.gd" id="1_lowyb"]
 [ext_resource type="Script" uid="uid://vasientt45jv" path="res://src/scripts/attackController.gd" id="2_ehvfd"]
 [ext_resource type="Script" uid="uid://di2aq3omvm40x" path="res://src/scripts/weapon.gd" id="3_bktlc"]
+[ext_resource type="Resource" uid="uid://8gg1mntvripk" path="res://src/resources/player_attack1.tres" id="3_pg28d"]
 [ext_resource type="Script" uid="uid://bvdjfgjymahnw" path="res://src/scripts/hitbox.gd" id="4_pg28d"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lowyb"]
@@ -39,6 +40,7 @@ shape = SubResource("CapsuleShape3D_ts572")
 
 [node name="AttackController" type="Node" parent="." unique_id=1355845323]
 script = ExtResource("2_ehvfd")
+attackData = ExtResource("3_pg28d")
 metadata/_custom_type_script = "uid://vasientt45jv"
 
 [node name="Weapon" type="Node3D" parent="." unique_id=1985725383]

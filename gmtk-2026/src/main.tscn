@@ -10,11 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dwf2aus5gmr8x" path="res://src/textures/youdied.png" id="7_rlaii"]
 [ext_resource type="Resource" uid="uid://8gg1mntvripk" path="res://src/resources/player_attack1.tres" id="7_uewes"]
 [ext_resource type="Texture2D" uid="uid://bskr33laj8ssi" path="res://src/textures/machine.png" id="8_kf8lf"]
-[ext_resource type="PackedScene" uid="uid://dy86lkp33kciy" path="res://src/models/enemy_fleshmound.tscn" id="9_kf8lf"]
-[ext_resource type="PackedScene" uid="uid://d0udlmsi3s556" path="res://src/models/enemy_opticagent.tscn" id="9_mgm53"]
-[ext_resource type="PackedScene" uid="uid://bj4cyql3urax5" path="res://src/models/enemy_fleshbud.tscn" id="10_mgm53"]
 [ext_resource type="PackedScene" uid="uid://bqjmtcd1c3705" path="res://src/models/enemy_homunculard.tscn" id="11_uewes"]
-[ext_resource type="PackedScene" uid="uid://bb8rsavnbw5mx" path="res://src/models/enemy_trackeragent.tscn" id="15_tb146"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_mgm53"]
 
@@ -120,16 +116,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_rlaii")
 
-[node name="enemy_homunculimb" parent="." unique_id=1622673865 instance=ExtResource("7_5mrjc")]
-
 [node name="enemy_homunculard" parent="." unique_id=1812524287 instance=ExtResource("11_uewes")]
-
-[node name="enemy_fleshbud" parent="." unique_id=345903366 instance=ExtResource("10_mgm53")]
-
-[node name="enemy_opticagent" parent="." unique_id=432615738 instance=ExtResource("9_mgm53")]
-
-[node name="enemy_trackeragent" parent="." unique_id=473131610 instance=ExtResource("15_tb146")]
-
-[node name="enemy_fleshmound" parent="." unique_id=1359468268 instance=ExtResource("9_kf8lf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7386383, -1.1920929e-07, 0.68661606)
 
 [editable path="player"]

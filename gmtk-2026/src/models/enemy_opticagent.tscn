@@ -25,7 +25,7 @@ attack_cooldown = 0.8
 
 [node name="Health" type="Node" parent="." unique_id=630045776]
 script = ExtResource("2_rd1fl")
-max_health = 5.0
+max_health = 10.0
 
 [node name="modmodel_OPTIC_AGENT" parent="." unique_id=40847803 instance=ExtResource("2_hkga2")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)

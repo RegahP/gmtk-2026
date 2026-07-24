@@ -23,7 +23,7 @@ attack_cooldown = 0.6
 
 [node name="Health" type="Node" parent="." unique_id=1072188802]
 script = ExtResource("2_ch1wu")
-max_health = 10.0
+max_health = 20.0
 
 [node name="homunculardwb" parent="." unique_id=407234383 instance=ExtResource("3_ch1wu")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
