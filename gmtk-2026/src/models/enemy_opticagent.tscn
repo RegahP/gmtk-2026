@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://d0udlmsi3s556"]
+
+[ext_resource type="Script" uid="uid://eok2yga4einq" path="res://src/scripts/enemy_opticagent.gd" id="1_hkga2"]
+[ext_resource type="PackedScene" uid="uid://djiud8u7tx5c5" path="res://src/models/modmodel_OPTIC_AGENT.glb" id="2_hkga2"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0eo6c"]
+height = 0.5
+radius = 0.15
+
+[node name="enemy_opticagent" type="CharacterBody3D" unique_id=1622673865]
+collision_layer = 2
+script = ExtResource("1_hkga2")
+health = 4.0
+speed = 0.2
+
+[node name="modmodel_OPTIC_AGENT" parent="." unique_id=40847803 instance=ExtResource("2_hkga2")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+
+[node name="NurbsPath" parent="modmodel_OPTIC_AGENT" index="1" unique_id=2054644527]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.4430973, 0.38121825, -0.41441455)
+
+[node name="NurbsPath_010" parent="modmodel_OPTIC_AGENT" index="2" unique_id=399387111]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.049643755, 0.5546445, -0.39924252)
+
+[node name="NurbsPath_011" parent="modmodel_OPTIC_AGENT" index="3" unique_id=700962478]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.39161366, 0.4856635, -0.4514397)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1532499648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+shape = SubResource("CylinderShape3D_0eo6c")
+
+[editable path="modmodel_OPTIC_AGENT"]
