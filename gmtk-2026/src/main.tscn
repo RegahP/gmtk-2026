@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://br8rm4s0264ax" path="res://src/roomBase_machine.tscn" id="3_5mrjc"]
 [ext_resource type="PackedScene" uid="uid://c50m2wqcexp8" path="res://src/enemySet_0.tscn" id="3_fyndt"]
 [ext_resource type="PackedScene" uid="uid://bur25qsrx35y4" path="res://src/pedestal.tscn" id="4_kmhfv"]
-[ext_resource type="PackedScene" uid="uid://fh6tbcx472k4" path="res://src/models/enemy_homunculimb.tscn" id="7_5mrjc"]
 [ext_resource type="Texture2D" uid="uid://dwf2aus5gmr8x" path="res://src/textures/youdied.png" id="7_rlaii"]
 [ext_resource type="Resource" uid="uid://8gg1mntvripk" path="res://src/resources/player_attack1.tres" id="7_uewes"]
 [ext_resource type="Texture2D" uid="uid://bskr33laj8ssi" path="res://src/textures/machine.png" id="8_kf8lf"]

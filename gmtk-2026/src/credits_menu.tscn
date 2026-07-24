@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://mwd47duu7i2w"]
+
+[ext_resource type="Texture2D" uid="uid://djqlt7khlhlm2" path="res://src/textures/G-DFuFkWYAAXkbv.png" id="1_04i3o"]
+[ext_resource type="Script" uid="uid://ehwv4fd5xact" path="res://src/credits_menu.gd" id="1_rprw2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rprw2"]
+texture = ExtResource("1_04i3o")
+
+[node name="CreditsMenu" type="Control" unique_id=100040542]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rprw2")
+
+[node name="Panel" type="Panel" parent="." unique_id=556682556]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_rprw2")
+
+[node name="Back" type="Button" parent="." unique_id=115235514]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -35.0
+offset_right = 71.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
