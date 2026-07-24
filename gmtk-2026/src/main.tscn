@@ -1,21 +1,20 @@
 [gd_scene format=3 uid="uid://bkf8kfj4bgkkk"]
 
+[ext_resource type="Script" uid="uid://b2m17b7y333ey" path="res://src/scripts/game_manager.gd" id="1_3cfgd"]
 [ext_resource type="PackedScene" uid="uid://c5jxvxuskenln" path="res://src/roomBase.tscn" id="1_5q4o7"]
 [ext_resource type="PackedScene" uid="uid://d2ad2p1i4xtg7" path="res://src/player.tscn" id="1_eewff"]
-[ext_resource type="PackedScene" uid="uid://djkgvv8uccm0r" path="res://src/game_manager.tscn" id="1_mgm53"]
 [ext_resource type="Script" uid="uid://dcu0akvpcuwk" path="res://src/scripts/camera_3d.gd" id="2_gh0ne"]
 [ext_resource type="PackedScene" uid="uid://br8rm4s0264ax" path="res://src/roomBase_machine.tscn" id="3_5mrjc"]
 [ext_resource type="PackedScene" uid="uid://c50m2wqcexp8" path="res://src/enemySet_0.tscn" id="3_fyndt"]
 [ext_resource type="PackedScene" uid="uid://bur25qsrx35y4" path="res://src/pedestal.tscn" id="4_kmhfv"]
 [ext_resource type="Texture2D" uid="uid://dwf2aus5gmr8x" path="res://src/textures/youdied.png" id="7_rlaii"]
+[ext_resource type="Script" uid="uid://c73gaou3tfp63" path="res://src/scripts/attackData.gd" id="7_uewes"]
 [ext_resource type="Texture2D" uid="uid://bskr33laj8ssi" path="res://src/textures/machine.png" id="8_kf8lf"]
 [ext_resource type="PackedScene" uid="uid://bj4cyql3urax5" path="res://src/models/enemy_fleshbud.tscn" id="10_mgm53"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_kmhfv"]
-font_size = 48
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlaii"]
-bg_color = Color(0, 0, 0, 0.5019608)
+[sub_resource type="Resource" id="Resource_kqbth"]
+script = ExtResource("7_uewes")
+metadata/_custom_type_script = "uid://c73gaou3tfp63"
 
 [sub_resource type="QuadMesh" id="QuadMesh_mgm53"]
 
@@ -23,75 +22,20 @@ bg_color = Color(0, 0, 0, 0.5019608)
 transparency = 1
 albedo_texture = ExtResource("8_kf8lf")
 
-[node name="Main" type="Node3D" unique_id=639514220]
+[sub_resource type="LabelSettings" id="LabelSettings_kmhfv"]
+font_size = 48
 
-[node name="GameManager" parent="." unique_id=369539573 node_paths=PackedStringArray("player") instance=ExtResource("1_mgm53")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlaii"]
+bg_color = Color(0, 0, 0, 0.5019608)
+
+[node name="Main" type="Node3D" unique_id=639514220 node_paths=PackedStringArray("player")]
+script = ExtResource("1_3cfgd")
 countDownTime = 180
 roomBases = Array[PackedScene]([ExtResource("1_5q4o7")])
 machineRoom = ExtResource("3_5mrjc")
 enemySets = Array[PackedScene]([ExtResource("3_fyndt")])
 pedestal = ExtResource("4_kmhfv")
-player = NodePath("../player")
-
-[node name="CountdownUI" type="Control" parent="GameManager" unique_id=2120144187]
-layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
-
-[node name="Label" type="Label" parent="GameManager/CountdownUI" unique_id=1226518482]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -61.5
-offset_right = 61.5
-offset_bottom = 67.0
-grow_horizontal = 2
-text = "00:00"
-label_settings = SubResource("LabelSettings_kmhfv")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Timer" type="Timer" parent="GameManager/CountdownUI" unique_id=2118935106]
-one_shot = true
-
-[node name="DeathscreenUI" type="Control" parent="GameManager" unique_id=42503341]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="GameManager/DeathscreenUI" unique_id=1786781927]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_rlaii")
-
-[node name="TextureRect" type="TextureRect" parent="GameManager/DeathscreenUI/Panel" unique_id=953333790]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -300.0
-offset_right = 400.0
-offset_bottom = 300.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_rlaii")
+player = NodePath("player")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1302385430]
 transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.7071068, 0.7071068, -0.7071068, -0.5, 0.5, 0, 0, 0)
@@ -99,7 +43,8 @@ transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.7071068, 0.707
 [node name="player" parent="." unique_id=1037035893 instance=ExtResource("1_eewff")]
 unique_name_in_owner = true
 
-[node name="GameManager" parent="player" unique_id=1436967953 instance=ExtResource("1_mgm53")]
+[node name="AttackController" parent="player" index="2" unique_id=1355845323]
+light_attack = SubResource("Resource_kqbth")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=884260794 node_paths=PackedStringArray("follow_target")]
 transform = Transform3D(0.70710677, -0.3535534, 0.6123724, 0, 0.8660254, 0.50000006, -0.70710677, -0.3535534, 0.6123724, 2, 1.75, 2)
@@ -113,6 +58,66 @@ transform = Transform3D(-1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.785, 0.265, -10)
 visible = false
 mesh = SubResource("QuadMesh_mgm53")
 surface_material_override/0 = SubResource("StandardMaterial3D_uewes")
+
+[node name="CountdownUI" type="Control" parent="." unique_id=2120144187]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="CountdownUI" unique_id=1226518482]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -61.5
+offset_right = 61.5
+offset_bottom = 67.0
+grow_horizontal = 2
+text = "00:00"
+label_settings = SubResource("LabelSettings_kmhfv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="CountdownUI" unique_id=2118935106]
+one_shot = true
+
+[node name="DeathscreenUI" type="Control" parent="." unique_id=42503341]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="DeathscreenUI" unique_id=1786781927]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rlaii")
+
+[node name="TextureRect" type="TextureRect" parent="DeathscreenUI/Panel" unique_id=953333790]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_rlaii")
 
 [node name="enemy_fleshbud" parent="." unique_id=1622673865 instance=ExtResource("10_mgm53")]
 

@@ -10,3 +10,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	return
+
+func _enemy_move():
+	velocity = target_velocity
+	move_and_slide()

@@ -2,6 +2,8 @@ extends EnemyBase
 
 var body: Node3D
 var time: float
+var is_moving := true
+var can_attack := true
 
 func _ready() -> void:
 	super()
@@ -17,19 +19,30 @@ func _process(delta: float) -> void:
 	body.scale = scale_factor
 
 func _physics_process(delta: float) -> void:
-	var direction = Vector3.ZERO
-	
-	if (player != null):
-		direction = global_position.direction_to(player.global_position)
+	if player == null:
+		return
+
+	var distance = global_position.distance_to(player.global_position)
+
+	if distance <= attack_range:
+		is_moving = false
+		_attack_player()
+	else:
+		is_moving = true
+
+	if is_moving:
+		var direction = global_position.direction_to(player.global_position)
 		direction = direction.normalized()
+
 		var target_pos = player.global_position
 		var my_pos = body.global_position
+
 		var angle = atan2(my_pos.x - target_pos.x, my_pos.z - target_pos.z)
 		body.global_rotation.y = angle
 		
 		target_velocity.x = direction.x * speed + sin(time * 2) * .25
 		target_velocity.z = direction.z * speed + sin(time * 3) * .25
-	
-		velocity = target_velocity
 		
-		move_and_slide()
+		_enemy_move()
+	else:
+		target_velocity = Vector3.ZERO

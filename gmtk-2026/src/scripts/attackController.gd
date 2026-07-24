@@ -4,6 +4,6 @@ extends Node
 @export var light_attack: AttackData
 @onready var weapon: Weapon = $"../Weapon"
 
-func attack():
+func perform_attack():
 	print("AttackController")
 	weapon.attack(light_attack)

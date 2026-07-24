@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://vasientt45jv" path="res://src/scripts/attackController.gd" id="2_ehvfd"]
 [ext_resource type="Resource" uid="uid://q2wdkw2cw2o5" path="res://src/resources/Slash.tres" id="3_21lrq"]
 [ext_resource type="Script" uid="uid://di2aq3omvm40x" path="res://src/scripts/weapon.gd" id="3_bktlc"]
-[ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/health.gd" id="4_bktlc"]
 [ext_resource type="Script" uid="uid://bvdjfgjymahnw" path="res://src/scripts/hitbox.gd" id="4_pg28d"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lowyb"]
@@ -55,8 +54,5 @@ script = ExtResource("4_pg28d")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=138281556]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0058288574, 0.25457382, -0.45224)
 shape = SubResource("BoxShape3D_21lrq")
-
-[node name="Health" type="Node" parent="." unique_id=1823371459]
-script = ExtResource("4_bktlc")
 
 [connection signal="body_entered" from="Weapon/Hitbox" to="Weapon/Hitbox" method="_on_body_entered"]
