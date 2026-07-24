@@ -34,17 +34,24 @@ func _physics_process(delta: float) -> void:
 	legs.rotation.y = sin(time * 6) *.5
 	
 	if is_leaping:
+		await get_tree().create_timer(.3).timeout
 		var direction = leap_origin.direction_to(leap_target)
 		direction = direction.normalized()
 	
-		target_velocity.x = direction.x * speed * 4
-		target_velocity.z = direction.z * speed * 4
+		var target_pos = player.global_position
+		var my_pos = global_position
+		var angle = atan2(my_pos.x - target_pos.x, my_pos.z - target_pos.z)
+		global_rotation.y = angle
+	
+		target_velocity.x = direction.x * speed * 5
+		target_velocity.z = direction.z * speed * 5
 		
 		_enemy_move()
 	
 	if is_moving:
 		var direction = global_position.direction_to(player.global_position)
 		direction = direction.normalized()
+		
 		var target_pos = player.global_position
 		var my_pos = global_position
 		var angle = atan2(my_pos.x - target_pos.x, my_pos.z - target_pos.z)
@@ -62,10 +69,10 @@ func _attack_leap() -> void:
 	can_leap = false
 	is_leaping = true
 	is_moving = false
-	leap_target = player.global_position
+	await get_tree().create_timer(.2).timeout
+	leap_target = player.global_position + player.target_velocity.normalized() * .25
 	leap_origin = global_position
-	var leapTimer: SceneTreeTimer = get_tree().create_timer(leap_cooldown)
-	await leapTimer.timeout
+	await get_tree().create_timer(leap_cooldown).timeout
 	is_leaping = false
 	is_moving = true
 	target_velocity = Vector3.ZERO

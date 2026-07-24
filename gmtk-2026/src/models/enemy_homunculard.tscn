@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bqjmtcd1c3705"]
+
+[ext_resource type="Script" uid="uid://bbjyftki3ye4e" path="res://src/scripts/enemy_homunculard.gd" id="1_ampmy"]
+[ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/enemy_health.gd" id="2_ch1wu"]
+[ext_resource type="PackedScene" uid="uid://8pebql6gj55l" path="res://src/models/homunculardwb.glb" id="3_ch1wu"]
+[ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="4_b87re"]
+[ext_resource type="Resource" uid="uid://b6j83rrjfqi14" path="res://src/resources/homunculard_attack.tres" id="5_ampmy"]
+[ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="6_wya4f"]
+[ext_resource type="Script" uid="uid://bcs5two2yu1o" path="res://src/scripts/enemy_hitbox.gd" id="7_0uq1i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xo4jp"]
+size = Vector3(0.3, 0.2, 0.15)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3imdb"]
+radius = 0.6
+
+[node name="enemy_homunculard" type="CharacterBody3D" unique_id=1622673865]
+script = ExtResource("1_ampmy")
+speed = 0.3
+attack_range = 0.4
+attack_windup = 1.0
+attack_cooldown = 0.6
+
+[node name="Health" type="Node" parent="." unique_id=1072188802]
+script = ExtResource("2_ch1wu")
+max_health = 10.0
+
+[node name="homunculardwb" parent="." unique_id=407234383 instance=ExtResource("3_ch1wu")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1532499648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_xo4jp")
+
+[node name="AttackController" type="Node" parent="." unique_id=1434899864]
+script = ExtResource("4_b87re")
+light_attack = ExtResource("5_ampmy")
+
+[node name="Weapon" type="Node3D" parent="." unique_id=1138143893]
+script = ExtResource("6_wya4f")
+metadata/_custom_type_script = "uid://di2aq3omvm40x"
+
+[node name="Hitbox" type="Area3D" parent="Weapon" unique_id=1924859129]
+monitoring = false
+script = ExtResource("7_0uq1i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=1078278038]
+shape = SubResource("SphereShape3D_3imdb")
+
+[editable path="homunculardwb"]

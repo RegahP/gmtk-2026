@@ -10,13 +10,8 @@ func _on_body_entered(body: Node3D) -> void:
 		return
 
 	hit_targets[body] = true
-
-	var health = body.get_node_or_null("Health")
-
-	if health == null:
-		return
-
-	health.take_damage(current_damage)
+	if (body is EnemyBase):
+		body.get_child(0).take_damage(current_damage)
 	#print("Hit:", body.name)
 
 func reset():

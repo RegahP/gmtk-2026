@@ -40,6 +40,9 @@ func _timer_run() -> void:
 
 func _timer_reduce(damage: float):
 	timerUi.start(timerUi.time_left - damage)
+	timerLabel.modulate = Color.RED
+	await get_tree().create_timer(.1).timeout
+	timerLabel.modulate = Color.WHITE
 
 func _on_timer_timeout() -> void:
 	timerLabel.text = "00:00"

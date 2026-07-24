@@ -6,6 +6,7 @@ class_name Player
 var target_velocity = Vector3.ZERO
 
 var dead: bool = false
+var stunned: bool = false
 var is_attacking: bool = false
 
 func _physics_process(delta: float) -> void:
@@ -52,8 +53,9 @@ func _physics_process(delta: float) -> void:
 	target_velocity.z = direction.z * speed
 	
 	if !dead:
-		velocity = target_velocity
-		move_and_slide()
+		if !stunned:
+			velocity = target_velocity
+			move_and_slide()
 
 func _on_timer_timeout() -> void:
 	dead = true;
@@ -72,3 +74,8 @@ func _attack_enemy() -> void:
 
 func take_damage(damage: DamageInfo): # esta funcion la invoca enemy al atacar exitosamente a player
 	get_parent()._timer_reduce(damage.amount)
+
+func stun(duration: float):
+	stunned = true
+	await get_tree().create_timer(duration).timeout
+	stunned = false

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://b6j83rrjfqi14"]
+
+[ext_resource type="Script" uid="uid://c73gaou3tfp63" path="res://src/scripts/attackData.gd" id="1_xs5yo"]
+
+[resource]
+script = ExtResource("1_xs5yo")
+damage = 2.0

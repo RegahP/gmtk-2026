@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://hlpr2x64yklq" path="res://src/scripts/enemy_homunculimb.gd" id="1_kig60"]
 [ext_resource type="PackedScene" uid="uid://bvta6lbcyheta" path="res://src/models/homunculimb.glb" id="2_kq6po"]
-[ext_resource type="Script" path="res://src/scripts/health.gd" id="3_xo4jp"]
+[ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/enemy_health.gd" id="3_xo4jp"]
 [ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="4_4bvpi"]
 [ext_resource type="Resource" uid="uid://b5j7fip46se6e" path="res://src/resources/homunculimb_attack.tres" id="5_jm5yg"]
 [ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="6_x458h"]
@@ -24,6 +24,7 @@ attack_cooldown = 1.0
 
 [node name="Health" type="Node" parent="." unique_id=1072188802]
 script = ExtResource("3_xo4jp")
+max_health = 8.0
 
 [node name="homunculimb" parent="." unique_id=1229656122 instance=ExtResource("2_kq6po")]
 transform = Transform3D(0.055, 0, 0, 0, 0.055, 0, 0, 0, 0.055, 0, 0, 0)
