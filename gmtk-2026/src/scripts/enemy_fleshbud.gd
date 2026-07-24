@@ -4,7 +4,10 @@ var body: Node3D
 var time: float
 var is_moving := true
 var can_attack := true
-var attack_range: float
+@export var attack_range: float = 1.5
+@export var attack_cooldown: float = 1.2
+
+@onready var attack_controller: EnemyAttackController = $AttackController
 
 func _ready() -> void:
 	super()
@@ -27,7 +30,14 @@ func _physics_process(delta: float) -> void:
 
 	if distance <= attack_range:
 		is_moving = false
-		#_attack_player()
+		print("is_moving false")
+		
+		if can_attack:
+			_attack_player()
+		else:
+			is_moving = true
+			print("is_moving true")
+			
 	else:
 		is_moving = true
 
@@ -47,3 +57,14 @@ func _physics_process(delta: float) -> void:
 		_enemy_move()
 	else:
 		target_velocity = Vector3.ZERO
+		
+func _attack_player() -> void:
+	can_attack = false
+	print("can_attack is false")
+	
+	attack_controller.attack()
+	await get_tree().create_timer(attack_cooldown).timeout
+	
+	can_attack = true
+	print("can_attack is true")
+	
