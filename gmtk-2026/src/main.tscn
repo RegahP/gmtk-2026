@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bur25qsrx35y4" path="res://src/pedestal.tscn" id="4_kmhfv"]
 [ext_resource type="Texture2D" uid="uid://dwf2aus5gmr8x" path="res://src/textures/youdied.png" id="7_rlaii"]
 [ext_resource type="Texture2D" uid="uid://bskr33laj8ssi" path="res://src/textures/machine.png" id="8_kf8lf"]
+[ext_resource type="PackedScene" uid="uid://bj4cyql3urax5" path="res://src/models/enemy_fleshbud.tscn" id="10_mgm53"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_mgm53"]
 
@@ -110,3 +111,7 @@ offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_rlaii")
+
+[node name="enemy_fleshbud" parent="." unique_id=1622673865 instance=ExtResource("10_mgm53")]
+
+[editable path="player"]
