@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://bafqvyaj8wfsp"]
+
+[ext_resource type="Script" uid="uid://nag75mjmwtei" path="res://src/main_menu.gd" id="1_bq8pk"]
+[ext_resource type="Texture2D" uid="uid://b48m3sda5k7ap" path="res://src/textures/vorecito.png" id="1_guuao"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bq8pk"]
+texture = ExtResource("1_guuao")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5elix"]
+bg_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="MainMenu" type="Control" unique_id=496799830]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bq8pk")
+
+[node name="Panel" type="Panel" parent="." unique_id=1159405639]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bq8pk")
+
+[node name="Start" type="Button" parent="." unique_id=1435651056]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -47.5
+offset_right = 99.0
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_5elix")
+text = "Start"
+
+[node name="Credits" type="Button" parent="." unique_id=1680568302]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = 55.0
+offset_right = 100.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_5elix")
+text = "Credits
+"
+
+[node name="Exit" type="Button" parent="." unique_id=349088913]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = 159.0
+offset_right = 101.0
+offset_bottom = 254.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_5elix")
+text = "Exit"
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
