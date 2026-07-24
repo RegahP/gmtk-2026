@@ -1,5 +1,10 @@
 extends Node3D
 
+@export var countDownTime = 11
+@onready var timerLabel: Label = $CountdownUI/Label
+@onready var timerUi: Timer = $CountdownUI/Timer
+@onready var deathscreenUi: Panel = $DeathscreenUI/Panel
+
 var roomCount: int
 @export var roomIdsByCount: Array[Vector2i] = []
 
@@ -14,6 +19,25 @@ var currPedestal: Node3D
 
 func _ready() -> void:
 	_loadroom(-1)
+	
+	timerUi.wait_time = countDownTime
+	timerUi.start()
+	timerUi.timeout.connect(_on_timer_timeout)
+	timerUi.timeout.connect(player._on_timer_timeout)
+
+func _process(delta: float) -> void:
+	_timer_run()
+
+func _timer_run() -> void:
+	var time_left: float = timerUi.time_left
+	var minutes: int = int(time_left) / 60
+	var seconds: int = int(time_left) % 60
+	timerLabel.text = "%02d:%02d" % [minutes, seconds]
+
+func _on_timer_timeout() -> void:
+	timerLabel.text = "00:00"
+	print("dead")
+	deathscreenUi.visible = true
 
 func _loadroom(nextRoomId: int) -> void:
 	_reset_player_pos()

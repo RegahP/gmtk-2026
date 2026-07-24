@@ -1,7 +1,9 @@
 extends CharacterBody3D
 
-@export var speed = 2
+@export var speed: float
 var target_velocity = Vector3.ZERO
+
+var dead: bool = false;
 
 func _physics_process(delta: float) -> void:
 	var direction = Vector3.ZERO
@@ -26,5 +28,9 @@ func _physics_process(delta: float) -> void:
 	target_velocity.x = direction.x * speed
 	target_velocity.z = direction.z * speed
 	
-	velocity = target_velocity
-	move_and_slide()
+	if !dead:
+		velocity = target_velocity
+		move_and_slide()
+
+func _on_timer_timeout() -> void:
+	dead = true;

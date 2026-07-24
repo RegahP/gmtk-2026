@@ -15,6 +15,7 @@ height = 1.5
 
 [node name="player" type="CharacterBody3D" unique_id=1697551590]
 script = ExtResource("1_lowyb")
+speed = 1.0
 
 [node name="pivot" type="Node3D" parent="." unique_id=1815740439]
 
