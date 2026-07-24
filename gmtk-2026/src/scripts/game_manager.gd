@@ -35,6 +35,9 @@ func _timer_run() -> void:
 	var seconds: int = int(time_left) % 60
 	timerLabel.text = "%02d:%02d" % [minutes, seconds]
 
+func _timer_reduce():
+	timerUi.start(timerUi.time_left - 2.0)
+
 func _on_timer_timeout() -> void:
 	timerLabel.text = "00:00"
 	print("dead")

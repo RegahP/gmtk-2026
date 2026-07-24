@@ -10,6 +10,8 @@ func attack(data: AttackData):
 	if data == null:
 		push_error("Weapon.attack() was called without an AttackData!")
 		return
+	
+	hitbox.reset()
 
 	var damage := DamageInfo.new()
 

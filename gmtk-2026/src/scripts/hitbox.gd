@@ -18,3 +18,6 @@ func _on_body_entered(body: Node3D) -> void:
 
 	health.take_damage(current_damage)
 	print("Hit:", body.name)
+
+func reset():
+	hit_targets.clear()
