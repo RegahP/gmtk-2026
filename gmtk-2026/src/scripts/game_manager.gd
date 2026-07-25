@@ -97,6 +97,7 @@ func _add_machineroom() -> void:
 func _add_enemyset() -> void:
 	currEnemySet = enemySets[_randi(enemySets.size())].instantiate()
 	add_child(currEnemySet)
+	currEnemySet._set_enemies(player)
 	print("added enemyset")
 
 func _add_pedestal() -> void:

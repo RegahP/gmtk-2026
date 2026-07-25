@@ -41,6 +41,7 @@ func _physics_process(delta: float) -> void:
 	
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
+		attack_controller.weapon.basis = Basis.looking_at(direction)
 		$pivot.basis = Basis.looking_at(direction)
 		
 	if attackdir != Vector3.ZERO:
@@ -62,7 +63,7 @@ func _on_timer_timeout() -> void:
 
 func _attack_windup() -> void:
 	if (!is_attacking):
-		print("ATTACKING ENEMY")
+		#print("ATTACKING ENEMY")
 		is_attacking = true
 		await get_tree().create_timer(attack_controller.attackData.attack_windup).timeout
 		_attack_enemy()

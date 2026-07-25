@@ -48,11 +48,8 @@ shape = SubResource("BoxShape3D_niymf")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor" unique_id=1948164620]
 mesh = SubResource("BoxMesh_gh0ne")
 
-[node name="wallsdetail" parent="floor" unique_id=811325706 instance=ExtResource("2_opjxc")]
-transform = Transform3D(0.149, 0, 0, 0, 0.149, 0, 0, 0, 0.149, 0, 0, 0)
-
-[node name="Plane" parent="floor/wallsdetail" index="1" unique_id=1137877769]
-visible = false
+[node name="wallsdetail" parent="floor" unique_id=215732058 instance=ExtResource("2_opjxc")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
 
 [node name="entrancedoor" type="MeshInstance3D" parent="floor" unique_id=95359321]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.35, 0)
@@ -92,5 +89,3 @@ nextRoomId = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor/exitdoorcenter/Area3D" unique_id=28977720]
 shape = SubResource("SphereShape3D_ff686")
-
-[editable path="floor/wallsdetail"]

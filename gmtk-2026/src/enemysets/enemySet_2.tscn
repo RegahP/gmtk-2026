@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bmoccymvqk78t"]
+
+[ext_resource type="Script" uid="uid://nbe70cptcqfx" path="res://src/scripts/enemy_set.gd" id="1_7s5ik"]
+[ext_resource type="PackedScene" uid="uid://bj4cyql3urax5" path="res://src/enemies/enemy_fleshbud.tscn" id="2_hylm5"]
+[ext_resource type="PackedScene" uid="uid://fh6tbcx472k4" path="res://src/enemies/enemy_homunculimb.tscn" id="3_7s5ik"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0q8fu"]
+size = Vector3(3, 0.3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1kh1"]
+albedo_color = Color(0.14767182, 0.14767179, 0.14767179, 1)
+
+[node name="enemySet_2" type="Node3D" unique_id=639514220]
+script = ExtResource("1_7s5ik")
+
+[node name="enemy_fleshbud" parent="." unique_id=1622673865 instance=ExtResource("2_hylm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.68810606, 0, -0.33278424)
+
+[node name="enemy_fleshbud2" parent="." unique_id=1771735171 instance=ExtResource("2_hylm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.67247295, 0, 0.44687885)
+
+[node name="enemy_homunculimb" parent="." unique_id=675285533 instance=ExtResource("3_7s5ik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43010825, -1.1920929e-07, -0.71641684)
+
+[node name="enemy_homunculimb2" parent="." unique_id=775492536 instance=ExtResource("3_7s5ik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45499915, -1.1920929e-07, 0.8120821)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=798304545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+visible = false
+mesh = SubResource("BoxMesh_0q8fu")
+surface_material_override/0 = SubResource("StandardMaterial3D_i1kh1")

@@ -1,20 +1,23 @@
 [gd_scene format=3 uid="uid://bkf8kfj4bgkkk"]
 
 [ext_resource type="Script" uid="uid://b2m17b7y333ey" path="res://src/scripts/game_manager.gd" id="1_3cfgd"]
-[ext_resource type="PackedScene" uid="uid://c5jxvxuskenln" path="res://src/roomBase.tscn" id="1_5q4o7"]
+[ext_resource type="PackedScene" uid="uid://c5jxvxuskenln" path="res://src/roombases/roomBase.tscn" id="1_5q4o7"]
 [ext_resource type="PackedScene" uid="uid://d2ad2p1i4xtg7" path="res://src/player.tscn" id="1_eewff"]
 [ext_resource type="Script" uid="uid://dcu0akvpcuwk" path="res://src/scripts/camera_3d.gd" id="2_gh0ne"]
-[ext_resource type="PackedScene" uid="uid://br8rm4s0264ax" path="res://src/roomBase_machine.tscn" id="3_5mrjc"]
-[ext_resource type="PackedScene" uid="uid://c50m2wqcexp8" path="res://src/enemySet_0.tscn" id="3_fyndt"]
+[ext_resource type="PackedScene" uid="uid://br8rm4s0264ax" path="res://src/roombases/roomBase_machine.tscn" id="3_5mrjc"]
+[ext_resource type="PackedScene" uid="uid://c50m2wqcexp8" path="res://src/enemysets/enemySet_0.tscn" id="3_fyndt"]
+[ext_resource type="PackedScene" uid="uid://lrm5na7kj2lf" path="res://src/enemysets/enemySet_1.tscn" id="4_kf8lf"]
 [ext_resource type="PackedScene" uid="uid://bur25qsrx35y4" path="res://src/pedestal.tscn" id="4_kmhfv"]
+[ext_resource type="PackedScene" uid="uid://bmoccymvqk78t" path="res://src/enemysets/enemySet_2.tscn" id="6_d3u4l"]
+[ext_resource type="PackedScene" uid="uid://bubtp28alxkgt" path="res://src/enemysets/enemySet_3.tscn" id="7_mlv6i"]
 [ext_resource type="Texture2D" uid="uid://dwf2aus5gmr8x" path="res://src/textures/youdied.png" id="7_rlaii"]
 [ext_resource type="Texture2D" uid="uid://bskr33laj8ssi" path="res://src/textures/machine.png" id="8_kf8lf"]
-[ext_resource type="PackedScene" uid="uid://bj4cyql3urax5" path="res://src/models/enemy_fleshbud.tscn" id="11_mlv6i"]
-[ext_resource type="PackedScene" uid="uid://bqjmtcd1c3705" path="res://src/models/enemy_homunculard.tscn" id="11_uewes"]
-[ext_resource type="PackedScene" uid="uid://dy86lkp33kciy" path="res://src/models/enemy_fleshmound.tscn" id="12_tb146"]
-[ext_resource type="PackedScene" uid="uid://fh6tbcx472k4" path="res://src/models/enemy_homunculimb.tscn" id="13_e7lu8"]
-[ext_resource type="PackedScene" uid="uid://d0udlmsi3s556" path="res://src/models/enemy_opticagent.tscn" id="14_okx7f"]
-[ext_resource type="PackedScene" uid="uid://bb8rsavnbw5mx" path="res://src/models/enemy_trackeragent.tscn" id="15_sta5p"]
+[ext_resource type="PackedScene" uid="uid://b3iyokbbxvd0k" path="res://src/enemysets/enemySet_4.tscn" id="8_tb146"]
+[ext_resource type="PackedScene" uid="uid://b20f08pq0akjv" path="res://src/enemysets/enemySet_5.tscn" id="9_e7lu8"]
+[ext_resource type="PackedScene" uid="uid://btr3jji3137qq" path="res://src/enemysets/enemySet_6.tscn" id="10_e7lu8"]
+[ext_resource type="PackedScene" uid="uid://ckw6chq1y87b0" path="res://src/enemysets/enemySet_7.tscn" id="11_okx7f"]
+[ext_resource type="PackedScene" uid="uid://bl5bcr6d6ljo4" path="res://src/enemysets/enemySet_8.tscn" id="12_sta5p"]
+[ext_resource type="PackedScene" uid="uid://gm0oew6yqibb" path="res://src/enemies/boss_crawler.tscn" id="18_okx7f"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_mgm53"]
 
@@ -34,7 +37,7 @@ countDownTime = 180
 roomIdsByCount = Array[Vector2i]([Vector2i(0, 1), Vector2i(0, 0), Vector2i(2, 0), Vector2i(1, -1), Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, -1), Vector2i(1, -1)])
 roomBases = Array[PackedScene]([ExtResource("1_5q4o7")])
 machineRoom = ExtResource("3_5mrjc")
-enemySets = Array[PackedScene]([ExtResource("3_fyndt")])
+enemySets = Array[PackedScene]([ExtResource("3_fyndt"), ExtResource("4_kf8lf"), ExtResource("6_d3u4l"), ExtResource("7_mlv6i"), ExtResource("8_tb146"), ExtResource("9_e7lu8"), ExtResource("10_e7lu8"), ExtResource("11_okx7f"), ExtResource("12_sta5p")])
 pedestal = ExtResource("4_kmhfv")
 player = NodePath("player")
 
@@ -117,17 +120,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_rlaii")
 
-[node name="enemy_homunculard" parent="." unique_id=1812524287 instance=ExtResource("11_uewes")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7386383, -1.1920929e-07, 0.68661606)
-
-[node name="enemy_fleshbud" parent="." unique_id=1622673865 instance=ExtResource("11_mlv6i")]
-
-[node name="enemy_fleshmound" parent="." unique_id=399690370 instance=ExtResource("12_tb146")]
-
-[node name="enemy_homunculimb" parent="." unique_id=1069747610 instance=ExtResource("13_e7lu8")]
-
-[node name="enemy_opticagent" parent="." unique_id=774332072 instance=ExtResource("14_okx7f")]
-
-[node name="enemy_trackeragent" parent="." unique_id=1393000855 instance=ExtResource("15_sta5p")]
+[node name="crawler" parent="." unique_id=1444767208 instance=ExtResource("18_okx7f")]
 
 [editable path="player"]

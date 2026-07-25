@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://bb8rsavnbw5mx"]
+
+[ext_resource type="Script" uid="uid://bjp1k6ocw7bop" path="res://src/scripts/enemy_trackeragent.gd" id="1_8n6yl"]
+[ext_resource type="PackedScene" uid="uid://d1focyc3eqf6n" path="res://src/enemies/projectile_trackeragent.tscn" id="2_t86bj"]
+[ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/enemy_health.gd" id="2_wpu7a"]
+[ext_resource type="PackedScene" uid="uid://183lkt2aux3t" path="res://src/models/mobmodel_TRACKER_AGENT.glb" id="3_t86bj"]
+[ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="4_houi3"]
+[ext_resource type="Resource" uid="uid://c54v4bbduuckp" path="res://src/resources/trackeragent_attack.tres" id="5_rigim"]
+[ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="6_pyftt"]
+[ext_resource type="Script" uid="uid://bcs5two2yu1o" path="res://src/scripts/enemy_hitbox.gd" id="7_m3k6u"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0eo6c"]
+height = 0.70428467
+radius = 0.3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g7abn"]
+radius = 0.6
+
+[node name="enemy_trackeragent" type="CharacterBody3D" unique_id=1622673865]
+collision_mask = 0
+script = ExtResource("1_8n6yl")
+projectile = ExtResource("2_t86bj")
+attack_range = 1.2
+attack_windup = 0.3
+attack_cooldown = 0.8
+
+[node name="Health" type="Node" parent="." unique_id=1924828349]
+script = ExtResource("2_wpu7a")
+max_health = 20.0
+
+[node name="mobmodel_TRACKER_AGENT" parent="." unique_id=926685796 instance=ExtResource("3_t86bj")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.13881409, 0.21712369)
+
+[node name="tracker agent" parent="mobmodel_TRACKER_AGENT" index="1" unique_id=488591873]
+transform = Transform3D(-5.0337007e-08, 3.0808086, -5.0337007e-08, 0, -1.3466642e-07, -1.1515765, -1.1515765, -1.3466642e-07, 2.2003004e-15, 0, 4.3788853, -2.718462)
+
+[node name="shoot_origin" type="Node3D" parent="mobmodel_TRACKER_AGENT/tracker agent" index="0" unique_id=955792360]
+transform = Transform3D(-4.37114e-08, 0, 1.0000002, 0, 1.0000002, 0, -1.0000002, 0, -4.37114e-08, -3.3459597, 7.387733e-09, 3.7981162)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1532499648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35128784, 0)
+shape = SubResource("CylinderShape3D_0eo6c")
+
+[node name="AttackController" type="Node" parent="." unique_id=1550604174]
+script = ExtResource("4_houi3")
+light_attack = ExtResource("5_rigim")
+
+[node name="Weapon" type="Node3D" parent="." unique_id=341413794]
+script = ExtResource("6_pyftt")
+metadata/_custom_type_script = "uid://di2aq3omvm40x"
+
+[node name="Hitbox" type="Area3D" parent="Weapon" unique_id=1179545156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+monitoring = false
+script = ExtResource("7_m3k6u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=195397446]
+shape = SubResource("SphereShape3D_g7abn")
+
+[editable path="mobmodel_TRACKER_AGENT"]

@@ -10,6 +10,8 @@ signal exited(localDoorId: int)
 signal picked(nextRoomId: int)
 
 func _ready() -> void:
+	if !visible:
+		queue_free()
 	$Area3D.body_entered.connect(_on_door_entered)
 	$Area3D.body_exited.connect(_on_door_exited)
 	

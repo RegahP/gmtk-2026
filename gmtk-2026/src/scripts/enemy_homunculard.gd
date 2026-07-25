@@ -7,7 +7,6 @@ var time: float
 var acceleration: float
 
 func _ready() -> void:
-	super()
 	body = $homunculardwb
 	time += randf()
 	acceleration = 1

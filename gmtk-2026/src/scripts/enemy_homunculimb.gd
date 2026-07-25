@@ -10,8 +10,7 @@ var time: float
 @export var leap_origin: Vector3
 
 func _ready() -> void:
-	super()
-	legs = $homunculimb/Cylinder_002
+	legs = $homunculimb/Cylinder_003
 	time += randf()
 
 func _process(delta: float) -> void:
@@ -31,7 +30,7 @@ func _physics_process(delta: float) -> void:
 		if (is_moving || is_moving && is_leaping):
 			_attack_windup()
 		
-	legs.rotation.y = sin(time * 6) *.5
+	legs.rotation.y = 90 + sin(time * 6) *.5
 	
 	if is_leaping:
 		await get_tree().create_timer(.3).timeout
