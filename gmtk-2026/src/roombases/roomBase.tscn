@@ -12,6 +12,9 @@ size = Vector3(1, 0.1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_niymf"]
 size = Vector3(0.05, 1, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwfnl"]
+albedo_texture = ExtResource("3_gwfnl")
+
 [sub_resource type="BoxMesh" id="BoxMesh_gh0ne"]
 size = Vector3(3, 0.3, 3)
 
@@ -54,6 +57,7 @@ transform = Transform3D(-1.3113416e-07, 0, -3, 0, 3, 0, 3, 0, -1.3113416e-07, -6
 shape = SubResource("BoxShape3D_niymf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor" unique_id=1948164620]
+material_override = SubResource("StandardMaterial3D_gwfnl")
 mesh = SubResource("BoxMesh_gh0ne")
 
 [node name="wallsdetail" parent="floor" unique_id=215732058 instance=ExtResource("2_opjxc")]

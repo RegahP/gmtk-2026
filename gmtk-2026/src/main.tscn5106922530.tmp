@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://bkf8kfj4bgkkk"]
+
+[ext_resource type="Script" uid="uid://b2m17b7y333ey" path="res://src/scripts/game_manager.gd" id="1_3cfgd"]
+[ext_resource type="PackedScene" uid="uid://c5jxvxuskenln" path="res://src/roombases/roomBase.tscn" id="1_5q4o7"]
+[ext_resource type="PackedScene" uid="uid://d2ad2p1i4xtg7" path="res://src/player.tscn" id="1_eewff"]
+[ext_resource type="Script" uid="uid://dcu0akvpcuwk" path="res://src/scripts/camera_3d.gd" id="2_gh0ne"]
+[ext_resource type="PackedScene" uid="uid://br8rm4s0264ax" path="res://src/roombases/roomBase_machine.tscn" id="3_5mrjc"]
+[ext_resource type="PackedScene" uid="uid://c50m2wqcexp8" path="res://src/enemysets/enemySet_0.tscn" id="3_fyndt"]
+[ext_resource type="PackedScene" uid="uid://lrm5na7kj2lf" path="res://src/enemysets/enemySet_1.tscn" id="4_kf8lf"]
+[ext_resource type="PackedScene" uid="uid://bur25qsrx35y4" path="res://src/pedestal.tscn" id="4_kmhfv"]
+[ext_resource type="PackedScene" uid="uid://bmoccymvqk78t" path="res://src/enemysets/enemySet_2.tscn" id="6_d3u4l"]
+[ext_resource type="PackedScene" uid="uid://bubtp28alxkgt" path="res://src/enemysets/enemySet_3.tscn" id="7_mlv6i"]
+[ext_resource type="Texture2D" uid="uid://dwf2aus5gmr8x" path="res://src/textures/youdied.png" id="7_rlaii"]
+[ext_resource type="Texture2D" uid="uid://bskr33laj8ssi" path="res://src/textures/machine.png" id="8_kf8lf"]
+[ext_resource type="PackedScene" uid="uid://b3iyokbbxvd0k" path="res://src/enemysets/enemySet_4.tscn" id="8_tb146"]
+[ext_resource type="PackedScene" uid="uid://b20f08pq0akjv" path="res://src/enemysets/enemySet_5.tscn" id="9_e7lu8"]
+[ext_resource type="PackedScene" uid="uid://btr3jji3137qq" path="res://src/enemysets/enemySet_6.tscn" id="10_e7lu8"]
+[ext_resource type="PackedScene" uid="uid://ckw6chq1y87b0" path="res://src/enemysets/enemySet_7.tscn" id="11_okx7f"]
+[ext_resource type="PackedScene" uid="uid://bl5bcr6d6ljo4" path="res://src/enemysets/enemySet_8.tscn" id="12_sta5p"]
+[ext_resource type="PackedScene" uid="uid://cjopc0jnbe0uu" path="res://src/addons/posterize_to_palette/posterize_with_compute_LUT/posterize_with_LUT.tscn" id="18_okx7f"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_mgm53"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uewes"]
+transparency = 1
+albedo_texture = ExtResource("8_kf8lf")
+
+[sub_resource type="LabelSettings" id="LabelSettings_kmhfv"]
+font_size = 48
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlaii"]
+bg_color = Color(0, 0, 0, 0.5019608)
+
+[node name="Main" type="Node3D" unique_id=639514220 node_paths=PackedStringArray("player")]
+script = ExtResource("1_3cfgd")
+countDownTime = 180
+roomIdsByCount = Array[Vector2i]([Vector2i(0, 1), Vector2i(0, 0), Vector2i(2, 0), Vector2i(1, -1), Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, -1), Vector2i(1, -1)])
+roomBases = Array[PackedScene]([ExtResource("1_5q4o7")])
+machineRoom = ExtResource("3_5mrjc")
+enemySets = Array[PackedScene]([ExtResource("3_fyndt"), ExtResource("4_kf8lf"), ExtResource("6_d3u4l"), ExtResource("7_mlv6i"), ExtResource("8_tb146"), ExtResource("9_e7lu8"), ExtResource("10_e7lu8"), ExtResource("11_okx7f"), ExtResource("12_sta5p")])
+pedestal = ExtResource("4_kmhfv")
+player = NodePath("player")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1302385430]
+transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.7071068, 0.7071068, -0.7071068, -0.5, 0.5, 0, 0, 0)
+
+[node name="player" parent="." unique_id=1037035893 instance=ExtResource("1_eewff")]
+unique_name_in_owner = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=884260794 node_paths=PackedStringArray("follow_target")]
+transform = Transform3D(0.70710677, -0.3535534, 0.6123724, 0, 0.8660254, 0.50000006, -0.70710677, -0.3535534, 0.6123724, 2, 1.75, 2)
+projection = 1
+size = 2.0
+script = ExtResource("2_gh0ne")
+follow_target = NodePath("../player")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D" unique_id=338927597]
+transform = Transform3D(-1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.785, 0.265, -10)
+visible = false
+mesh = SubResource("QuadMesh_mgm53")
+surface_material_override/0 = SubResource("StandardMaterial3D_uewes")
+
+[node name="CountdownUI" type="Control" parent="." unique_id=2120144187]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="CountdownUI" unique_id=1226518482]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -61.5
+offset_right = 61.5
+offset_bottom = 67.0
+grow_horizontal = 2
+text = "00:00"
+label_settings = SubResource("LabelSettings_kmhfv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="CountdownUI" unique_id=2118935106]
+one_shot = true
+
+[node name="DeathscreenUI" type="Control" parent="." unique_id=42503341]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="DeathscreenUI" unique_id=1786781927]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rlaii")
+
+[node name="TextureRect" type="TextureRect" parent="DeathscreenUI/Panel" unique_id=953333790]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_rlaii")
+
+[node name="PosterizeWithLUT" parent="." unique_id=953575984 instance=ExtResource("18_okx7f")]
+
+[editable path="player"]
