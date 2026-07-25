@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://0b6n51tsecsx"
-path.s3tc="res://.godot/imported/homunculimb_wb.png-5890cc559a63f8f171874d7ace6a1a7b.s3tc.ctex"
+path.s3tc="res://.godot/imported/homunculimb_wb.png-1259070794c47f4f66016e6d62d59cc8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://src/models/homunculimb_wb.png"
-dest_files=["res://.godot/imported/homunculimb_wb.png-5890cc559a63f8f171874d7ace6a1a7b.s3tc.ctex"]
+source_file="res://src/textures/homunculimb_wb.png"
+dest_files=["res://.godot/imported/homunculimb_wb.png-1259070794c47f4f66016e6d62d59cc8.s3tc.ctex"]
 
 [params]
 

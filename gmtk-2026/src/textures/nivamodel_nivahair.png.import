@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhtyre3o3g8p6"
-path.s3tc="res://.godot/imported/modmodel_OPTIC_AGENT_texture 15.png-c13df48b52f3c959154d868cda23d653.s3tc.ctex"
+uid="uid://0anje2o1vafu"
+path.s3tc="res://.godot/imported/nivamodel_nivahair.png-aa287758c5eb79f9192574dd0d921abc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "bc5d77626946c5fe2a24e2019dee4e54"
+"md5": "3ea14e6c81b1ebc8d2d0a767281842c9"
 }
 
 [deps]
 
-source_file="res://src/models/modmodel_OPTIC_AGENT_texture 15.png"
-dest_files=["res://.godot/imported/modmodel_OPTIC_AGENT_texture 15.png-c13df48b52f3c959154d868cda23d653.s3tc.ctex"]
+source_file="res://src/textures/nivamodel_nivahair.png"
+dest_files=["res://.godot/imported/nivamodel_nivahair.png-aa287758c5eb79f9192574dd0d921abc.s3tc.ctex"]
 
 [params]
 

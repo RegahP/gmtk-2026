@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt42u0wp5nt11"
-path.s3tc="res://.godot/imported/fleshmound_texture8.png-75eda24bb2c7031e89e5496cd701c533.s3tc.ctex"
+uid="uid://cljn8c8pd8oel"
+path.s3tc="res://.godot/imported/homunculimb_texture 5.png-5e5c59b2c8d8ec7213b93653196d270d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "0f46cebbdf1696fe8af2cf5cd97bd222"
+"md5": "3dcebefc7b8db6c8686c438799a33306"
 }
 
 [deps]
 
-source_file="res://src/models/fleshmound_texture8.png"
-dest_files=["res://.godot/imported/fleshmound_texture8.png-75eda24bb2c7031e89e5496cd701c533.s3tc.ctex"]
+source_file="res://src/textures/homunculimb_texture 5.png"
+dest_files=["res://.godot/imported/homunculimb_texture 5.png-5e5c59b2c8d8ec7213b93653196d270d.s3tc.ctex"]
 
 [params]
 

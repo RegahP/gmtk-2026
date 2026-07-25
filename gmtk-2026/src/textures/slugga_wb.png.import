@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpdudh0w05r66"
-path.s3tc="res://.godot/imported/homunculardwb_wb.png-24dec9b64487b8cf4feac22fd47f06ad.s3tc.ctex"
+uid="uid://c8hut2xpuowue"
+path.s3tc="res://.godot/imported/slugga_wb.png-83b4e3f9b96a9951ff98f42787cb3b0b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://src/models/homunculardwb_wb.png"
-dest_files=["res://.godot/imported/homunculardwb_wb.png-24dec9b64487b8cf4feac22fd47f06ad.s3tc.ctex"]
+source_file="res://src/textures/slugga_wb.png"
+dest_files=["res://.godot/imported/slugga_wb.png-83b4e3f9b96a9951ff98f42787cb3b0b.s3tc.ctex"]
 
 [params]
 

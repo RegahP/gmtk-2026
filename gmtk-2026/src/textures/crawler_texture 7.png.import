@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0anje2o1vafu"
-path.s3tc="res://.godot/imported/nivamodel_nivahair.png-9307f07cbafabb39a3364789265485ea.s3tc.ctex"
+uid="uid://djsvoteb0sgmc"
+path.s3tc="res://.godot/imported/crawler_texture 7.png-9973de6cc3cfe277ab6bf92d5bee4f4e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "3ea14e6c81b1ebc8d2d0a767281842c9"
+"md5": "3e8a26340527661e4e6ebb85c858fefc"
 }
 
 [deps]
 
-source_file="res://src/models/nivamodel_nivahair.png"
-dest_files=["res://.godot/imported/nivamodel_nivahair.png-9307f07cbafabb39a3364789265485ea.s3tc.ctex"]
+source_file="res://src/textures/crawler_texture 7.png"
+dest_files=["res://.godot/imported/crawler_texture 7.png-9973de6cc3cfe277ab6bf92d5bee4f4e.s3tc.ctex"]
 
 [params]
 

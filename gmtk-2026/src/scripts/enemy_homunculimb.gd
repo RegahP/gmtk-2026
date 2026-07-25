@@ -10,6 +10,7 @@ var time: float
 @export var leap_origin: Vector3
 
 func _ready() -> void:
+	super()
 	legs = $homunculimb/Cylinder_003
 	time += randf()
 

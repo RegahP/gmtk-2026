@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cljn8c8pd8oel"
-path.s3tc="res://.godot/imported/homunculimb_texture 5.png-551bd1c36de0cd4db71135584039d416.s3tc.ctex"
+uid="uid://fkw2is27jlgy"
+path.s3tc="res://.godot/imported/slugga_texture 5.png-427c4609cbfc5edb6199921036c5adb0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://src/models/homunculimb_texture 5.png"
-dest_files=["res://.godot/imported/homunculimb_texture 5.png-551bd1c36de0cd4db71135584039d416.s3tc.ctex"]
+source_file="res://src/textures/slugga_texture 5.png"
+dest_files=["res://.godot/imported/slugga_texture 5.png-427c4609cbfc5edb6199921036c5adb0.s3tc.ctex"]
 
 [params]
 

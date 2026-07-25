@@ -4,6 +4,7 @@ var body: Node3D
 var time: float
 
 func _ready() -> void:
+	super()
 	body = $fleshbud
 	time += randf()
 

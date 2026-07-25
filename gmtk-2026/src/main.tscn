@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://btr3jji3137qq" path="res://src/enemysets/enemySet_6.tscn" id="10_e7lu8"]
 [ext_resource type="PackedScene" uid="uid://ckw6chq1y87b0" path="res://src/enemysets/enemySet_7.tscn" id="11_okx7f"]
 [ext_resource type="PackedScene" uid="uid://bl5bcr6d6ljo4" path="res://src/enemysets/enemySet_8.tscn" id="12_sta5p"]
-[ext_resource type="PackedScene" uid="uid://gm0oew6yqibb" path="res://src/enemies/boss_crawler.tscn" id="18_okx7f"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_mgm53"]
 
@@ -119,7 +118,5 @@ offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_rlaii")
-
-[node name="crawler" parent="." unique_id=1444767208 instance=ExtResource("18_okx7f")]
 
 [editable path="player"]

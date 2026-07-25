@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1d71dhvqlof7"
-path.s3tc="res://.godot/imported/crawler_texture8.png-62df6f993e2107a49bce51cdf6c9dc7d.s3tc.ctex"
+uid="uid://d0yi427t6ntoh"
+path.s3tc="res://.godot/imported/fleshmound_texture 7.png-e060465cba6bea19a0bcf3ffd87a5070.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "0f46cebbdf1696fe8af2cf5cd97bd222"
+"md5": "3e8a26340527661e4e6ebb85c858fefc"
 }
 
 [deps]
 
-source_file="res://src/models/crawler_texture8.png"
-dest_files=["res://.godot/imported/crawler_texture8.png-62df6f993e2107a49bce51cdf6c9dc7d.s3tc.ctex"]
+source_file="res://src/textures/fleshmound_texture 7.png"
+dest_files=["res://.godot/imported/fleshmound_texture 7.png-e060465cba6bea19a0bcf3ffd87a5070.s3tc.ctex"]
 
 [params]
 

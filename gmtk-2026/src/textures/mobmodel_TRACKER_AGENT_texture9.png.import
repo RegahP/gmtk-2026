@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8hut2xpuowue"
-path.s3tc="res://.godot/imported/slugga_wb.png-99f762d2320e03ce62b411d91f7eb3e9.s3tc.ctex"
+uid="uid://dgghbyxkmvetl"
+path.s3tc="res://.godot/imported/mobmodel_TRACKER_AGENT_texture9.png-105e3847991c25569e393ce260631df5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "72444e25b61dee5eb191332e2eeef988"
+"md5": "e0eb7d3809af97f2212f47bef80653da"
 }
 
 [deps]
 
-source_file="res://src/models/slugga_wb.png"
-dest_files=["res://.godot/imported/slugga_wb.png-99f762d2320e03ce62b411d91f7eb3e9.s3tc.ctex"]
+source_file="res://src/textures/mobmodel_TRACKER_AGENT_texture9.png"
+dest_files=["res://.godot/imported/mobmodel_TRACKER_AGENT_texture9.png-105e3847991c25569e393ce260631df5.s3tc.ctex"]
 
 [params]
 

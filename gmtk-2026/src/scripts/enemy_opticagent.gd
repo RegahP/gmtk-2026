@@ -3,6 +3,7 @@ extends EnemyBase
 var time: float
 
 func _ready() -> void:
+	super()
 	time += randf()
 
 func _process(delta: float) -> void:

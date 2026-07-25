@@ -29,7 +29,7 @@ max_health = 10.0
 [node name="fleshbud" parent="." unique_id=1424116867 instance=ExtResource("3_l6vd7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015133753, 0)
 
-[node name="fleshbud" parent="fleshbud" index="0" unique_id=1142915648]
+[node name="fleshbud" parent="fleshbud" index="0" unique_id=1641090885]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.002257347, 0, 0.060452566)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1532499648]

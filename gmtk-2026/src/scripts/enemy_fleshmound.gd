@@ -5,6 +5,7 @@ var time: float
 var fleshbud: PackedScene = load("res://src/enemies/enemy_fleshbud.tscn")
 
 func _ready() -> void:
+	super()
 	body = $fleshmound
 	time += randf()
 

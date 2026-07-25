@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bst3peusla433"
-path.s3tc="res://.godot/imported/homunculardwb_texture 5.png-9b46f6194ad683c8d980d1745a9faf4a.s3tc.ctex"
+uid="uid://1d71dhvqlof7"
+path.s3tc="res://.godot/imported/crawler_texture8.png-3e010f8e5228d9cacbbf95ce1f70f659.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "3dcebefc7b8db6c8686c438799a33306"
+"md5": "0f46cebbdf1696fe8af2cf5cd97bd222"
 }
 
 [deps]
 
-source_file="res://src/models/homunculardwb_texture 5.png"
-dest_files=["res://.godot/imported/homunculardwb_texture 5.png-9b46f6194ad683c8d980d1745a9faf4a.s3tc.ctex"]
+source_file="res://src/textures/crawler_texture8.png"
+dest_files=["res://.godot/imported/crawler_texture8.png-3e010f8e5228d9cacbbf95ce1f70f659.s3tc.ctex"]
 
 [params]
 

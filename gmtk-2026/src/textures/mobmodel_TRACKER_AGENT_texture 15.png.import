@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jji4a0aro253"
-path.s3tc="res://.godot/imported/modmodel_OPTIC_AGENT_texture9.png-d2a9dc5f07f5483379244d20fa89fe66.s3tc.ctex"
+uid="uid://faq8p5q61k5p"
+path.s3tc="res://.godot/imported/mobmodel_TRACKER_AGENT_texture 15.png-9e05c16ec944d4a0bb5c20a8f8322dfa.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "e0eb7d3809af97f2212f47bef80653da"
+"md5": "bc5d77626946c5fe2a24e2019dee4e54"
 }
 
 [deps]
 
-source_file="res://src/models/modmodel_OPTIC_AGENT_texture9.png"
-dest_files=["res://.godot/imported/modmodel_OPTIC_AGENT_texture9.png-d2a9dc5f07f5483379244d20fa89fe66.s3tc.ctex"]
+source_file="res://src/textures/mobmodel_TRACKER_AGENT_texture 15.png"
+dest_files=["res://.godot/imported/mobmodel_TRACKER_AGENT_texture 15.png-9e05c16ec944d4a0bb5c20a8f8322dfa.s3tc.ctex"]
 
 [params]
 

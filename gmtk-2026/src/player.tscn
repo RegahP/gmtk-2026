@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d2ad2p1i4xtg7"]
 
 [ext_resource type="Script" uid="uid://bjo4dw82qxcaq" path="res://src/scripts/player.gd" id="1_lowyb"]
+[ext_resource type="PackedScene" uid="uid://coe248akq0xgk" path="res://src/models/nivamodel.glb" id="2_21lrq"]
 [ext_resource type="Script" uid="uid://vasientt45jv" path="res://src/scripts/attackController.gd" id="2_ehvfd"]
 [ext_resource type="Script" uid="uid://di2aq3omvm40x" path="res://src/scripts/weapon.gd" id="3_bktlc"]
 [ext_resource type="Resource" uid="uid://8gg1mntvripk" path="res://src/resources/player_attack1.tres" id="3_pg28d"]
@@ -26,12 +27,17 @@ speed = 1.0
 
 [node name="pivot" type="Node3D" parent="." unique_id=1815740439]
 
+[node name="nivamodel" parent="pivot" unique_id=410126048 instance=ExtResource("2_21lrq")]
+transform = Transform3D(-1.5517543e-08, 0, 0.355, 0, 0.355, 0, -0.355, 0, -1.5517543e-08, 0.106628716, 0, 0)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="pivot" unique_id=658231162]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.15, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_lowyb")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="pivot" unique_id=263847600]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.25, -0.05)
+visible = false
 mesh = SubResource("BoxMesh_lowyb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1721941811]

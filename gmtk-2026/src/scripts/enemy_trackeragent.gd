@@ -5,6 +5,7 @@ var head: Node3D
 @onready var shoot_origin: Node3D = $"mobmodel_TRACKER_AGENT/tracker agent/shoot_origin"
 
 func _ready() -> void:
+	super()
 	head = $"mobmodel_TRACKER_AGENT/tracker agent"
 
 func _physics_process(delta: float) -> void:

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cydnsdwpn6nge"
-path.s3tc="res://.godot/imported/fleshbud_texture 7.png-c39ef3b4b8ed18be3457562e208938cb.s3tc.ctex"
+uid="uid://bt42u0wp5nt11"
+path.s3tc="res://.godot/imported/fleshmound_texture8.png-123eb8b27fe7b8a21631fd7322500127.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "3e8a26340527661e4e6ebb85c858fefc"
+"md5": "0f46cebbdf1696fe8af2cf5cd97bd222"
 }
 
 [deps]
 
-source_file="res://src/models/fleshbud_texture 7.png"
-dest_files=["res://.godot/imported/fleshbud_texture 7.png-c39ef3b4b8ed18be3457562e208938cb.s3tc.ctex"]
+source_file="res://src/textures/fleshmound_texture8.png"
+dest_files=["res://.godot/imported/fleshmound_texture8.png-123eb8b27fe7b8a21631fd7322500127.s3tc.ctex"]
 
 [params]
 
