@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bafqvyaj8wfsp"]
 
-[ext_resource type="Script" uid="uid://nag75mjmwtei" path="res://src/main_menu.gd" id="1_bq8pk"]
+[ext_resource type="Script" uid="uid://nag75mjmwtei" path="res://src/scripts/main_menu.gd" id="1_bq8pk"]
 [ext_resource type="Texture2D" uid="uid://b48m3sda5k7ap" path="res://src/textures/vorecito.png" id="1_guuao"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bq8pk"]
