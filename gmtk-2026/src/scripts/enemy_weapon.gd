@@ -10,9 +10,6 @@ func _ready() -> void:
 	hitbox.body_entered.connect(hitbox._on_body_entered)
 
 func attack(data: AttackData):
-	audio_player.play()
-	await audio_player.finished
-
 	if data == null:
 		push_error("Weapon.attack() was called without an AttackData!")
 		return

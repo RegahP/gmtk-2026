@@ -3,8 +3,8 @@ class_name FleshMound
 
 var body: Node3D
 var time: float
-var fleshbud: PackedScene = load("res://src/enemies/enemy_fleshbud.tscn")
 
+var fleshbud: PackedScene = load("res://src/enemies/enemy_fleshbud.tscn")
 signal birthed(enemy: Node3D)
 
 func _ready() -> void:

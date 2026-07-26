@@ -5,25 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://d2ad2p1i4xtg7" path="res://src/player.tscn" id="1_eewff"]
 [ext_resource type="Script" uid="uid://dcu0akvpcuwk" path="res://src/scripts/camera_3d.gd" id="2_gh0ne"]
 [ext_resource type="PackedScene" uid="uid://br8rm4s0264ax" path="res://src/roombases/roomBase_machine.tscn" id="3_5mrjc"]
-[ext_resource type="PackedScene" uid="uid://c50m2wqcexp8" path="res://src/enemysets/enemySet_0.tscn" id="3_fyndt"]
-[ext_resource type="PackedScene" uid="uid://lrm5na7kj2lf" path="res://src/enemysets/enemySet_1.tscn" id="4_kf8lf"]
 [ext_resource type="PackedScene" uid="uid://bur25qsrx35y4" path="res://src/pedestal.tscn" id="4_kmhfv"]
-[ext_resource type="PackedScene" uid="uid://bmoccymvqk78t" path="res://src/enemysets/enemySet_2.tscn" id="6_d3u4l"]
-[ext_resource type="PackedScene" uid="uid://bubtp28alxkgt" path="res://src/enemysets/enemySet_3.tscn" id="7_mlv6i"]
 [ext_resource type="Texture2D" uid="uid://dwf2aus5gmr8x" path="res://src/textures/youdied.png" id="7_rlaii"]
-[ext_resource type="Texture2D" uid="uid://bskr33laj8ssi" path="res://src/textures/machine.png" id="8_kf8lf"]
-[ext_resource type="PackedScene" uid="uid://b3iyokbbxvd0k" path="res://src/enemysets/enemySet_4.tscn" id="8_tb146"]
-[ext_resource type="PackedScene" uid="uid://b20f08pq0akjv" path="res://src/enemysets/enemySet_5.tscn" id="9_e7lu8"]
-[ext_resource type="PackedScene" uid="uid://btr3jji3137qq" path="res://src/enemysets/enemySet_6.tscn" id="10_e7lu8"]
-[ext_resource type="PackedScene" uid="uid://ckw6chq1y87b0" path="res://src/enemysets/enemySet_7.tscn" id="11_okx7f"]
-[ext_resource type="PackedScene" uid="uid://bl5bcr6d6ljo4" path="res://src/enemysets/enemySet_8.tscn" id="12_sta5p"]
+[ext_resource type="Texture2D" uid="uid://2wqn0xalgcnc" path="res://src/textures/cred_screen.png" id="8_mgm53"]
 [ext_resource type="Texture2D" uid="uid://blpxbendpkwkp" path="res://src/textures/nextroom_icons.png" id="18_okx7f"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_mgm53"]
+[ext_resource type="PackedScene" uid="uid://37nt01kuu7sk" path="res://src/enemysets/bossSet_0.tscn" id="19_sta5p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uewes"]
-transparency = 1
-albedo_texture = ExtResource("8_kf8lf")
+albedo_color = Color(0.25, 0.25, 0.25, 1)
+albedo_texture = ExtResource("8_mgm53")
+
+[sub_resource type="QuadMesh" id="QuadMesh_mgm53"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kmhfv"]
 font_size = 48
@@ -79,7 +71,7 @@ countDownTime = 180
 roomIdsByCount = Array[Vector2i]([Vector2i(0, 1), Vector2i(0, 0), Vector2i(2, 0), Vector2i(1, -1), Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, -1), Vector2i(1, -1)])
 roomBases = Array[PackedScene]([ExtResource("1_5q4o7")])
 machineRoom = ExtResource("3_5mrjc")
-enemySets = Array[PackedScene]([ExtResource("3_fyndt"), ExtResource("4_kf8lf"), ExtResource("6_d3u4l"), ExtResource("7_mlv6i"), ExtResource("8_tb146"), ExtResource("9_e7lu8"), ExtResource("10_e7lu8"), ExtResource("11_okx7f"), ExtResource("12_sta5p")])
+enemySets = Array[PackedScene]([ExtResource("19_sta5p")])
 pedestal = ExtResource("4_kmhfv")
 player = NodePath("player")
 
@@ -96,11 +88,10 @@ size = 2.0
 script = ExtResource("2_gh0ne")
 follow_target = NodePath("../player")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D" unique_id=338927597]
-transform = Transform3D(-1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.785, 0.265, -10)
-visible = false
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=338927597]
+transform = Transform3D(5.2700667, -1.4817423, 2.8524306, 0, 3.6295123, 2.329, -5.2700667, -1.4817423, 2.8524306, -4.133, -3.262, -4.133)
+material_override = SubResource("StandardMaterial3D_uewes")
 mesh = SubResource("QuadMesh_mgm53")
-surface_material_override/0 = SubResource("StandardMaterial3D_uewes")
 
 [node name="CountdownUI" type="Control" parent="." unique_id=2120144187]
 layout_mode = 3
@@ -337,3 +328,4 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [editable path="player"]
+[editable path="player/pivot/nivamodel"]
