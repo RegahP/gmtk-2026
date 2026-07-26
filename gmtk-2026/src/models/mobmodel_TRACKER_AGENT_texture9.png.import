@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://balrwnj2ny3t3"
-path.s3tc="res://.godot/imported/nivamodel_nivarender.png-344beeee092e300839d95555166934ec.s3tc.ctex"
+uid="uid://dc653686hffd3"
+path.s3tc="res://.godot/imported/mobmodel_TRACKER_AGENT_texture9.png-97e5c9c40069ad25da7ea9d15c372d4e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b1413541aca4d2c47ada5241837a2708"
+"md5": "e0eb7d3809af97f2212f47bef80653da"
 }
 
 [deps]
 
-source_file="res://src/models/nivamodel_nivarender.png"
-dest_files=["res://.godot/imported/nivamodel_nivarender.png-344beeee092e300839d95555166934ec.s3tc.ctex"]
+source_file="res://src/models/mobmodel_TRACKER_AGENT_texture9.png"
+dest_files=["res://.godot/imported/mobmodel_TRACKER_AGENT_texture9.png-97e5c9c40069ad25da7ea9d15c372d4e.s3tc.ctex"]
 
 [params]
 

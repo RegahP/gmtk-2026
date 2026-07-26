@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://balrwnj2ny3t3"
-path.s3tc="res://.godot/imported/nivamodel_nivarender.png-344beeee092e300839d95555166934ec.s3tc.ctex"
+uid="uid://dkvpdeyjjmjed"
+path.s3tc="res://.godot/imported/fleshbud_texture 7.png-c39ef3b4b8ed18be3457562e208938cb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b1413541aca4d2c47ada5241837a2708"
+"md5": "3e8a26340527661e4e6ebb85c858fefc"
 }
 
 [deps]
 
-source_file="res://src/models/nivamodel_nivarender.png"
-dest_files=["res://.godot/imported/nivamodel_nivarender.png-344beeee092e300839d95555166934ec.s3tc.ctex"]
+source_file="res://src/models/fleshbud_texture 7.png"
+dest_files=["res://.godot/imported/fleshbud_texture 7.png-c39ef3b4b8ed18be3457562e208938cb.s3tc.ctex"]
 
 [params]
 
