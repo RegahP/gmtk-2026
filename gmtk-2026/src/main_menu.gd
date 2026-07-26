@@ -3,7 +3,6 @@ extends Control
 
 var targetpos: Vector2
 var currpos: Vector2
-var transitiontime: float = 0.0
 var transitioning: bool = false
 
 func _ready() -> void:
@@ -14,7 +13,6 @@ func _process(delta: float) -> void:
 	position = currpos
 	if transitioning:
 		
-		transitiontime += delta
 		currpos = currpos.lerp(targetpos, 0.1)
 	
 	if currpos == targetpos:
