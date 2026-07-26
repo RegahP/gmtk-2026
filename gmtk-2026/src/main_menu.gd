@@ -1,8 +1,25 @@
 extends Control
 @onready var music = $AudioStreamPlayer3D
 
+var targetpos: Vector2
+var currpos: Vector2
+var transitiontime: float = 0.0
+var transitioning: bool = false
+
 func _ready() -> void:
 	music.play()
+	
+	
+func _process(delta: float) -> void:
+	position = currpos
+	if transitioning:
+		
+		transitiontime += delta
+		currpos = currpos.lerp(targetpos, 0.1)
+	
+	if currpos == targetpos:
+		transitioning = false
+		transitiontime = 0.0
 
 func _on_start_pressed() -> void:
 	print("start")
@@ -10,8 +27,14 @@ func _on_start_pressed() -> void:
 
 
 func _on_credits_pressed() -> void:
-	get_tree().change_scene_to_file("res://src/credits_menu.tscn")
-	print("credits")
-
+	targetpos = Vector2(0, -900)
+	transitioning = true
+	
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_back_pressed() -> void:
+	targetpos = Vector2(0, 0)
+	transitioning = true
+	
