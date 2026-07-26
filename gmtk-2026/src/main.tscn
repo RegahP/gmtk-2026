@@ -18,8 +18,47 @@
 [ext_resource type="PackedScene" uid="uid://btr3jji3137qq" path="res://src/enemysets/enemySet_6.tscn" id="10_ocmcv"]
 [ext_resource type="PackedScene" uid="uid://ckw6chq1y87b0" path="res://src/enemysets/enemySet_7.tscn" id="11_adv81"]
 [ext_resource type="PackedScene" uid="uid://bl5bcr6d6ljo4" path="res://src/enemysets/enemySet_8.tscn" id="12_lovvn"]
+[ext_resource type="Script" uid="uid://c73gaou3tfp63" path="res://src/scripts/attackData.gd" id="16_hxm6p"]
+[ext_resource type="Resource" uid="uid://8gg1mntvripk" path="res://src/resources/player_attack1.tres" id="17_lj71n"]
 [ext_resource type="Texture2D" uid="uid://blpxbendpkwkp" path="res://src/textures/nextroom_icons.png" id="18_okx7f"]
+[ext_resource type="Resource" uid="uid://dfw8smtupcxer" path="res://src/resources/player_attack2.tres" id="18_ruk5h"]
 [ext_resource type="PackedScene" uid="uid://37nt01kuu7sk" path="res://src/enemysets/bossSet_0.tscn" id="19_sta5p"]
+[ext_resource type="Resource" uid="uid://sbkfu7ovbj0a" path="res://src/resources/player_attack3.tres" id="19_ye406"]
+[ext_resource type="Resource" uid="uid://cjse3v7oc65bs" path="res://src/resources/player_attack4.tres" id="20_lvuux"]
+[ext_resource type="Texture2D" uid="uid://ckmdrnx8n04ti" path="res://src/textures/FRAMES CORAZON/1.png" id="21_imvhg"]
+[ext_resource type="Resource" uid="uid://un30tg4mqwr" path="res://src/resources/player_attack5.tres" id="21_qbv60"]
+[ext_resource type="Resource" uid="uid://chmp34d4fg6xb" path="res://src/resources/player_attack6.tres" id="22_f6xxb"]
+[ext_resource type="Texture2D" uid="uid://qckulu43wecc" path="res://src/textures/FRAMES CORAZON/4.png" id="22_m07h4"]
+[ext_resource type="AudioStream" uid="uid://dv88ucv6vb82a" path="res://src/Music/despair.mp3" id="23_lj71n"]
+[ext_resource type="Texture2D" uid="uid://u8dqtatoqbs6" path="res://src/textures/FRAMES CORAZON/2_12.png" id="23_ui33j"]
+[ext_resource type="Texture2D" uid="uid://cx7tnqjgs17ap" path="res://src/textures/FRAMES CORAZON/2_11.png" id="24_k5x6j"]
+[ext_resource type="Texture2D" uid="uid://dsprgqt6q3ywv" path="res://src/textures/FRAMES CORAZON/2_10.png" id="25_jqey7"]
+[ext_resource type="Texture2D" uid="uid://bpofrydcl48ek" path="res://src/textures/FRAMES CORAZON/2_9.png" id="26_dqleq"]
+[ext_resource type="Texture2D" uid="uid://bscfkhebhnmdv" path="res://src/textures/FRAMES CORAZON/2_8.png" id="27_bu6xm"]
+[ext_resource type="Texture2D" uid="uid://igx5tqpflffm" path="res://src/textures/FRAMES CORAZON/2_7.png" id="28_l175r"]
+[ext_resource type="Texture2D" uid="uid://crwq3no2ixqj" path="res://src/textures/FRAMES CORAZON/2_6.png" id="29_prqr5"]
+[ext_resource type="Texture2D" uid="uid://dp2mxh6arxq" path="res://src/textures/FRAMES CORAZON/2_5.png" id="30_7b4p7"]
+[ext_resource type="Texture2D" uid="uid://djxo1e4a7cqud" path="res://src/textures/FRAMES CORAZON/2_4.png" id="31_ljw12"]
+[ext_resource type="Texture2D" uid="uid://cbkn3r65qdnp7" path="res://src/textures/FRAMES CORAZON/2_3.png" id="32_q6ill"]
+[ext_resource type="Texture2D" uid="uid://cvq4sv5b0i8yk" path="res://src/textures/FRAMES CORAZON/2_2.png" id="33_mmgx3"]
+[ext_resource type="Texture2D" uid="uid://b5ef82xfx8xpk" path="res://src/textures/FRAMES CORAZON/2_1.png" id="34_hxm6p"]
+[ext_resource type="Texture2D" uid="uid://ckvh280h4ca23" path="res://src/textures/FRAMES CORAZON/3_1_1.png" id="35_lj71n"]
+[ext_resource type="Texture2D" uid="uid://bhwr5ksa1lypj" path="res://src/textures/FRAMES CORAZON/3_1_2.png" id="36_ruk5h"]
+[ext_resource type="Texture2D" uid="uid://baw8y5vtqrkb5" path="res://src/textures/FRAMES CORAZON/3_1_3.png" id="37_ye406"]
+[ext_resource type="Texture2D" uid="uid://bh1urq8afn7aw" path="res://src/textures/FRAMES CORAZON/3_1_4.png" id="38_lvuux"]
+[ext_resource type="Texture2D" uid="uid://ct1atqhrkrnk7" path="res://src/textures/FRAMES CORAZON/3_2_1.png" id="39_qbv60"]
+[ext_resource type="Texture2D" uid="uid://tikow0wy7p78" path="res://src/textures/FRAMES CORAZON/3_2_2.png" id="40_f6xxb"]
+[ext_resource type="Texture2D" uid="uid://dkmmp2tq2o6aj" path="res://src/textures/FRAMES CORAZON/3_2_3.png" id="41_s8ip4"]
+[ext_resource type="Texture2D" uid="uid://bap2htv16lnwe" path="res://src/textures/FRAMES CORAZON/3_2_4.png" id="42_j2t2d"]
+[ext_resource type="Texture2D" uid="uid://jyqrud2yhgfp" path="res://src/textures/weapon/arma1.png" id="43_bu6xm"]
+[ext_resource type="Texture2D" uid="uid://dwoom4tfw461u" path="res://src/textures/weapon/arma2.png" id="44_l175r"]
+[ext_resource type="Texture2D" uid="uid://btqlf1gcuv38v" path="res://src/textures/weapon/arma3.png" id="45_prqr5"]
+[ext_resource type="Texture2D" uid="uid://do4mnwqaype3m" path="res://src/textures/weapon/arma4.png" id="46_7b4p7"]
+[ext_resource type="Texture2D" uid="uid://djh6n3mn20wr4" path="res://src/textures/weapon/arma5.png" id="47_ljw12"]
+[ext_resource type="Texture2D" uid="uid://b7cimqm8v1ovr" path="res://src/textures/weapon/arma6.png" id="48_q6ill"]
+
+[sub_resource type="Environment" id="Environment_lj71n"]
+background_mode = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uewes"]
 shading_mode = 0
@@ -76,16 +115,131 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjvtq"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wkk56"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_ui33j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_k5x6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_jqey7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_dqleq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_bu6xm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_l175r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_prqr5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_7b4p7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_ljw12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_q6ill")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_mmgx3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_hxm6p")
+}],
+"loop": true,
+"name": &"bar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("35_lj71n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_ruk5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_ye406")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_lvuux")
+}],
+"loop": true,
+"name": &"heart",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("39_qbv60")
+}, {
+"duration": 0.5,
+"texture": ExtResource("40_f6xxb")
+}, {
+"duration": 0.5,
+"texture": ExtResource("41_s8ip4")
+}, {
+"duration": 0.5,
+"texture": ExtResource("42_j2t2d")
+}],
+"loop": true,
+"name": &"heart2",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mmgx3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("43_bu6xm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_l175r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_prqr5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_7b4p7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_ljw12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_q6ill")
+}],
+"loop": true,
+"name": &"weapon",
+"speed": 5.0
+}]
+
 [node name="Main" type="Node3D" unique_id=639514220 node_paths=PackedStringArray("player")]
 script = ExtResource("1_3cfgd")
 countDownTime = 180
-roomIdsByCount = Array[Vector2i]([Vector2i(0, 1), Vector2i(0, 0), Vector2i(2, 0), Vector2i(1, -1), Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, -1), Vector2i(1, -1)])
+roomIdsByCount = Array[Vector2i]([Vector2i(0, 1), Vector2i(0, 0), Vector2i(2, 0), Vector2i(1, -1), Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, -1), Vector2i(1, -1), Vector2i(3, -1)])
 roomBases = Array[PackedScene]([ExtResource("1_5q4o7")])
 machineRoom = ExtResource("3_5mrjc")
 enemySets = Array[PackedScene]([ExtResource("4_okx7f"), ExtResource("5_sta5p"), ExtResource("6_sif16"), ExtResource("7_d7bab"), ExtResource("8_ib8ht"), ExtResource("9_43aqp"), ExtResource("10_ocmcv"), ExtResource("11_adv81"), ExtResource("12_lovvn")])
 bossSets = Array[PackedScene]([ExtResource("19_sta5p"), ExtResource("4_mgm53")])
 pedestal = ExtResource("4_kmhfv")
 player = NodePath("player")
+weaponEvoAttackDatas = Array[ExtResource("16_hxm6p")]([ExtResource("17_lj71n"), ExtResource("18_ruk5h"), ExtResource("19_ye406"), ExtResource("20_lvuux"), ExtResource("21_qbv60"), ExtResource("22_f6xxb")])
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="." unique_id=1212353131]
+stream = ExtResource("23_lj71n")
+volume_db = -8.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1302385430]
 transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.7071068, 0.7071068, -0.7071068, -0.5, 0.5, 0, 0, 0)
@@ -95,6 +249,7 @@ unique_name_in_owner = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=884260794 node_paths=PackedStringArray("follow_target")]
 transform = Transform3D(0.70710677, -0.3535534, 0.6123724, 0, 0.8660254, 0.50000006, -0.70710677, -0.3535534, 0.6123724, 2, 1.75, 2)
+environment = SubResource("Environment_lj71n")
 projection = 1
 size = 2.0
 script = ExtResource("2_gh0ne")
@@ -338,6 +493,123 @@ clear the enemies in the room first!"
 label_settings = SubResource("LabelSettings_sif16")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HeartUI" type="Control" parent="." unique_id=662182244]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="HeartUI" unique_id=1072061770]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kjvtq")
+
+[node name="heart" type="Control" parent="HeartUI/Panel" unique_id=579923557]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 567.0
+offset_top = -293.0
+offset_right = 567.0
+offset_bottom = -293.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+
+[node name="base" type="Sprite2D" parent="HeartUI/Panel/heart" unique_id=1073868831]
+texture = ExtResource("21_imvhg")
+
+[node name="bar" type="AnimatedSprite2D" parent="HeartUI/Panel/heart" unique_id=1488123172]
+sprite_frames = SubResource("SpriteFrames_wkk56")
+animation = &"bar"
+speed_scale = 0.0
+
+[node name="heart" type="AnimatedSprite2D" parent="HeartUI/Panel/heart" unique_id=66945766]
+sprite_frames = SubResource("SpriteFrames_wkk56")
+animation = &"bar"
+
+[node name="top" type="Sprite2D" parent="HeartUI/Panel/heart" unique_id=1403512198]
+texture = ExtResource("22_m07h4")
+
+[node name="WeaponUI" type="Control" parent="." unique_id=670097456]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="WeaponUI" unique_id=141398319]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -120.0
+offset_right = 240.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sta5p")
+
+[node name="Label" type="Label" parent="WeaponUI/Panel" unique_id=973847288]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -104.00001
+offset_right = 220.0
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "evolve your weapon into the next tier:"
+label_settings = SubResource("LabelSettings_sif16")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="weapon2" type="AnimatedSprite2D" parent="WeaponUI/Panel" unique_id=462897342]
+position = Vector2(240, 134)
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_mmgx3")
+animation = &"weapon"
+frame = 1
+speed_scale = 0.0
+
+[node name="weapon" type="Control" parent="WeaponUI" unique_id=914794953]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -481.0
+offset_top = 292.0
+offset_right = -481.0
+offset_bottom = 292.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+
+[node name="weapon" type="AnimatedSprite2D" parent="WeaponUI/weapon" unique_id=704311451]
+sprite_frames = SubResource("SpriteFrames_mmgx3")
+animation = &"weapon"
+speed_scale = 0.0
 
 [editable path="player"]
 [editable path="player/pivot/nivamodel"]

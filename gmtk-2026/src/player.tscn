@@ -6,6 +6,12 @@
 [ext_resource type="Script" uid="uid://di2aq3omvm40x" path="res://src/scripts/weapon.gd" id="3_bktlc"]
 [ext_resource type="Resource" uid="uid://8gg1mntvripk" path="res://src/resources/player_attack1.tres" id="3_pg28d"]
 [ext_resource type="Script" uid="uid://bvdjfgjymahnw" path="res://src/scripts/hitbox.gd" id="4_pg28d"]
+[ext_resource type="Texture2D" uid="uid://cwyetrrrtmqcr" path="res://src/textures/player_attack/Animation2_1.png" id="6_dxtnc"]
+[ext_resource type="Texture2D" uid="uid://c13sd010xeb7m" path="res://src/textures/player_attack/Animation2_2.png" id="7_nic3v"]
+[ext_resource type="Texture2D" uid="uid://bf5nf4lw18ax0" path="res://src/textures/player_attack/Animation2_3.png" id="8_fxwnc"]
+[ext_resource type="Texture2D" uid="uid://y2hfuqxoqfl2" path="res://src/textures/player_attack/Animation2_4.png" id="9_hc2cd"]
+[ext_resource type="Texture2D" uid="uid://f8ydu11trsap" path="res://src/textures/player_attack/Animation2_5.png" id="10_mlfxl"]
+[ext_resource type="Texture2D" uid="uid://x76sirv32ck2" path="res://src/textures/player_attack/Animation2_6.png" id="11_nc72e"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lowyb"]
 radius = 0.3
@@ -18,8 +24,40 @@ size = Vector3(0.3, 0.3, 0.3)
 radius = 0.3
 height = 1.5
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_qntp5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dxtnc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nic3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fxwnc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hc2cd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mlfxl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_nc72e")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"attack",
+"speed": 24.0
+}]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_21lrq"]
-size = Vector3(0.3, 0.3, 0.5)
+size = Vector3(0.18, 0.3, 0.4)
 
 [node name="player" type="CharacterBody3D" unique_id=1697551590]
 script = ExtResource("1_lowyb")
@@ -227,12 +265,17 @@ metadata/_custom_type_script = "uid://vasientt45jv"
 script = ExtResource("3_bktlc")
 metadata/_custom_type_script = "uid://di2aq3omvm40x"
 
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Weapon" unique_id=329632559]
+transform = Transform3D(0.04, 0, 0, 0, -1.7484555e-09, 0.04, 0, -0.04, -1.7484555e-09, 0, 0.2, -0.25)
+sprite_frames = SubResource("SpriteFrames_qntp5")
+animation = &"attack"
+
 [node name="Hitbox" type="Area3D" parent="Weapon" unique_id=890998007]
 monitoring = false
 script = ExtResource("4_pg28d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=138281556]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -0.15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, -0.25)
 shape = SubResource("BoxShape3D_21lrq")
 
 [connection signal="body_entered" from="Weapon/Hitbox" to="Weapon/Hitbox" method="_on_body_entered"]

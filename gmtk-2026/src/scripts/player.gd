@@ -3,6 +3,7 @@ class_name Player
 
 @onready var attack_controller: AttackController = $AttackController
 @onready var anim: AnimationPlayer = $pivot/nivamodel/AnimationPlayer
+@onready var vfx: AnimatedSprite3D = $Weapon/AnimatedSprite3D
 @export var speed: float
 var target_velocity = Vector3.ZERO
 
@@ -77,7 +78,9 @@ func _on_timer_timeout() -> void:
 func _attack_windup() -> void:
 	if (!is_attacking):
 		#print("ATTACKING ENEMY")
-		anim.play("attackanim")
+		var animSpeed: float = attack_controller.attackData.attack_windup + attack_controller.attackData.attack_cooldown + .25
+		anim.play("attackanim", -1, animSpeed / animSpeed / animSpeed)
+		vfx.play("attack", animSpeed / animSpeed / animSpeed)
 		is_attacking = true
 		await get_tree().create_timer(attack_controller.attackData.attack_windup).timeout
 		_attack_enemy()
@@ -86,6 +89,9 @@ func _attack_enemy() -> void:
 	attack_controller.attack()
 	await get_tree().create_timer(attack_controller.attackData.attack_cooldown).timeout
 	is_attacking = false
+
+func _weapon_evolve(attackData: AttackData) -> void:
+	attack_controller.attackData = attackData
 
 func take_damage(damage: DamageInfo): # esta funcion la invoca enemy al atacar exitosamente a player
 	get_parent()._timer_reduce(damage.amount)

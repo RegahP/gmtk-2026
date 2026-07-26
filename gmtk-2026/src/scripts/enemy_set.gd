@@ -10,7 +10,7 @@ func _ready() -> void:
 		if (enemy is EnemyBase):
 			enemies.append(enemy)
 			enemy.died.connect(_on_died_count)
-			if (enemy is FleshMound):
+			if (enemy is FleshMound or enemy is Crawler):
 				enemy.birthed.connect(_on_birthed_count)
 	setCount = enemies.size()
 
@@ -20,7 +20,9 @@ func _set_enemies(player: Node3D) -> void:
 
 func _on_died_count() -> void:
 	setCount -= 1
+	print(setCount)
 	if (setCount - 1 < 0):
+		setCount = 0
 		enemies_cleared.emit()
 		print("open doors!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 

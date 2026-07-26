@@ -79,9 +79,9 @@ func _jump_end() -> void:
 	var bud: bool = true if randi() % 3 == 0 else false
 	var birth: Node3D
 	if (bud):
-		birth = fleshbud.instantiate()
-	else:
 		birth = fleshmound.instantiate()
+	else:
+		birth = fleshbud.instantiate()
 	birth.global_position = global_position
 	get_parent().add_child(birth)
 	birth.player = player

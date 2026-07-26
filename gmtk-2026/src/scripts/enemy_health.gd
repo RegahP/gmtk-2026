@@ -29,9 +29,10 @@ func take_damage(damage: DamageInfo): # esta funcion la invoca player para ataca
 func die():
 	print("%s died!" % owner.name)
 	
-	if death_audio.playing == false:
+	if !death_audio.playing:
+		death_audio.reparent(get_parent().get_parent())
 		death_audio.play()
 		
-	await death_audio.finished
 	died.emit()
+	#await death_audio.finished
 	owner.queue_free()

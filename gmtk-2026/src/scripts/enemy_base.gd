@@ -16,7 +16,6 @@ var meshes: Array[Node] = []
 
 @onready var attack_audio: AudioStreamPlayer = $AttackAudio
 
-
 signal died()
 
 func _ready() -> void:
