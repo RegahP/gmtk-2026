@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://btr3jji3137qq" path="res://src/enemysets/enemySet_6.tscn" id="10_e7lu8"]
 [ext_resource type="PackedScene" uid="uid://ckw6chq1y87b0" path="res://src/enemysets/enemySet_7.tscn" id="11_okx7f"]
 [ext_resource type="PackedScene" uid="uid://bl5bcr6d6ljo4" path="res://src/enemysets/enemySet_8.tscn" id="12_sta5p"]
+[ext_resource type="Texture2D" uid="uid://blpxbendpkwkp" path="res://src/textures/nextroom_icons.png" id="18_okx7f"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_mgm53"]
 
@@ -29,6 +30,48 @@ font_size = 48
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlaii"]
 bg_color = Color(0, 0, 0, 0.5019608)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sta5p"]
+bg_color = Color(0, 0, 0, 0.5019608)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sif16"]
+font_size = 24
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7bab"]
+atlas = ExtResource("18_okx7f")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ib8ht"]
+atlas = ExtResource("18_okx7f")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43aqp"]
+atlas = ExtResource("18_okx7f")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocmcv"]
+atlas = ExtResource("18_okx7f")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_adv81"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7bab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ib8ht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43aqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocmcv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Main" type="Node3D" unique_id=639514220 node_paths=PackedStringArray("player")]
 script = ExtResource("1_3cfgd")
@@ -118,5 +161,179 @@ offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_rlaii")
+
+[node name="NextRoomUI" type="Control" parent="." unique_id=1753921829]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="NextRoomUI" unique_id=156340386]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -240.0
+offset_right = 360.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sta5p")
+
+[node name="Label" type="Label" parent="NextRoomUI/Panel" unique_id=216865570]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.0
+offset_top = 32.0
+offset_right = 104.0
+offset_bottom = 66.0
+grow_horizontal = 2
+text = "this door leads to:"
+label_settings = SubResource("LabelSettings_sif16")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hostile" type="AnimatedSprite2D" parent="NextRoomUI/Panel" unique_id=1986438152]
+visible = false
+position = Vector2(360, 220)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_adv81")
+frame = 2
+speed_scale = 0.0
+
+[node name="Label2" type="Label" parent="NextRoomUI/Panel/hostile" unique_id=656714889]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -153.0
+offset_top = -68.0
+offset_right = 25.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "HOSTILE ROOM"
+label_settings = SubResource("LabelSettings_sif16")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pedestal" type="AnimatedSprite2D" parent="NextRoomUI/Panel" unique_id=886635754]
+visible = false
+position = Vector2(360, 220)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_adv81")
+frame = 1
+speed_scale = 0.0
+
+[node name="Label2" type="Label" parent="NextRoomUI/Panel/pedestal" unique_id=1048213468]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -153.0
+offset_top = -68.0
+offset_right = 25.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "PEDESTAL ROOM"
+label_settings = SubResource("LabelSettings_sif16")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="boss" type="AnimatedSprite2D" parent="NextRoomUI/Panel" unique_id=1231300954]
+visible = false
+position = Vector2(360, 220)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_adv81")
+speed_scale = 0.0
+
+[node name="Label2" type="Label" parent="NextRoomUI/Panel/boss" unique_id=141372109]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -153.0
+offset_top = -68.0
+offset_right = 25.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "BOSS ROOM"
+label_settings = SubResource("LabelSettings_sif16")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="machine" type="AnimatedSprite2D" parent="NextRoomUI/Panel" unique_id=335400694]
+visible = false
+position = Vector2(360, 220)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_adv81")
+frame = 3
+speed_scale = 0.0
+
+[node name="Label2" type="Label" parent="NextRoomUI/Panel/machine" unique_id=1109910267]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -153.0
+offset_top = -68.0
+offset_right = 25.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "THE MACHINE"
+label_settings = SubResource("LabelSettings_sif16")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="NextRoomUI" unique_id=977412416]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -120.0
+offset_right = 240.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sta5p")
+
+[node name="Label" type="Label" parent="NextRoomUI/Panel2" unique_id=360838013]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -17.000008
+offset_right = 204.0
+offset_bottom = 17.000008
+grow_horizontal = 2
+grow_vertical = 2
+text = "this door leads to another room.
+
+clear the enemies in the room first!"
+label_settings = SubResource("LabelSettings_sif16")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [editable path="player"]

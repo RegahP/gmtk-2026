@@ -1,8 +1,11 @@
 extends EnemyBase
+class_name FleshMound
 
 var body: Node3D
 var time: float
 var fleshbud: PackedScene = load("res://src/enemies/enemy_fleshbud.tscn")
+
+signal birthed(enemy: Node3D)
 
 func _ready() -> void:
 	super()
@@ -47,5 +50,7 @@ func _physics_process(delta: float) -> void:
 func _attack_windup() -> void:
 	super()
 	var fleshbud = fleshbud.instantiate()
-	add_child(fleshbud)
+	fleshbud.global_position = global_position
+	get_parent().add_child(fleshbud)
 	fleshbud.player = player
+	birthed.emit(fleshbud)
