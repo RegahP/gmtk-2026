@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://bafqvyaj8wfsp"]
 
-[ext_resource type="Script" uid="uid://nag75mjmwtei" path="res://src/main_menu.gd" id="1_bq8pk"]
+[ext_resource type="Script" uid="uid://dqnlakf0iu46p" path="res://src/main_menu.gd" id="1_bq8pk"]
 [ext_resource type="Texture2D" uid="uid://c06lxhliqckdw" path="res://src/textures/main screen.png" id="2_bq8pk"]
 [ext_resource type="FontFile" uid="uid://etum6nm7r5tk" path="res://src/uielements/FullInjection-regular.ttf" id="3_6w7d7"]
+[ext_resource type="AudioStream" uid="uid://c5kjjw6xc81pa" path="res://src/audio/wake.mp3" id="4_d3tmf"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bq8pk"]
 texture = ExtResource("2_bq8pk")
@@ -32,15 +33,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_bq8pk")
 
-[node name="Container" type="Control" parent="Panel" unique_id=1645954369]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="." unique_id=1045488215]
+stream = ExtResource("4_d3tmf")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
-[node name="Start" type="Button" parent="Panel/Container" unique_id=1435651056]
+[node name="Start" type="Button" parent="." unique_id=1435651056]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -59,7 +58,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5elix")
 text = "Start"
 flat = true
 
-[node name="Credits" type="Button" parent="Panel/Container" unique_id=439426568]
+[node name="Credits" type="Button" parent="." unique_id=439426568]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -79,7 +78,7 @@ text = "Credits
 "
 flat = true
 
-[node name="Exit" type="Button" parent="Panel/Container" unique_id=349088913]
+[node name="Exit" type="Button" parent="." unique_id=349088913]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -98,6 +97,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_5elix")
 text = "Exit"
 flat = true
 
-[connection signal="pressed" from="Panel/Container/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Panel/Container/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="Panel/Container/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
