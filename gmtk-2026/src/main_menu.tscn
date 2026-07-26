@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bafqvyaj8wfsp"]
 
-[ext_resource type="Script" uid="uid://nag75mjmwtei" path="res://src/main_menu.gd" id="1_bq8pk"]
+[ext_resource type="Script" uid="uid://nag75mjmwtei" path="res://src/scripts/main_menu.gd" id="1_bq8pk"]
 [ext_resource type="Texture2D" uid="uid://c06lxhliqckdw" path="res://src/textures/main screen.png" id="2_bq8pk"]
+[ext_resource type="AudioStream" uid="uid://blhetbqtbq5xs" path="res://src/Music/wake.mp3" id="3_6w7d7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bq8pk"]
 texture = ExtResource("2_bq8pk")
@@ -99,6 +100,11 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_5elix")
 text = "Exit"
 flat = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1980478261]
+stream = ExtResource("3_6w7d7")
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
