@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://btr3jji3137qq"]
+
+[ext_resource type="Script" uid="uid://nbe70cptcqfx" path="res://src/scripts/enemy_set.gd" id="1_dexor"]
+[ext_resource type="PackedScene" uid="uid://bqjmtcd1c3705" path="res://src/enemies/enemy_homunculard.tscn" id="2_dexor"]
+[ext_resource type="PackedScene" uid="uid://dy86lkp33kciy" path="res://src/enemies/enemy_fleshmound.tscn" id="3_6nro1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0q8fu"]
+size = Vector3(3, 0.3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1kh1"]
+albedo_color = Color(0.14767182, 0.14767179, 0.14767179, 1)
+
+[node name="enemySet_6" type="Node3D" unique_id=639514220]
+script = ExtResource("1_dexor")
+
+[node name="enemy_homunculard" parent="." unique_id=1622673865 instance=ExtResource("2_dexor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="enemy_fleshmound" parent="." unique_id=816802264 instance=ExtResource("3_6nro1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44965506, 0, 1.0162201)
+
+[node name="enemy_fleshmound2" parent="." unique_id=350766971 instance=ExtResource("3_6nro1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4406619, 0, -0.98924077)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=798304545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+visible = false
+mesh = SubResource("BoxMesh_0q8fu")
+surface_material_override/0 = SubResource("StandardMaterial3D_i1kh1")

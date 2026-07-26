@@ -2,8 +2,8 @@ class_name EnemyHealth
 extends Node
 
 @export var max_health: float
-
 var current_health: float
+signal died()
 
 func _ready():
 	current_health = max_health
@@ -24,5 +24,5 @@ func take_damage(damage: DamageInfo): # esta funcion la invoca player para ataca
 
 func die():
 	print("%s died!" % owner.name)
-	
+	died.emit()
 	owner.queue_free()

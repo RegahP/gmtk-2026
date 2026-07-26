@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c50m2wqcexp8"]
+
+[ext_resource type="Script" uid="uid://nbe70cptcqfx" path="res://src/scripts/enemy_set.gd" id="1_hc3vi"]
+[ext_resource type="PackedScene" uid="uid://bj4cyql3urax5" path="res://src/enemies/enemy_fleshbud.tscn" id="1_qovca"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0q8fu"]
+size = Vector3(3, 0.3, 3)
+
+[node name="enemySet_0" type="Node3D" unique_id=639514220]
+script = ExtResource("1_hc3vi")
+
+[node name="enemy_fleshbud" parent="." unique_id=1622673865 instance=ExtResource("1_qovca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.64384824, 0, 1.1843989)
+
+[node name="enemy_fleshbud2" parent="." unique_id=1733287273 instance=ExtResource("1_qovca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9153854, 0, 0.9196067)
+
+[node name="enemy_fleshbud3" parent="." unique_id=114888669 instance=ExtResource("1_qovca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.66519743, 0, 0.841277)
+
+[node name="enemy_fleshbud4" parent="." unique_id=1787487224 instance=ExtResource("1_qovca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32188624, 0, -0.56623185)
+
+[node name="enemy_fleshbud5" parent="." unique_id=2868800 instance=ExtResource("1_qovca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5934234, 0, -0.83102405)
+
+[node name="enemy_fleshbud6" parent="." unique_id=442045306 instance=ExtResource("1_qovca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34323543, 0, -0.90935373)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=798304545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+visible = false
+mesh = SubResource("BoxMesh_0q8fu")

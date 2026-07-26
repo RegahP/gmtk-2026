@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bubtp28alxkgt"]
+
+[ext_resource type="Script" uid="uid://nbe70cptcqfx" path="res://src/scripts/enemy_set.gd" id="1_o0ubh"]
+[ext_resource type="PackedScene" uid="uid://fh6tbcx472k4" path="res://src/enemies/enemy_homunculimb.tscn" id="3_r1ddt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0q8fu"]
+size = Vector3(3, 0.3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1kh1"]
+albedo_color = Color(0.14767182, 0.14767179, 0.14767179, 1)
+
+[node name="enemySet_3" type="Node3D" unique_id=639514220]
+script = ExtResource("1_o0ubh")
+
+[node name="enemy_homunculimb" parent="." unique_id=675285533 instance=ExtResource("3_r1ddt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7466895, -1.1920929e-07, -0.71225125)
+
+[node name="enemy_homunculimb2" parent="." unique_id=1622673865 instance=ExtResource("3_r1ddt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28847998, -1.1920929e-07, -0.004108846)
+
+[node name="enemy_homunculimb3" parent="." unique_id=193143237 instance=ExtResource("3_r1ddt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7716827, -1.1920929e-07, 0.8206689)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=798304545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+visible = false
+mesh = SubResource("BoxMesh_0q8fu")
+surface_material_override/0 = SubResource("StandardMaterial3D_i1kh1")

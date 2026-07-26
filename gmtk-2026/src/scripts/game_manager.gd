@@ -55,16 +55,16 @@ func _loadroom(nextRoomId: int) -> void:
 	
 	if (nextRoomId == -2): # invalid room
 		_add_machineroom()
-		print("machine room")
+		#print("machine room")
 	
 	if (nextRoomId == -1): # init room
 		print("init room")
 	
-	if (nextRoomId >= -1):
-		_add_roombase()
-	
 	if (nextRoomId == 0): # hostile room
 		_add_enemyset()
+	
+	if (nextRoomId >= -1):
+		_add_roombase()
 	
 	if (nextRoomId == 1): # pedestal room
 		_add_pedestal()
@@ -73,7 +73,7 @@ func _loadroom(nextRoomId: int) -> void:
 		print("boss room")
 		
 	roomCount += 1
-	print("loaded nextroom of id " + str(nextRoomId))
+	#print("loaded nextroom of id " + str(nextRoomId))
 	print("roomCount = " + str(roomCount))
 
 func _clear_room() -> void:
@@ -83,28 +83,45 @@ func _clear_room() -> void:
 
 func _add_roombase() -> void:
 	currRoomBase = roomBases[_randi(roomBases.size())].instantiate()
-	currRoomBase.doorPicked.connect(_loadroom)
+	currRoomBase.doorEntered.connect(_show_nextroom_panel)
+	currRoomBase.doorExited.connect(_hide_nextroom_panel)
+	if (currEnemySet == null):
+		currRoomBase.doorPicked.connect(_loadroom)
 	print("roomIds = " + str(_get_roomidsbycount()))
 	currRoomBase._setdoor_nextroomids(_get_roomidsbycount())
 	add_child(currRoomBase)
-	print("added roombase")
+	#print("added roombase")
 
 func _add_machineroom() -> void:
 	currRoomBase = machineRoom.instantiate()
 	add_child(currRoomBase)
-	print("added machineroom")
+	#print("added machineroom")
 
 func _add_enemyset() -> void:
 	currEnemySet = enemySets[_randi(enemySets.size())].instantiate()
 	add_child(currEnemySet)
-	print("added enemyset")
+	currEnemySet._set_enemies(player)
+	currEnemySet.enemies_cleared.connect(_on_room_cleared)
+	#print("added enemyset")
 
 func _add_pedestal() -> void:
 	currPedestal = pedestal.instantiate()
 	add_child(currPedestal)
 	# currPedestal.loadbioupgrade
 	# currPedestal.picked.connect(func that changes player atkctrl's attackdata)
-	print("added pedestal")
+	#print("added pedestal")
+
+func _show_nextroom_panel(nextRoomId: int) -> void:
+	print("showing nextroom panel")
+	print("nextroom id: " + str(nextRoomId))
+	if (currEnemySet != null):
+		print("room cleared: " + str(currEnemySet.setCount == 0))
+
+func _hide_nextroom_panel() -> void:
+	print("hidden nextroom panel")
+
+func _on_room_cleared() -> void:
+	currRoomBase.doorPicked.connect(_loadroom)
 
 func _reset_player_pos() -> void:
 	player.global_position = Vector3(-1.2, 0, 0)

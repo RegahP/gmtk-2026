@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b3iyokbbxvd0k"]
+
+[ext_resource type="Script" uid="uid://nbe70cptcqfx" path="res://src/scripts/enemy_set.gd" id="1_tdty6"]
+[ext_resource type="PackedScene" uid="uid://d0udlmsi3s556" path="res://src/enemies/enemy_opticagent.tscn" id="2_tdty6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0q8fu"]
+size = Vector3(3, 0.3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1kh1"]
+albedo_color = Color(0.14767182, 0.14767179, 0.14767179, 1)
+
+[node name="enemySet_4" type="Node3D" unique_id=639514220]
+script = ExtResource("1_tdty6")
+
+[node name="enemy_opticagent" parent="." unique_id=1622673865 instance=ExtResource("2_tdty6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6630595, 0, 0.69139564)
+
+[node name="enemy_opticagent2" parent="." unique_id=447146515 instance=ExtResource("2_tdty6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.69706273, 0, -0.69139564)
+
+[node name="enemy_opticagent3" parent="." unique_id=610753145 instance=ExtResource("2_tdty6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2323544, 0, -0.22668707)
+
+[node name="enemy_opticagent4" parent="." unique_id=1415498862 instance=ExtResource("2_tdty6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24368834, 0, 0.28335893)
+collision_layer = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=798304545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+visible = false
+mesh = SubResource("BoxMesh_0q8fu")
+surface_material_override/0 = SubResource("StandardMaterial3D_i1kh1")

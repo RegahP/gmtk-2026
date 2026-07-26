@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b20f08pq0akjv"]
+
+[ext_resource type="Script" uid="uid://nbe70cptcqfx" path="res://src/scripts/enemy_set.gd" id="1_6otqj"]
+[ext_resource type="PackedScene" uid="uid://d0udlmsi3s556" path="res://src/enemies/enemy_opticagent.tscn" id="2_7rrhy"]
+[ext_resource type="PackedScene" uid="uid://bb8rsavnbw5mx" path="res://src/enemies/enemy_trackeragent.tscn" id="3_7rrhy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0q8fu"]
+size = Vector3(3, 0.3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1kh1"]
+albedo_color = Color(0.14767182, 0.14767179, 0.14767179, 1)
+
+[node name="enemySet_5" type="Node3D" unique_id=639514220]
+script = ExtResource("1_6otqj")
+
+[node name="enemy_trackeragent" parent="." unique_id=2013057713 instance=ExtResource("3_7rrhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24281406, 0, 0)
+
+[node name="enemy_opticagent" parent="." unique_id=1622673865 instance=ExtResource("2_7rrhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6205239, 0, -0.7104549)
+
+[node name="enemy_opticagent2" parent="." unique_id=584439271 instance=ExtResource("2_7rrhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5755582, 0, 0.63851)
+
+[node name="enemy_opticagent3" parent="." unique_id=995252889 instance=ExtResource("2_7rrhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1888547, 0, -0.44965494)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=798304545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+visible = false
+mesh = SubResource("BoxMesh_0q8fu")
+surface_material_override/0 = SubResource("StandardMaterial3D_i1kh1")

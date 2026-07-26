@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://f51jpmnkwf8o" path="res://src/scripts/room_base.gd" id="1_niymf"]
 [ext_resource type="Script" uid="uid://b6ioxcahnqgnr" path="res://src/scripts/doorData.gd" id="2_ff686"]
 [ext_resource type="PackedScene" uid="uid://c1oiy0sk52685" path="res://src/models/wallsdetail.glb" id="2_opjxc"]
+[ext_resource type="Texture2D" uid="uid://faq8p5q61k5p" path="res://src/textures/mobmodel_TRACKER_AGENT_texture 15.png" id="3_8yljw"]
+[ext_resource type="Texture2D" uid="uid://bst3peusla433" path="res://src/textures/homunculardwb_texture 5.png" id="3_gwfnl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xvblb"]
 size = Vector3(1, 0.1, 1)
@@ -10,8 +12,17 @@ size = Vector3(1, 0.1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_niymf"]
 size = Vector3(0.05, 1, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwfnl"]
+albedo_texture = ExtResource("3_gwfnl")
+
 [sub_resource type="BoxMesh" id="BoxMesh_gh0ne"]
 size = Vector3(3, 0.3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0bv38"]
+albedo_texture = ExtResource("3_gwfnl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5kgp"]
+albedo_texture = ExtResource("3_8yljw")
 
 [sub_resource type="BoxMesh" id="BoxMesh_xvblb"]
 size = Vector3(0.05, 0.4, 0.2)
@@ -46,13 +57,17 @@ transform = Transform3D(-1.3113416e-07, 0, -3, 0, 3, 0, 3, 0, -1.3113416e-07, -6
 shape = SubResource("BoxShape3D_niymf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor" unique_id=1948164620]
+material_override = SubResource("StandardMaterial3D_gwfnl")
 mesh = SubResource("BoxMesh_gh0ne")
 
-[node name="wallsdetail" parent="floor" unique_id=811325706 instance=ExtResource("2_opjxc")]
-transform = Transform3D(0.149, 0, 0, 0, 0.149, 0, 0, 0, 0.149, 0, 0, 0)
+[node name="wallsdetail" parent="floor" unique_id=215732058 instance=ExtResource("2_opjxc")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
 
-[node name="Plane" parent="floor/wallsdetail" index="1" unique_id=1137877769]
-visible = false
+[node name="Plane" parent="floor/wallsdetail" index="0" unique_id=1929063011]
+material_override = SubResource("StandardMaterial3D_0bv38")
+
+[node name="details" parent="floor/wallsdetail" index="1" unique_id=324498003]
+material_override = SubResource("StandardMaterial3D_v5kgp")
 
 [node name="entrancedoor" type="MeshInstance3D" parent="floor" unique_id=95359321]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.35, 0)

@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://bj4cyql3urax5"]
 
-[ext_resource type="Script" uid="uid://dd1el8tmm6anx" path="res://src/scripts/enemy_fleshbud.gd" id="1_lke40"]
-[ext_resource type="PackedScene" uid="uid://dqh2eyk8dsdc2" path="res://src/models/fleshbud.glb" id="2_5xk3l"]
-[ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/enemy_health.gd" id="3_5xk3l"]
-[ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="4_p3yur"]
-[ext_resource type="Resource" uid="uid://bxd1gfrhbsan2" path="res://src/resources/Fleshbud Attack.tres" id="5_0w3fk"]
-[ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="6_p3yur"]
-[ext_resource type="Script" uid="uid://bcs5two2yu1o" path="res://src/scripts/enemy_hitbox.gd" id="7_0w3fk"]
+[ext_resource type="Script" uid="uid://dd1el8tmm6anx" path="res://src/scripts/enemy_fleshbud.gd" id="1_gytwj"]
+[ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/enemy_health.gd" id="2_0fvkw"]
+[ext_resource type="PackedScene" uid="uid://dqh2eyk8dsdc2" path="res://src/models/fleshbud.glb" id="3_l6vd7"]
+[ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="4_sun60"]
+[ext_resource type="Resource" uid="uid://bxd1gfrhbsan2" path="res://src/resources/Fleshbud Attack.tres" id="5_d1oy6"]
+[ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="6_wyix2"]
+[ext_resource type="Script" uid="uid://bcs5two2yu1o" path="res://src/scripts/enemy_hitbox.gd" id="7_tur75"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lke40"]
 height = 0.1
@@ -16,19 +16,20 @@ radius = 0.1
 radius = 0.4
 
 [node name="enemy_fleshbud" type="CharacterBody3D" unique_id=1622673865]
-script = ExtResource("1_lke40")
+script = ExtResource("1_gytwj")
 speed = 0.6
 attack_range = 0.25
 attack_windup = 0.5
 attack_cooldown = 0.8
 
 [node name="Health" type="Node" parent="." unique_id=1072188802]
-script = ExtResource("3_5xk3l")
+script = ExtResource("2_0fvkw")
 max_health = 10.0
 
-[node name="fleshbud" parent="." unique_id=1424116867 instance=ExtResource("2_5xk3l")]
+[node name="fleshbud" parent="." unique_id=1424116867 instance=ExtResource("3_l6vd7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015133753, 0)
 
-[node name="fleshbud" parent="fleshbud" index="0" unique_id=1142915648]
+[node name="fleshbud" parent="fleshbud" index="0" unique_id=1641090885]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.002257347, 0, 0.060452566)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1532499648]
@@ -36,17 +37,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 shape = SubResource("CylinderShape3D_lke40")
 
 [node name="AttackController" type="Node" parent="." unique_id=1762208230]
-script = ExtResource("4_p3yur")
-light_attack = ExtResource("5_0w3fk")
+script = ExtResource("4_sun60")
+light_attack = ExtResource("5_d1oy6")
 
 [node name="Weapon" type="Node3D" parent="." unique_id=1314593742]
-script = ExtResource("6_p3yur")
+script = ExtResource("6_wyix2")
 metadata/_custom_type_script = "uid://di2aq3omvm40x"
 
 [node name="Hitbox" type="Area3D" parent="Weapon" unique_id=504544519]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
 monitoring = false
-script = ExtResource("7_0w3fk")
+script = ExtResource("7_tur75")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=774312299]
 shape = SubResource("SphereShape3D_p3yur")

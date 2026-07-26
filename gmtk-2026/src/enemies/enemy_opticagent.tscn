@@ -13,13 +13,12 @@ height = 0.5
 radius = 0.15
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ql8if"]
-radius = 0.6
 
 [node name="enemy_opticagent" type="CharacterBody3D" unique_id=1622673865]
 collision_layer = 2
 script = ExtResource("1_hkga2")
-speed = 0.2
-attack_range = 0.25
+speed = 0.4
+attack_range = 0.4
 attack_windup = 0.5
 attack_cooldown = 0.8
 
@@ -28,7 +27,7 @@ script = ExtResource("2_rd1fl")
 max_health = 10.0
 
 [node name="modmodel_OPTIC_AGENT" parent="." unique_id=40847803 instance=ExtResource("2_hkga2")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 
 [node name="NurbsPath" parent="modmodel_OPTIC_AGENT" index="1" unique_id=2054644527]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.4430973, 0.38121825, -0.41441455)

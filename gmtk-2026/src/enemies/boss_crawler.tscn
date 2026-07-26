@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://gm0oew6yqibb"]
+
+[ext_resource type="PackedScene" uid="uid://fc5inft08ldp" path="res://src/models/crawler.glb" id="1_3cjud"]
+
+[node name="crawler" type="Node3D" unique_id=1444767208]
+
+[node name="crawler" parent="." unique_id=1531747166 instance=ExtResource("1_3cjud")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[editable path="crawler"]

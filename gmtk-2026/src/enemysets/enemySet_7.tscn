@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://ckw6chq1y87b0"]
+
+[ext_resource type="Script" uid="uid://nbe70cptcqfx" path="res://src/scripts/enemy_set.gd" id="1_m2gjy"]
+[ext_resource type="PackedScene" uid="uid://bqjmtcd1c3705" path="res://src/enemies/enemy_homunculard.tscn" id="2_lkgqq"]
+[ext_resource type="PackedScene" uid="uid://bj4cyql3urax5" path="res://src/enemies/enemy_fleshbud.tscn" id="2_m2gjy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0q8fu"]
+size = Vector3(3, 0.3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1kh1"]
+albedo_color = Color(0.14767182, 0.14767179, 0.14767179, 1)
+
+[node name="enemySet_7" type="Node3D" unique_id=639514220]
+script = ExtResource("1_m2gjy")
+
+[node name="enemy_fleshbud" parent="." unique_id=1622673865 instance=ExtResource("2_m2gjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14388943, 0, -0.80937874)
+
+[node name="enemy_fleshbud2" parent="." unique_id=488187661 instance=ExtResource("2_m2gjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14388943, 0, 0.80038595)
+
+[node name="enemy_fleshbud3" parent="." unique_id=490571363 instance=ExtResource("2_m2gjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14388943, 0, -1.1920929e-07)
+
+[node name="enemy_fleshbud4" parent="." unique_id=1824499514 instance=ExtResource("2_m2gjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98924065, 0, 0.33274502)
+
+[node name="enemy_fleshbud5" parent="." unique_id=1384203439 instance=ExtResource("2_m2gjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98924065, 0, -0.46764106)
+
+[node name="enemy_homunculard" parent="." unique_id=1289662294 instance=ExtResource("2_lkgqq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5413518, 0, -0.5215995)
+
+[node name="enemy_homunculard2" parent="." unique_id=915754854 instance=ExtResource("2_lkgqq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5413518, 0, 0.50361377)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=798304545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+visible = false
+mesh = SubResource("BoxMesh_0q8fu")
+surface_material_override/0 = SubResource("StandardMaterial3D_i1kh1")

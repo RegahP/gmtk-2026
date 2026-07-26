@@ -10,11 +10,13 @@ var is_moving := true
 @export var attack_windup: float
 @export var attack_cooldown: float
 
-@onready var attack_controller: EnemyAttackController
+@onready var health: EnemyHealth = $Health
+@onready var attack_controller: EnemyAttackController = $AttackController
+
+signal died()
 
 func _ready() -> void:
-	player = %player
-	attack_controller = $AttackController
+	health.died.connect(_on_died)
 
 func _physics_process(delta: float) -> void:
 	return
@@ -24,7 +26,7 @@ func _enemy_move():
 	move_and_slide()
 
 func _attack_windup() -> void:
-	print("ATTACKING PLAYER")
+	#print("ATTACKING PLAYER")
 	is_moving = false
 	await get_tree().create_timer(attack_windup).timeout
 	var distance = global_position.distance_to(player.global_position)
@@ -34,7 +36,10 @@ func _attack_windup() -> void:
 		is_moving = true
 
 func _attack_player() -> void:
-	print("ATTACK CONNECTED")
+	#print("ATTACK CONNECTED")
 	attack_controller.attack()
 	await get_tree().create_timer(attack_cooldown).timeout
 	is_moving = true
+
+func _on_died() -> void:
+	died.emit()

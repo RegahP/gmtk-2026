@@ -2,6 +2,7 @@ extends EnemyBase
 
 var body: Node3D
 var time: float
+var fleshbud: PackedScene = load("res://src/enemies/enemy_fleshbud.tscn")
 
 func _ready() -> void:
 	super()
@@ -25,7 +26,7 @@ func _physics_process(delta: float) -> void:
 	if distance <= attack_range:
 		if (is_moving):
 			_attack_windup()
-
+			
 	if is_moving:
 		var direction = global_position.direction_to(player.global_position)
 		direction = direction.normalized()
@@ -42,3 +43,9 @@ func _physics_process(delta: float) -> void:
 		_enemy_move()
 	else:
 		target_velocity = Vector3.ZERO
+
+func _attack_windup() -> void:
+	super()
+	var fleshbud = fleshbud.instantiate()
+	add_child(fleshbud)
+	fleshbud.player = player
