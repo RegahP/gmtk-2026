@@ -9,6 +9,7 @@ signal took_damage()
 
 func _ready():
 	current_health = max_health
+	death_audio.stream = load("res://src/audio/sfx/mobs/all enemies death sound.mp3")
 	
 func _process(delta: float) -> void:
 	if (current_health - delta > 0):

@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://blso5nrerm6ru"]
+
+[ext_resource type="Script" uid="uid://b74y3vokjef4x" path="res://src/scripts/deathscreen.gd" id="1_jyxww"]
+[ext_resource type="Texture2D" uid="uid://bfhtqr2bhd32q" path="res://src/textures/bazo.png" id="2_xnjcv"]
+[ext_resource type="AudioStream" uid="uid://c8b1hjol67mll" path="res://src/audio/sfx/delay heartbeat.mp3" id="3_xnjcv"]
+
+[sub_resource type="Animation" id="Animation_8twnl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ywt12"]
+resource_name = "endscreen_fade"
+length = 2.0
+step = 0.041666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_grrg3"]
+_data = {
+&"RESET": SubResource("Animation_8twnl"),
+&"endscreen_fade": SubResource("Animation_ywt12")
+}
+
+[node name="Control" type="Control" unique_id=258717565]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jyxww")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1629489145]
+scale = Vector2(1.237, 1.237)
+texture = ExtResource("2_xnjcv")
+centered = false
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1124584537]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=30361271]
+libraries/ = SubResource("AnimationLibrary_grrg3")
+
+[node name="Timer" type="Timer" parent="." unique_id=1573293865]
+wait_time = 6.0
+autostart = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="." unique_id=988220367]
+stream = ExtResource("3_xnjcv")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

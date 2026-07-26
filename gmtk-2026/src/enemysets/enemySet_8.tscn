@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://nbe70cptcqfx" path="res://src/scripts/enemy_set.gd" id="1_b2070"]
 [ext_resource type="PackedScene" uid="uid://bb8rsavnbw5mx" path="res://src/enemies/enemy_trackeragent.tscn" id="2_b2070"]
+[ext_resource type="AudioStream" uid="uid://drqj4bpbf7imv" path="res://src/audio/sfx/room/doors unlock.mp3" id="2_vtf6a"]
 [ext_resource type="PackedScene" uid="uid://fh6tbcx472k4" path="res://src/enemies/enemy_homunculimb.tscn" id="3_vtf6a"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0q8fu"]
@@ -12,6 +13,10 @@ albedo_color = Color(0.14767182, 0.14767179, 0.14767179, 1)
 
 [node name="enemySet_8" type="Node3D" unique_id=639514220]
 script = ExtResource("1_b2070")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="." unique_id=952083933]
+stream = ExtResource("2_vtf6a")
+bus = &"Music"
 
 [node name="enemy_trackeragent" parent="." unique_id=1622673865 instance=ExtResource("2_b2070")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7194481, 0, -0.7554203)

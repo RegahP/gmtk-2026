@@ -5,6 +5,8 @@ var setCount: int
 
 signal enemies_cleared()
 
+@onready var audio_stream_player_3d: AudioStreamPlayer = $AudioStreamPlayer3D
+
 func _ready() -> void:
 	for enemy in get_children():
 		if (enemy is EnemyBase):
@@ -24,6 +26,7 @@ func _on_died_count() -> void:
 	if (setCount - 1 < 0):
 		setCount = 0
 		enemies_cleared.emit()
+		audio_stream_player_3d.play()
 		print("open doors!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
 func _on_birthed_count(enemy: Node3D) -> void:

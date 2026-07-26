@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://bccnke0whud0v"]
 
 [ext_resource type="Script" uid="uid://nbe70cptcqfx" path="res://src/scripts/enemy_set.gd" id="1_qh852"]
+[ext_resource type="AudioStream" uid="uid://drqj4bpbf7imv" path="res://src/audio/sfx/room/doors unlock.mp3" id="2_250ck"]
 [ext_resource type="PackedScene" uid="uid://fh6tbcx472k4" path="res://src/enemies/enemy_homunculimb.tscn" id="3_5ganf"]
 [ext_resource type="PackedScene" uid="uid://bqjmtcd1c3705" path="res://src/enemies/enemy_homunculard.tscn" id="3_233ah"]
-[ext_resource type="Texture2D" uid="uid://b5j0tv3tm6f60" path="res://src/models/homunculardwb_texture 5.png" id="4_5ganf"]
+[ext_resource type="PackedScene" uid="uid://bwnhxlfjfrh55" path="res://src/enemies/boss_fetiw.tscn" id="4_250ck"]
+[ext_resource type="Texture2D" uid="uid://dc653686hffd3" path="res://src/models/mobmodel_TRACKER_AGENT_texture9.png" id="5_5ganf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0q8fu"]
 size = Vector3(3, 0.3, 3)
@@ -12,8 +14,7 @@ size = Vector3(3, 0.3, 3)
 albedo_color = Color(0.14767182, 0.14767179, 0.14767179, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_250ck"]
-shading_mode = 0
-albedo_texture = ExtResource("4_5ganf")
+albedo_texture = ExtResource("5_5ganf")
 uv1_scale = Vector3(10, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_n08v2"]
@@ -21,6 +22,10 @@ size = Vector3(29, 0.3, 3)
 
 [node name="enemySet_machine" type="Node3D" unique_id=639514220]
 script = ExtResource("1_qh852")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="." unique_id=1186856277]
+stream = ExtResource("2_250ck")
+bus = &"Music"
 
 [node name="enemy_homunculimb" parent="." unique_id=1250030677 instance=ExtResource("3_5ganf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8418195, 0, -0.8543444)
@@ -32,10 +37,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1907845, 0, 0.9802478)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8275285, 0, -0.72844106)
 
 [node name="enemy_homunculard" parent="." unique_id=1425094856 instance=ExtResource("3_233ah")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.591267, 0, -0.81526196)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.577771, 0, -0.81526196)
 
 [node name="enemy_homunculard2" parent="." unique_id=1842564870 instance=ExtResource("3_233ah")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.603207, 0, 0.79261553)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.690122, 0, 0.79261553)
+
+[node name="fetiw" parent="." unique_id=44551870 instance=ExtResource("4_250ck")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 26.179, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=798304545]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)

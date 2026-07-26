@@ -15,6 +15,9 @@ var is_attacking: bool = false
 	$pivot/nivamodel/rig/Skeleton3D/TORSO_001,
 	$pivot/nivamodel/rig/Skeleton3D/TORSO_004]
 
+@onready var attack_audio: AudioStreamPlayer = $AttackAudio
+@onready var hurt_audio: AudioStreamPlayer = $HurtAudio
+
 func _ready() -> void:
 	anim.play("idle")
 
@@ -79,6 +82,7 @@ func _attack_windup() -> void:
 	if (!is_attacking):
 		#print("ATTACKING ENEMY")
 		var animSpeed: float = attack_controller.attackData.attack_windup + attack_controller.attackData.attack_cooldown + .25
+		attack_audio.play()
 		anim.play("attackanim", -1, animSpeed / animSpeed / animSpeed)
 		vfx.play("attack", animSpeed / animSpeed / animSpeed)
 		is_attacking = true
@@ -94,6 +98,7 @@ func _weapon_evolve(attackData: AttackData) -> void:
 	attack_controller.attackData = attackData
 
 func take_damage(damage: DamageInfo): # esta funcion la invoca enemy al atacar exitosamente a player
+	hurt_audio.play()
 	get_parent()._timer_reduce(damage.amount)
 	var mat = StandardMaterial3D.new()
 	mat.albedo_color = Color.RED

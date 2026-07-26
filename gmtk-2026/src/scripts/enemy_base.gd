@@ -36,7 +36,6 @@ func _attack_windup() -> void:
 	await get_tree().create_timer(attack_windup).timeout
 	var distance = global_position.distance_to(player.global_position)
 	if distance <= attack_range:
-		attack_audio.play()
 		_attack_player()
 	else:
 		is_moving = true
@@ -44,6 +43,7 @@ func _attack_windup() -> void:
 func _attack_player() -> void:
 	#print("ATTACK CONNECTED")
 	attack_controller.attack()
+	attack_audio.play()
 	await get_tree().create_timer(attack_cooldown).timeout
 	is_moving = true
 

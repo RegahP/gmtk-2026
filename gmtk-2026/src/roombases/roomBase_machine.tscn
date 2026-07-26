@@ -2,7 +2,10 @@
 
 [ext_resource type="Script" uid="uid://f51jpmnkwf8o" path="res://src/scripts/room_base.gd" id="1_mqfls"]
 [ext_resource type="Script" uid="uid://b6ioxcahnqgnr" path="res://src/scripts/doorData.gd" id="2_14p4x"]
-[ext_resource type="Texture2D" uid="uid://b5j0tv3tm6f60" path="res://src/models/homunculardwb_texture 5.png" id="2_kgdsh"]
+[ext_resource type="AudioStream" uid="uid://ck7rqdkul5pte" path="res://src/audio/sfx/room/doors pass through.mp3" id="2_815fi"]
+[ext_resource type="Texture2D" uid="uid://dgghbyxkmvetl" path="res://src/textures/mobmodel_TRACKER_AGENT_texture9.png" id="2_kgdsh"]
+[ext_resource type="PackedScene" uid="uid://dxjnxfd5ijqf7" path="res://src/models/doorclosed.glb" id="3_tdl6w"]
+[ext_resource type="PackedScene" uid="uid://b27otgcbuq8p1" path="res://src/models/dooropened.glb" id="5_815fi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xvblb"]
 size = Vector3(1, 0.1, 1)
@@ -17,21 +20,22 @@ size = Vector3(0.05, 1, 10)
 size = Vector3(0.05, 1, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hc01l"]
-shading_mode = 0
 albedo_texture = ExtResource("2_kgdsh")
 uv1_scale = Vector3(10, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_gh0ne"]
-size = Vector3(29, 0.3, 3)
+size = Vector3(29, 3, 3)
 
-[sub_resource type="BoxMesh" id="BoxMesh_xvblb"]
-size = Vector3(0.05, 0.4, 0.2)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_ff686"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_x3wu7"]
 
 [node name="roomBase_machine" type="Node3D" unique_id=639514220 node_paths=PackedStringArray("doors")]
 script = ExtResource("1_mqfls")
-doors = [NodePath("floor/exitdoorleft"), NodePath("floor/exitdoorright"), NodePath("floor/exitdoorcenter")]
+doors = [NodePath("floor/exitdoorcenter")]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="." unique_id=1065567960]
+stream = ExtResource("2_815fi")
+autoplay = true
+bus = &"Music"
 
 [node name="floor" type="StaticBody3D" parent="." unique_id=874893180]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14999527, 0)
@@ -57,47 +61,39 @@ transform = Transform3D(-1.3113416e-07, 0, -3, 0, 3, 0, 3, 0, -1.3113416e-07, 13
 shape = SubResource("BoxShape3D_14p4x")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor" unique_id=1948164620]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -1.355, 0)
 material_override = SubResource("StandardMaterial3D_hc01l")
 mesh = SubResource("BoxMesh_gh0ne")
 
-[node name="entrancedoor" type="MeshInstance3D" parent="floor" unique_id=95359321]
+[node name="entrancedoor" type="MeshInstance3D" parent="floor" unique_id=827300808]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.35, 0)
-mesh = SubResource("BoxMesh_xvblb")
 
-[node name="exitdoorleft" type="MeshInstance3D" parent="floor" unique_id=1430600400]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5, 0.35, -0.6)
-visible = false
-mesh = SubResource("BoxMesh_xvblb")
-script = ExtResource("2_14p4x")
+[node name="doorclosed" parent="floor/entrancedoor" unique_id=957169164 instance=ExtResource("3_tdl6w")]
 
-[node name="Area3D" type="Area3D" parent="floor/exitdoorleft" unique_id=1756814616]
+[node name="Cube" parent="floor/entrancedoor/doorclosed" index="0" unique_id=1247600663]
+transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 0.165, 0, -0.17168829, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/exitdoorleft/Area3D" unique_id=177884366]
-shape = SubResource("SphereShape3D_ff686")
-
-[node name="exitdoorright" type="MeshInstance3D" parent="floor" unique_id=1801861095]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5, 0.35, 0.6)
-visible = false
-mesh = SubResource("BoxMesh_xvblb")
-script = ExtResource("2_14p4x")
-localDoorId = 1
-nextRoomId = 1
-
-[node name="Area3D" type="Area3D" parent="floor/exitdoorright" unique_id=1500336479]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/exitdoorright/Area3D" unique_id=1314771766]
-shape = SubResource("SphereShape3D_ff686")
-
-[node name="exitdoorcenter" type="MeshInstance3D" parent="floor" unique_id=295085229]
+[node name="exitdoorcenter" type="MeshInstance3D" parent="floor" unique_id=1316926121]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5, 0.35, 0)
-visible = false
-mesh = SubResource("BoxMesh_xvblb")
 script = ExtResource("2_14p4x")
-localDoorId = 2
-nextRoomId = 1
+nextRoomId = 4
 
-[node name="Area3D" type="Area3D" parent="floor/exitdoorcenter" unique_id=170406054]
+[node name="Area3D" type="Area3D" parent="floor/exitdoorcenter" unique_id=495545836]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/exitdoorcenter/Area3D" unique_id=28977720]
-shape = SubResource("SphereShape3D_ff686")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/exitdoorcenter/Area3D" unique_id=805731618]
+shape = SubResource("SphereShape3D_x3wu7")
+
+[node name="dooropened" parent="floor/exitdoorcenter" unique_id=478598864 instance=ExtResource("5_815fi")]
+visible = false
+
+[node name="Cube" parent="floor/exitdoorcenter/dooropened" index="0" unique_id=9095403]
+transform = Transform3D(0.16, 0, 0, 0, 0.165, 0, 0, 0, 0.129, 0, -0.17199996, -0.021268308)
+
+[node name="doorclosed" parent="floor/exitdoorcenter" unique_id=198282549 instance=ExtResource("3_tdl6w")]
+
+[node name="Cube" parent="floor/exitdoorcenter/doorclosed" index="0" unique_id=1247600663]
+transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 0.165, 0, -0.17168829, 0)
+
+[editable path="floor/entrancedoor/doorclosed"]
+[editable path="floor/exitdoorcenter/dooropened"]
+[editable path="floor/exitdoorcenter/doorclosed"]

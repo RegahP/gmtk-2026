@@ -21,6 +21,8 @@ var fleshbud: PackedScene = load("res://src/enemies/enemy_fleshbud.tscn")
 var fleshmound: PackedScene = load("res://src/enemies/enemy_fleshmound.tscn")
 signal birthed(enemy: Node3D)
 
+@onready var other_audio: AudioStreamPlayer = $OtherAudio
+
 func _ready() -> void:
 	super()
 	body = $crawler
@@ -73,6 +75,7 @@ func _jump_attack() -> void:
 func _jump_end() -> void:
 	is_jumping = false
 	attack_controller.attack()
+	attack_audio.play()
 	body.position.y = 0
 	spinTimer.start()
 	
@@ -82,6 +85,7 @@ func _jump_end() -> void:
 		birth = fleshmound.instantiate()
 	else:
 		birth = fleshbud.instantiate()
+	other_audio.play()
 	birth.global_position = global_position
 	get_parent().add_child(birth)
 	birth.player = player

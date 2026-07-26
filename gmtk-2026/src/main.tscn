@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://bpofrydcl48ek" path="res://src/textures/FRAMES CORAZON/2_9.png" id="26_dqleq"]
 [ext_resource type="Texture2D" uid="uid://bscfkhebhnmdv" path="res://src/textures/FRAMES CORAZON/2_8.png" id="27_bu6xm"]
 [ext_resource type="Texture2D" uid="uid://igx5tqpflffm" path="res://src/textures/FRAMES CORAZON/2_7.png" id="28_l175r"]
+[ext_resource type="Texture2D" uid="uid://cvgerk4pvfh3s" path="res://src/textures/leombryo.png" id="28_ye406"]
 [ext_resource type="Texture2D" uid="uid://crwq3no2ixqj" path="res://src/textures/FRAMES CORAZON/2_6.png" id="29_prqr5"]
 [ext_resource type="Texture2D" uid="uid://dp2mxh6arxq" path="res://src/textures/FRAMES CORAZON/2_5.png" id="30_7b4p7"]
 [ext_resource type="Texture2D" uid="uid://djxo1e4a7cqud" path="res://src/textures/FRAMES CORAZON/2_4.png" id="31_ljw12"]
@@ -61,18 +62,20 @@
 [sub_resource type="Environment" id="Environment_lj71n"]
 background_mode = 1
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvuux"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("28_ye406")
+
+[sub_resource type="QuadMesh" id="QuadMesh_mgm53"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uewes"]
 shading_mode = 0
 albedo_color = Color(0.25, 0.25, 0.25, 1)
 albedo_texture = ExtResource("8_mgm53")
 
-[sub_resource type="QuadMesh" id="QuadMesh_mgm53"]
-
 [sub_resource type="LabelSettings" id="LabelSettings_kmhfv"]
 font_size = 48
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlaii"]
-bg_color = Color(0, 0, 0, 0.5019608)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sta5p"]
 bg_color = Color(0, 0, 0, 0.5019608)
@@ -223,10 +226,13 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlaii"]
+bg_color = Color(0, 0, 0, 0.5019608)
+
 [node name="Main" type="Node3D" unique_id=639514220 node_paths=PackedStringArray("player")]
 script = ExtResource("1_3cfgd")
 countDownTime = 180
-roomIdsByCount = Array[Vector2i]([Vector2i(0, 1), Vector2i(0, 0), Vector2i(2, 0), Vector2i(1, -1), Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, -1), Vector2i(1, -1), Vector2i(3, -1)])
+roomIdsByCount = Array[Vector2i]([Vector2i(0, 1), Vector2i(0, 0), Vector2i(2, 0), Vector2i(1, -1), Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, -1), Vector2i(0, -1), Vector2i(3, -1)])
 roomBases = Array[PackedScene]([ExtResource("1_5q4o7")])
 machineRoom = ExtResource("3_5mrjc")
 machineEnemies = ExtResource("4_ruk5h")
@@ -256,6 +262,12 @@ projection = 1
 size = 2.0
 script = ExtResource("2_gh0ne")
 follow_target = NodePath("../player")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Camera3D" unique_id=1383837910]
+transform = Transform3D(1.5650003, 0, 0, 0, 1.565, 2.3841858e-07, 0, -2.3841858e-07, 1.565, 0.80550885, 0.64208746, -6.3862257)
+visible = false
+material_override = SubResource("StandardMaterial3D_lvuux")
+mesh = SubResource("QuadMesh_mgm53")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=338927597]
 transform = Transform3D(5.2700667, -1.4817423, 2.8524306, 0, 3.6295123, 2.329, -5.2700667, -1.4817423, 2.8524306, -4.133, -3.262, -4.133)
@@ -288,39 +300,6 @@ vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="CountdownUI" unique_id=2118935106]
 one_shot = true
-
-[node name="DeathscreenUI" type="Control" parent="." unique_id=42503341]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="DeathscreenUI" unique_id=1786781927]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_rlaii")
-
-[node name="TextureRect" type="TextureRect" parent="DeathscreenUI/Panel" unique_id=953333790]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -300.0
-offset_right = 400.0
-offset_bottom = 300.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_rlaii")
 
 [node name="NextRoomUI" type="Control" parent="." unique_id=1753921829]
 layout_mode = 3
@@ -612,6 +591,44 @@ scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_mmgx3")
 animation = &"weapon"
 speed_scale = 0.0
+
+[node name="DeathscreenUI" type="Control" parent="." unique_id=42503341]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DeathTimer" type="Timer" parent="DeathscreenUI" unique_id=1855749475]
+wait_time = 5.0
+
+[node name="Panel" type="Panel" parent="DeathscreenUI" unique_id=1786781927]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rlaii")
+
+[node name="TextureRect" type="TextureRect" parent="DeathscreenUI/Panel" unique_id=953333790]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_rlaii")
+
+[connection signal="timeout" from="DeathscreenUI/DeathTimer" to="." method="_end"]
 
 [editable path="player"]
 [editable path="player/pivot/nivamodel"]

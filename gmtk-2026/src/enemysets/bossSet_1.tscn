@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://nbe70cptcqfx" path="res://src/scripts/enemy_set.gd" id="1_okel2"]
 [ext_resource type="PackedScene" uid="uid://bty2gl5rl7hbo" path="res://src/enemies/boss_slugga.tscn" id="2_60qli"]
+[ext_resource type="AudioStream" uid="uid://drqj4bpbf7imv" path="res://src/audio/sfx/room/doors unlock.mp3" id="2_rcx6x"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0q8fu"]
 size = Vector3(3, 0.3, 3)
@@ -11,6 +12,10 @@ albedo_color = Color(0.14767182, 0.14767179, 0.14767179, 1)
 
 [node name="bossSet_1" type="Node3D" unique_id=639514220]
 script = ExtResource("1_okel2")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="." unique_id=78804414]
+stream = ExtResource("2_rcx6x")
+bus = &"Music"
 
 [node name="slugga" parent="." unique_id=44551870 instance=ExtResource("2_60qli")]
 

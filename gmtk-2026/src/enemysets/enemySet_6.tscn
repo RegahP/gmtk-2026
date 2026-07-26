@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://btr3jji3137qq"]
 
 [ext_resource type="Script" uid="uid://nbe70cptcqfx" path="res://src/scripts/enemy_set.gd" id="1_dexor"]
+[ext_resource type="AudioStream" uid="uid://drqj4bpbf7imv" path="res://src/audio/sfx/room/doors unlock.mp3" id="2_6nro1"]
 [ext_resource type="PackedScene" uid="uid://bqjmtcd1c3705" path="res://src/enemies/enemy_homunculard.tscn" id="2_dexor"]
 [ext_resource type="PackedScene" uid="uid://dy86lkp33kciy" path="res://src/enemies/enemy_fleshmound.tscn" id="3_6nro1"]
 
@@ -12,6 +13,10 @@ albedo_color = Color(0.14767182, 0.14767179, 0.14767179, 1)
 
 [node name="enemySet_6" type="Node3D" unique_id=639514220]
 script = ExtResource("1_dexor")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="." unique_id=777583852]
+stream = ExtResource("2_6nro1")
+bus = &"Music"
 
 [node name="enemy_homunculard" parent="." unique_id=1622673865 instance=ExtResource("2_dexor")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)

@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://bwnhxlfjfrh55"]
+
+[ext_resource type="Script" uid="uid://1xlhhp55qu4" path="res://src/scripts/boss_fetiw.gd" id="1_4mkpn"]
+[ext_resource type="AudioStream" uid="uid://h4mc2bg3lvj1" path="res://src/audio/sfx/fetiwsound.mp3" id="2_4mkpn"]
+[ext_resource type="AudioStream" uid="uid://5vcyd3ng07i8" path="res://src/audio/homunculimb 1.mp3" id="4_41u2b"]
+[ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/enemy_health.gd" id="5_2lque"]
+[ext_resource type="PackedScene" uid="uid://dlk4n6jpx4jnb" path="res://src/models/fetiw.glb" id="5_mjmgs"]
+[ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="10_dl3mc"]
+[ext_resource type="Resource" uid="uid://bxd1gfrhbsan2" path="res://src/resources/Fleshbud Attack.tres" id="11_qkxag"]
+[ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="12_5t450"]
+[ext_resource type="Script" uid="uid://bcs5two2yu1o" path="res://src/scripts/enemy_hitbox.gd" id="13_mic77"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jssm1"]
+height = 0.5
+radius = 0.38720703
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3f8n7"]
+height = 0.5
+radius = 0.31445313
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4mkpn"]
+radius = 0.16077629
+
+[node name="fetiw" type="CharacterBody3D" unique_id=44551870]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+script = ExtResource("1_4mkpn")
+
+[node name="AttackAudio" type="AudioStreamPlayer" parent="." unique_id=1314798624]
+stream = ExtResource("2_4mkpn")
+bus = &"SFX"
+
+[node name="DeathAudio" type="AudioStreamPlayer" parent="." unique_id=1495846774]
+stream = ExtResource("4_41u2b")
+volume_db = 6.0
+bus = &"SFX"
+
+[node name="Health" type="Node" parent="." unique_id=409960796]
+script = ExtResource("5_2lque")
+max_health = 180.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1261391535]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7566465e-09, 0.25, 0.080905765)
+shape = SubResource("CylinderShape3D_jssm1")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=14746158]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36533818, 0.25, 0.3110679)
+shape = SubResource("CylinderShape3D_3f8n7")
+
+[node name="fetiw2" parent="." unique_id=769318543 instance=ExtResource("5_mjmgs")]
+transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0, 0)
+
+[node name="fetiw" parent="fetiw2" index="0" unique_id=72925585]
+visible = false
+
+[node name="Mball_007" parent="fetiw2" index="1" unique_id=338966969]
+transform = Transform3D(0.5671319, 0.11321549, 1.7118021, 0.021794865, 1.672559, -0.13865289, -1.5989895, 0.062953085, 0.6052546, -0.43284202, 0.037631787, 0.27052623)
+
+[node name="AttackController" type="Node" parent="." unique_id=243073258]
+script = ExtResource("10_dl3mc")
+light_attack = ExtResource("11_qkxag")
+
+[node name="Weapon" type="Node3D" parent="." unique_id=1007883611]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("12_5t450")
+metadata/_custom_type_script = "uid://di2aq3omvm40x"
+
+[node name="Hitbox" type="Area3D" parent="Weapon" unique_id=1759394442]
+monitoring = false
+script = ExtResource("13_mic77")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=1638357245]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, -0.34025794, 0)
+shape = SubResource("SphereShape3D_4mkpn")
+
+[editable path="fetiw2"]

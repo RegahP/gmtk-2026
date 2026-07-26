@@ -8,9 +8,17 @@ signal doorExited()
 
 func _ready() -> void:
 	for door in doors:
-		door.picked.connect(_loadroomdoor)
-		door.entered.connect(_show_nextroom)
-		door.exited.connect(_hide_nextroom)
+		if door.nextRoomId != 4:
+			
+			door.picked.connect(_loadroomdoor)
+			door.entered.connect(_show_nextroom)
+			door.exited.connect(_hide_nextroom)
+		else:
+			door.picked.connect(_loadroomdoor)
+
+func _set_enddoor() -> void:
+	for door in doors:
+		door._set_enddoor()
 
 func _loadroomdoor(nextRoomId: int) -> void:
 	doorPicked.emit(nextRoomId)

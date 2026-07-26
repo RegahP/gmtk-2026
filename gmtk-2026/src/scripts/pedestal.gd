@@ -8,6 +8,8 @@ signal entered()
 signal exited()
 signal picked()
 
+@onready var audio_stream_player_3d: AudioStreamPlayer = $AudioStreamPlayer3D
+
 func _ready() -> void:
 	$mesh/Area3D.body_entered.connect(_on_pedestal_entered)
 	$mesh/Area3D.body_exited.connect(_on_pedestal_exited)
@@ -21,6 +23,7 @@ func _process(delta: float) -> void:
 				playerInside = false
 				used = true
 				$item.visible = false
+				audio_stream_player_3d.play()
 
 func _on_pedestal_entered(body: Node3D) -> void:
 	if !used:

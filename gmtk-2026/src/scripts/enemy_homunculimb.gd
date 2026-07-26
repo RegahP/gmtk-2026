@@ -49,6 +49,8 @@ func _physics_process(delta: float) -> void:
 		_enemy_move()
 	
 	if is_moving:
+		var dist = global_position.distance_to(player.global_position)
+		if dist > 2: return
 		var direction = global_position.direction_to(player.global_position)
 		direction = direction.normalized()
 		

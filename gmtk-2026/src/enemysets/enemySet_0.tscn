@@ -2,12 +2,17 @@
 
 [ext_resource type="Script" uid="uid://nbe70cptcqfx" path="res://src/scripts/enemy_set.gd" id="1_hc3vi"]
 [ext_resource type="PackedScene" uid="uid://bj4cyql3urax5" path="res://src/enemies/enemy_fleshbud.tscn" id="1_qovca"]
+[ext_resource type="AudioStream" uid="uid://drqj4bpbf7imv" path="res://src/audio/sfx/room/doors unlock.mp3" id="2_3osrc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0q8fu"]
 size = Vector3(3, 0.3, 3)
 
 [node name="enemySet_0" type="Node3D" unique_id=639514220]
 script = ExtResource("1_hc3vi")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="." unique_id=1424257759]
+stream = ExtResource("2_3osrc")
+bus = &"Music"
 
 [node name="enemy_fleshbud" parent="." unique_id=1622673865 instance=ExtResource("1_qovca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.64384824, 0, 1.1843989)

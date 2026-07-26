@@ -4,6 +4,7 @@ extends Node3D
 @onready var timerLabel: Label = $CountdownUI/Label
 @onready var timerUi: Timer = $CountdownUI/Timer
 @onready var deathscreenUi: Panel = $DeathscreenUI/Panel
+@onready var deathTimer: Timer = $DeathscreenUI/DeathTimer
 
 @onready var nextroomUi: Panel = $NextRoomUI/Panel
 @onready var clearroomUi: Panel = $NextRoomUI/Panel2
@@ -82,14 +83,16 @@ func _calculate_heartbar() -> void:
 	if timerUi.time_left < 180 / 2: heartUi.play("heart2")
 
 func _on_timer_timeout() -> void:
+	get_tree().change_scene_to_file("res://src/deathscreen.tscn")
 	timerLabel.text = "00:00"
 	print("dead")
 	deathscreenUi.visible = true
+	deathTimer.start()
 
 func _loadroom(nextRoomId: int) -> void:
 	_reset_player_pos()
 	_clear_room()
-	
+	#nextRoomId = 3
 	if (nextRoomId == -1): # init room
 		print("init room")
 	
@@ -140,8 +143,17 @@ func _add_machineroom() -> void:
 	currEnemySet = machineEnemies.instantiate()
 	add_child(currEnemySet)
 	currEnemySet._set_enemies(player)
+	currEnemySet.enemies_cleared.connect(_enddoor)
+	$Camera3D/MeshInstance3D2.visible = true
 	music.stream = load("res://src/Music/cirno.mp3")
 	music.play()
+
+func _enddoor() -> void:
+	currRoomBase.doorPicked.connect(_end)
+	currRoomBase._set_enddoor()
+
+func _end() -> void:
+	get_tree().change_scene_to_file("res://src/main_menu.tscn")
 
 func _add_enemyset() -> void:
 	if enemySetIds.size() == enemySets.size(): enemySetIds.clear()

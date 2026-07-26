@@ -3,8 +3,11 @@
 [ext_resource type="Script" uid="uid://bjo4dw82qxcaq" path="res://src/scripts/player.gd" id="1_lowyb"]
 [ext_resource type="PackedScene" uid="uid://coe248akq0xgk" path="res://src/models/nivamodel.glb" id="2_21lrq"]
 [ext_resource type="Script" uid="uid://vasientt45jv" path="res://src/scripts/attackController.gd" id="2_ehvfd"]
+[ext_resource type="AudioStream" uid="uid://dw184wngeypsj" path="res://src/audio/sfx/player/hit sound.mp3" id="2_fxwnc"]
 [ext_resource type="Script" uid="uid://di2aq3omvm40x" path="res://src/scripts/weapon.gd" id="3_bktlc"]
+[ext_resource type="AudioStream" uid="uid://bjr023v0dridv" path="res://src/audio/sfx/player/takedamage.mp3" id="3_hc2cd"]
 [ext_resource type="Resource" uid="uid://8gg1mntvripk" path="res://src/resources/player_attack1.tres" id="3_pg28d"]
+[ext_resource type="AudioStream" uid="uid://cx4vbvlh6yd4e" path="res://src/audio/sfx/player/hit connected sound.mp3" id="4_hc2cd"]
 [ext_resource type="Script" uid="uid://bvdjfgjymahnw" path="res://src/scripts/hitbox.gd" id="4_pg28d"]
 [ext_resource type="Texture2D" uid="uid://cwyetrrrtmqcr" path="res://src/textures/player_attack/Animation2_1.png" id="6_dxtnc"]
 [ext_resource type="Texture2D" uid="uid://c13sd010xeb7m" path="res://src/textures/player_attack/Animation2_2.png" id="7_nic3v"]
@@ -62,6 +65,18 @@ size = Vector3(0.18, 0.3, 0.4)
 [node name="player" type="CharacterBody3D" unique_id=1697551590]
 script = ExtResource("1_lowyb")
 speed = 1.0
+
+[node name="AttackAudio" type="AudioStreamPlayer" parent="." unique_id=1524125644]
+stream = ExtResource("2_fxwnc")
+bus = &"SFX"
+
+[node name="HurtAudio" type="AudioStreamPlayer" parent="." unique_id=965101737]
+stream = ExtResource("3_hc2cd")
+bus = &"SFX"
+
+[node name="DamageAudio" type="AudioStreamPlayer" parent="." unique_id=155220948]
+stream = ExtResource("4_hc2cd")
+bus = &"SFX"
 
 [node name="pivot" type="Node3D" parent="." unique_id=1815740439]
 
