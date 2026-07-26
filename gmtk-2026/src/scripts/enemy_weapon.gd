@@ -2,6 +2,7 @@ class_name EnemyWeapon
 extends Node3D
 
 @onready var hitbox: EnemyHitbox = $Hitbox
+@onready var audio_player: AudioStreamPlayer3D = $"../AttackController/AudioStreamPlayer3D"
 
 var current_attack: AttackData
 
@@ -9,6 +10,8 @@ func _ready() -> void:
 	hitbox.body_entered.connect(hitbox._on_body_entered)
 
 func attack(data: AttackData):
+	audio_player.play()
+	await audio_player.finished
 
 	if data == null:
 		push_error("Weapon.attack() was called without an AttackData!")
