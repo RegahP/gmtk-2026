@@ -74,6 +74,7 @@ func _jump_end() -> void:
 	is_jumping = false
 	attack_controller.attack()
 	body.position.y = 0
+	spinTimer.start()
 	
 	var bud: bool = true if randi() % 3 == 0 else false
 	var birth: Node3D

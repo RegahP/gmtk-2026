@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://bty2gl5rl7hbo"]
+
+[ext_resource type="Script" uid="uid://deilnmv6mjotq" path="res://src/scripts/boss_crawler.gd" id="1_6sn3r"]
+[ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/enemy_health.gd" id="2_gn8l6"]
+[ext_resource type="PackedScene" uid="uid://c53b6ivcan7u6" path="res://src/models/slugga.glb" id="3_gn8l6"]
+[ext_resource type="PackedScene" uid="uid://fc5inft08ldp" path="res://src/models/crawler.glb" id="3_vqkd3"]
+[ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="4_27dtx"]
+[ext_resource type="Resource" uid="uid://bxd1gfrhbsan2" path="res://src/resources/Fleshbud Attack.tres" id="5_2jj5d"]
+[ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="6_k4pik"]
+[ext_resource type="Script" uid="uid://bcs5two2yu1o" path="res://src/scripts/enemy_hitbox.gd" id="7_eu38p"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ix5o5"]
+height = 0.5
+radius = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_eka7b"]
+radius = 0.7
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xic6o"]
+radius = 0.4
+
+[node name="crawler" type="CharacterBody3D" unique_id=44551870]
+script = ExtResource("1_6sn3r")
+spinSpeed = 1.0
+speed = 1.0
+attack_cooldown = 0.3
+
+[node name="Health" type="Node" parent="." unique_id=409960796]
+script = ExtResource("2_gn8l6")
+max_health = 30.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=510829537]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.68615144, 0.25, -0.39471996)
+shape = SubResource("CylinderShape3D_ix5o5")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1261391535]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.69686574, 0.25, -0.39471996)
+shape = SubResource("CylinderShape3D_ix5o5")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=1401978026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007142544, 0.25, 0.80001026)
+shape = SubResource("CylinderShape3D_ix5o5")
+
+[node name="slugga" parent="." unique_id=879703856 instance=ExtResource("3_gn8l6")]
+transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, 0, 0, 0)
+
+[node name="crawler" parent="." unique_id=1531747166 instance=ExtResource("3_vqkd3")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+
+[node name="AttackController" type="Node" parent="." unique_id=243073258]
+script = ExtResource("4_27dtx")
+light_attack = ExtResource("5_2jj5d")
+
+[node name="Weapon" type="Node3D" parent="." unique_id=1007883611]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("6_k4pik")
+metadata/_custom_type_script = "uid://di2aq3omvm40x"
+
+[node name="Hitbox" type="Area3D" parent="Weapon" unique_id=1759394442]
+monitoring = false
+script = ExtResource("7_eu38p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=1638357245]
+shape = SubResource("SphereShape3D_eka7b")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=2041599996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.697518, -0.49997956, -0.3984812)
+shape = SubResource("SphereShape3D_xic6o")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=460754111]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6868038, -0.49997956, -0.3984812)
+shape = SubResource("SphereShape3D_xic6o")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=1762750646]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007142782, -0.49997956, 0.79696274)
+shape = SubResource("SphereShape3D_xic6o")
+
+[node name="SpinTimer" type="Timer" parent="." unique_id=213981366]
+
+[node name="JumpTimer" type="Timer" parent="." unique_id=1547730553]
+one_shot = true
+
+[editable path="crawler"]
