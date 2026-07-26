@@ -29,7 +29,7 @@ max_health = 10.0
 [node name="fleshbud" parent="." unique_id=1424116867 instance=ExtResource("3_l6vd7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015133753, 0)
 
-[node name="fleshbud" parent="fleshbud" index="0" unique_id=1641090885]
+[node name="fleshbud" parent="fleshbud" index="0" unique_id=735981708]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.002257347, 0, 0.060452566)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1532499648]
@@ -39,6 +39,9 @@ shape = SubResource("CylinderShape3D_lke40")
 [node name="AttackController" type="Node" parent="." unique_id=1762208230]
 script = ExtResource("4_sun60")
 light_attack = ExtResource("5_d1oy6")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="AttackController" unique_id=500073465]
+bus = &"SFX"
 
 [node name="Weapon" type="Node3D" parent="." unique_id=1314593742]
 script = ExtResource("6_wyix2")
