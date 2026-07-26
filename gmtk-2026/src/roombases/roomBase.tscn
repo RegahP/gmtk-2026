@@ -13,15 +13,18 @@ size = Vector3(1, 0.1, 1)
 size = Vector3(0.05, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwfnl"]
+shading_mode = 0
 albedo_texture = ExtResource("3_gwfnl")
 
 [sub_resource type="BoxMesh" id="BoxMesh_gh0ne"]
 size = Vector3(3, 0.3, 3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0bv38"]
+shading_mode = 0
 albedo_texture = ExtResource("3_gwfnl")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5kgp"]
+shading_mode = 0
 albedo_texture = ExtResource("3_8yljw")
 
 [sub_resource type="BoxMesh" id="BoxMesh_xvblb"]

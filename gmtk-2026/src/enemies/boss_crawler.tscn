@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://fc5inft08ldp" path="res://src/models/crawler.glb" id="1_3cjud"]
 [ext_resource type="Script" uid="uid://deilnmv6mjotq" path="res://src/scripts/boss_crawler.gd" id="1_eka7b"]
 [ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/enemy_health.gd" id="1_ktb0o"]
+[ext_resource type="AudioStream" uid="uid://dcnycaya32bws" path="res://src/audio/fleshbud 2.mp3" id="2_52w1q"]
+[ext_resource type="AudioStream" uid="uid://d4kahfbe8eh2l" path="res://src/audio/fleshbud hit.mp3" id="3_5w0pu"]
 [ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="3_eka7b"]
 [ext_resource type="Resource" uid="uid://bxd1gfrhbsan2" path="res://src/resources/Fleshbud Attack.tres" id="4_3qb3f"]
 [ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="5_52w1q"]
@@ -23,6 +25,15 @@ script = ExtResource("1_eka7b")
 spinSpeed = 1.0
 speed = 1.0
 attack_cooldown = 0.3
+
+[node name="AttackAudio" type="AudioStreamPlayer" parent="." unique_id=1144301822]
+stream = ExtResource("2_52w1q")
+bus = &"SFX"
+
+[node name="DeathAudio" type="AudioStreamPlayer" parent="." unique_id=1791131905]
+stream = ExtResource("3_5w0pu")
+volume_db = 6.0
+bus = &"SFX"
 
 [node name="Health" type="Node" parent="." unique_id=409960796]
 script = ExtResource("1_ktb0o")

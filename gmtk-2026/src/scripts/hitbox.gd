@@ -11,7 +11,7 @@ func _on_body_entered(body: Node3D) -> void:
 
 	hit_targets[body] = true
 	if (body is EnemyBase):
-		body.get_child(0).take_damage(current_damage)
+		body.find_child("Health").take_damage(current_damage)
 	#print("Hit:", body.name)
 
 func reset():

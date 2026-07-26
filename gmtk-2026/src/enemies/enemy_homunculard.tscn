@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://bqjmtcd1c3705"]
 
 [ext_resource type="Script" uid="uid://bbjyftki3ye4e" path="res://src/scripts/enemy_homunculard.gd" id="1_ampmy"]
+[ext_resource type="AudioStream" uid="uid://dcnycaya32bws" path="res://src/audio/fleshbud 2.mp3" id="2_862ab"]
 [ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/enemy_health.gd" id="2_ch1wu"]
 [ext_resource type="PackedScene" uid="uid://8pebql6gj55l" path="res://src/models/homunculardwb.glb" id="3_ch1wu"]
+[ext_resource type="AudioStream" uid="uid://d4kahfbe8eh2l" path="res://src/audio/fleshbud hit.mp3" id="3_kd0wb"]
 [ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="4_b87re"]
 [ext_resource type="Resource" uid="uid://b6j83rrjfqi14" path="res://src/resources/homunculard_attack.tres" id="5_ampmy"]
 [ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="6_wya4f"]
@@ -20,6 +22,15 @@ speed = 0.3
 attack_range = 0.4
 attack_windup = 1.0
 attack_cooldown = 0.6
+
+[node name="AttackAudio" type="AudioStreamPlayer" parent="." unique_id=2059943339]
+stream = ExtResource("2_862ab")
+bus = &"SFX"
+
+[node name="DeathAudio" type="AudioStreamPlayer" parent="." unique_id=2077555643]
+stream = ExtResource("3_kd0wb")
+volume_db = 6.0
+bus = &"SFX"
 
 [node name="Health" type="Node" parent="." unique_id=1072188802]
 script = ExtResource("2_ch1wu")

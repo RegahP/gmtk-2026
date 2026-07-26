@@ -1,51 +1,164 @@
 [gd_scene format=3 uid="uid://bty2gl5rl7hbo"]
 
-[ext_resource type="Script" uid="uid://deilnmv6mjotq" path="res://src/scripts/boss_crawler.gd" id="1_6sn3r"]
+[ext_resource type="Script" uid="uid://bgo7gvdarmund" path="res://src/scripts/boss_slugga.gd" id="1_k4pik"]
 [ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/enemy_health.gd" id="2_gn8l6"]
+[ext_resource type="AudioStream" uid="uid://b4oo33spbx83c" path="res://src/audio/optic agent hit.mp3" id="2_k4pik"]
+[ext_resource type="AudioStream" uid="uid://d4kahfbe8eh2l" path="res://src/audio/fleshbud hit.mp3" id="3_27dtx"]
 [ext_resource type="PackedScene" uid="uid://c53b6ivcan7u6" path="res://src/models/slugga.glb" id="3_gn8l6"]
-[ext_resource type="PackedScene" uid="uid://fc5inft08ldp" path="res://src/models/crawler.glb" id="3_vqkd3"]
 [ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="4_27dtx"]
+[ext_resource type="AudioStream" uid="uid://5vcyd3ng07i8" path="res://src/audio/homunculimb 1.mp3" id="4_eu38p"]
 [ext_resource type="Resource" uid="uid://bxd1gfrhbsan2" path="res://src/resources/Fleshbud Attack.tres" id="5_2jj5d"]
+[ext_resource type="PackedScene" uid="uid://b2ttqip7j6rwq" path="res://src/models/slugga_attack.glb" id="5_eu38p"]
+[ext_resource type="Texture2D" uid="uid://cv6onnclk8ril" path="res://src/models/crawler_texture 7.png" id="6_ejj3h"]
 [ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="6_k4pik"]
 [ext_resource type="Script" uid="uid://bcs5two2yu1o" path="res://src/scripts/enemy_hitbox.gd" id="7_eu38p"]
+[ext_resource type="PackedScene" uid="uid://dsco3p1dqpobs" path="res://src/models/slugga_tong.glb" id="7_v828f"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ix5o5"]
 height = 0.5
-radius = 0.1
+radius = 0.2861328
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_eka7b"]
-radius = 0.7
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jssm1"]
+height = 0.5
+radius = 0.39257813
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_xic6o"]
-radius = 0.4
+[sub_resource type="Animation" id="Animation_568g7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("slugga_attack:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("slugga_tong:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
 
-[node name="crawler" type="CharacterBody3D" unique_id=44551870]
-script = ExtResource("1_6sn3r")
-spinSpeed = 1.0
-speed = 1.0
+[sub_resource type="Animation" id="Animation_syugm"]
+resource_name = "slugga_spikes"
+length = 1.3333334
+step = 0.041666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("slugga_attack:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.8333334, 1.3333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(0.1, 0.1, 0.1)]
+}
+
+[sub_resource type="Animation" id="Animation_6wonr"]
+resource_name = "slugga_tong"
+length = 1.3333334
+step = 0.041666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("slugga_tong:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.8333334, 1.3333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.01, 0.01, 0.01), Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(0.01, 0.01, 0.01)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wqpln"]
+_data = {
+&"RESET": SubResource("Animation_568g7"),
+&"slugga_spikes": SubResource("Animation_syugm"),
+&"slugga_tong": SubResource("Animation_6wonr")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uiakd"]
+shading_mode = 0
+albedo_texture = ExtResource("6_ejj3h")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lbtfd"]
+shading_mode = 0
+albedo_texture = ExtResource("6_ejj3h")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dw6vv"]
+size = Vector3(0.25, 1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eg5n0"]
+size = Vector3(1.5, 1, 0.25)
+
+[node name="slugga" type="CharacterBody3D" unique_id=44551870]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+script = ExtResource("1_k4pik")
+attack_range = 1.6
+attack_windup = 0.15
 attack_cooldown = 0.3
+
+[node name="AttackAudio" type="AudioStreamPlayer" parent="." unique_id=1314798624]
+stream = ExtResource("2_k4pik")
+bus = &"SFX"
+
+[node name="AttackAudio2" type="AudioStreamPlayer" parent="." unique_id=1372222467]
+stream = ExtResource("3_27dtx")
+bus = &"SFX"
+
+[node name="DeathAudio" type="AudioStreamPlayer" parent="." unique_id=1495846774]
+stream = ExtResource("4_eu38p")
+volume_db = 6.0
+bus = &"SFX"
 
 [node name="Health" type="Node" parent="." unique_id=409960796]
 script = ExtResource("2_gn8l6")
 max_health = 30.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=510829537]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.68615144, 0.25, -0.39471996)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34767246, 0.25, 0)
 shape = SubResource("CylinderShape3D_ix5o5")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1261391535]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.69686574, 0.25, -0.39471996)
-shape = SubResource("CylinderShape3D_ix5o5")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0.040718377)
+shape = SubResource("CylinderShape3D_jssm1")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=1401978026]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007142544, 0.25, 0.80001026)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3445404, 0.25, 0)
 shape = SubResource("CylinderShape3D_ix5o5")
 
-[node name="slugga" parent="." unique_id=879703856 instance=ExtResource("3_gn8l6")]
-transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, 0, 0, 0)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1322651016]
+libraries/ = SubResource("AnimationLibrary_wqpln")
 
-[node name="crawler" parent="." unique_id=1531747166 instance=ExtResource("3_vqkd3")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+[node name="slugga_attack" parent="." unique_id=7966934 instance=ExtResource("5_eu38p")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.125, 0)
+
+[node name="Cone_001" parent="slugga_attack" index="0" unique_id=728608057]
+transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_uiakd")
+
+[node name="slugga_tong" parent="." unique_id=1352962898 instance=ExtResource("7_v828f")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.471, 0)
+
+[node name="Cone_001" parent="slugga_tong" index="0" unique_id=658121418]
+transform = Transform3D(0.18, 0, 0, 0, 0.17606658, -0.037424106, 0, 0.037424106, 0.17606658, 0, 0, 0.401)
+material_override = SubResource("StandardMaterial3D_lbtfd")
+
+[node name="slugga" parent="." unique_id=879703856 instance=ExtResource("3_gn8l6")]
+transform = Transform3D(-9.616506e-09, 0, 0.22, 0, 0.22, 0, -0.22, 0, -9.616506e-09, 0, 0, 0)
 
 [node name="AttackController" type="Node" parent="." unique_id=243073258]
 script = ExtResource("4_27dtx")
@@ -61,23 +174,23 @@ monitoring = false
 script = ExtResource("7_eu38p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=1638357245]
-shape = SubResource("SphereShape3D_eka7b")
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+shape = SubResource("BoxShape3D_dw6vv")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=2041599996]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.697518, -0.49997956, -0.3984812)
-shape = SubResource("SphereShape3D_xic6o")
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 0, 0)
+shape = SubResource("BoxShape3D_dw6vv")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=460754111]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6868038, -0.49997956, -0.3984812)
-shape = SubResource("SphereShape3D_xic6o")
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -0.75)
+shape = SubResource("BoxShape3D_eg5n0")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=1762750646]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007142782, -0.49997956, 0.79696274)
-shape = SubResource("SphereShape3D_xic6o")
+[node name="AttackTimer" type="Timer" parent="." unique_id=213981366]
+wait_time = 2.0
 
-[node name="SpinTimer" type="Timer" parent="." unique_id=213981366]
+[node name="PhaseTimer" type="Timer" parent="." unique_id=1547730553]
+wait_time = 8.0
 
-[node name="JumpTimer" type="Timer" parent="." unique_id=1547730553]
-one_shot = true
-
-[editable path="crawler"]
+[editable path="slugga_attack"]
+[editable path="slugga_tong"]
+[editable path="slugga"]
