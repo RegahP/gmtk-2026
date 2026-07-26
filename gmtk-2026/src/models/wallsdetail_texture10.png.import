@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://balrwnj2ny3t3"
-path.s3tc="res://.godot/imported/nivamodel_nivarender.png-344beeee092e300839d95555166934ec.s3tc.ctex"
+uid="uid://pqw073amcuad"
+path.s3tc="res://.godot/imported/wallsdetail_texture10.png-42e9aa84f0957d3121c5844c078a6b08.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b1413541aca4d2c47ada5241837a2708"
+"md5": "b4b188290bbc204559e9962cc78b96ac"
 }
 
 [deps]
 
-source_file="res://src/models/nivamodel_nivarender.png"
-dest_files=["res://.godot/imported/nivamodel_nivarender.png-344beeee092e300839d95555166934ec.s3tc.ctex"]
+source_file="res://src/models/wallsdetail_texture10.png"
+dest_files=["res://.godot/imported/wallsdetail_texture10.png-42e9aa84f0957d3121c5844c078a6b08.s3tc.ctex"]
 
 [params]
 

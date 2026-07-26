@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://balrwnj2ny3t3"
-path.s3tc="res://.godot/imported/nivamodel_nivarender.png-344beeee092e300839d95555166934ec.s3tc.ctex"
+uid="uid://dum7e76nj4yrc"
+path.s3tc="res://.godot/imported/slugga_wb.png-99f762d2320e03ce62b411d91f7eb3e9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b1413541aca4d2c47ada5241837a2708"
+"md5": "72444e25b61dee5eb191332e2eeef988"
 }
 
 [deps]
 
-source_file="res://src/models/nivamodel_nivarender.png"
-dest_files=["res://.godot/imported/nivamodel_nivarender.png-344beeee092e300839d95555166934ec.s3tc.ctex"]
+source_file="res://src/models/slugga_wb.png"
+dest_files=["res://.godot/imported/slugga_wb.png-99f762d2320e03ce62b411d91f7eb3e9.s3tc.ctex"]
 
 [params]
 
