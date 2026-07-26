@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://c2620r0prunvo"]
+
+[ext_resource type="VideoStream" uid="uid://bxnqwkug3icrb" path="res://src/Music/INTRO_BIOMECALIA_WOTM_OGV.ogv" id="1_oupes"]
+[ext_resource type="Script" uid="uid://cmqi07ujc8y7d" path="res://src/scripts/intro.gd" id="1_wdpu2"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" unique_id=2093298431]
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.833, 0.833)
+stream = ExtResource("1_oupes")
+volume_db = -7.9999995
+autoplay = true
+script = ExtResource("1_wdpu2")
+
+[node name="SkipTimer" type="Timer" parent="." unique_id=1890608221]
+wait_time = 8.0
+one_shot = true
+autostart = true
+
+[node name="Control" type="Control" parent="." unique_id=714640123]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -197.0
+offset_top = -60.0
+offset_right = -197.0
+offset_bottom = -60.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Button" type="Button" parent="Control" unique_id=188205534]
+visible = false
+layout_mode = 1
+offset_right = 96.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+disabled = true
+text = "SKIP INTRO"
+
+[connection signal="finished" from="." to="." method="_on_finished"]
+[connection signal="timeout" from="SkipTimer" to="." method="_on_skip_timer_timeout"]
+[connection signal="button_down" from="Control/Button" to="." method="_on_button_pressed"]

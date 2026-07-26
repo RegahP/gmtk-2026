@@ -18,6 +18,7 @@ var roomCount: int
 
 @export var roomBases: Array[PackedScene]
 @export var machineRoom: PackedScene
+@export var machineEnemies: PackedScene
 @export var enemySets: Array[PackedScene]
 @export var bossSets: Array[PackedScene]
 @export var pedestal: PackedScene
@@ -135,6 +136,10 @@ func _add_roombase() -> void:
 func _add_machineroom() -> void:
 	currRoomBase = machineRoom.instantiate()
 	add_child(currRoomBase)
+	
+	currEnemySet = machineEnemies.instantiate()
+	add_child(currEnemySet)
+	currEnemySet._set_enemies(player)
 	music.stream = load("res://src/Music/cirno.mp3")
 	music.play()
 
@@ -203,7 +208,8 @@ func _weapon_evolve() -> void:
 	weapon_evolve_lvl += 1
 	currWeapon.frame = weapon_evolve_lvl
 	weaponEvo.frame = weapon_evolve_lvl + 1
-	player._weapon_evolve(weaponEvoAttackDatas[weapon_evolve_lvl])
+	if (weapon_evolve_lvl < weaponEvoAttackDatas.size()):
+		player._weapon_evolve(weaponEvoAttackDatas[weapon_evolve_lvl])
 
 func _on_room_cleared() -> void:
 	currRoomBase.doorEntered.disconnect(_show_clearroom_panel)

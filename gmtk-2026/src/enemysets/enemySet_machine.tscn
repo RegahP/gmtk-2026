@@ -45,5 +45,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_i1kh1")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1510588962]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -0.15, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_250ck")
 mesh = SubResource("BoxMesh_n08v2")

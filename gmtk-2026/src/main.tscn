@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bur25qsrx35y4" path="res://src/pedestal.tscn" id="4_kmhfv"]
 [ext_resource type="PackedScene" uid="uid://flgusbt82ku7" path="res://src/enemysets/bossSet_1.tscn" id="4_mgm53"]
 [ext_resource type="PackedScene" uid="uid://c50m2wqcexp8" path="res://src/enemysets/enemySet_0.tscn" id="4_okx7f"]
+[ext_resource type="PackedScene" uid="uid://bccnke0whud0v" path="res://src/enemysets/enemySet_machine.tscn" id="4_ruk5h"]
 [ext_resource type="PackedScene" uid="uid://lrm5na7kj2lf" path="res://src/enemysets/enemySet_1.tscn" id="5_sta5p"]
 [ext_resource type="PackedScene" uid="uid://bmoccymvqk78t" path="res://src/enemysets/enemySet_2.tscn" id="6_sif16"]
 [ext_resource type="PackedScene" uid="uid://bubtp28alxkgt" path="res://src/enemysets/enemySet_3.tscn" id="7_d7bab"]
@@ -228,6 +229,7 @@ countDownTime = 180
 roomIdsByCount = Array[Vector2i]([Vector2i(0, 1), Vector2i(0, 0), Vector2i(2, 0), Vector2i(1, -1), Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, -1), Vector2i(1, -1), Vector2i(3, -1)])
 roomBases = Array[PackedScene]([ExtResource("1_5q4o7")])
 machineRoom = ExtResource("3_5mrjc")
+machineEnemies = ExtResource("4_ruk5h")
 enemySets = Array[PackedScene]([ExtResource("4_okx7f"), ExtResource("5_sta5p"), ExtResource("6_sif16"), ExtResource("7_d7bab"), ExtResource("8_ib8ht"), ExtResource("9_43aqp"), ExtResource("10_ocmcv"), ExtResource("11_adv81"), ExtResource("12_lovvn")])
 bossSets = Array[PackedScene]([ExtResource("19_sta5p"), ExtResource("4_mgm53")])
 pedestal = ExtResource("4_kmhfv")
