@@ -5,6 +5,7 @@ extends Node
 var current_health: float
 signal died()
 signal took_damage()
+@onready var death_audio: AudioStreamPlayer = $"../DeathAudio"
 
 func _ready():
 	current_health = max_health
@@ -21,10 +22,16 @@ func take_damage(damage: DamageInfo): # esta funcion la invoca player para ataca
 		current_health -= damage.amount
 		took_damage.emit()
 	else:
+		
 		current_health = 0
 		die() 
 
 func die():
 	print("%s died!" % owner.name)
+	
+	if death_audio.playing == false:
+		death_audio.play()
+		
+	await death_audio.finished
 	died.emit()
 	owner.queue_free()

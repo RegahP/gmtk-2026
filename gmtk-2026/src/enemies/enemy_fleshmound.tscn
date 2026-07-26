@@ -5,8 +5,10 @@
 [ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/enemy_health.gd" id="2_mq5bb"]
 [ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="4_4jy0c"]
 [ext_resource type="Resource" uid="uid://nmam56tr4qqy" path="res://src/resources/fleshmound_attack.tres" id="5_k3ph4"]
+[ext_resource type="AudioStream" uid="uid://spgoejo6p88v" path="res://src/audio/fleshmound born.mp3" id="6_an5nw"]
 [ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="6_hr776"]
 [ext_resource type="Script" uid="uid://bcs5two2yu1o" path="res://src/scripts/enemy_hitbox.gd" id="7_iftcu"]
+[ext_resource type="AudioStream" uid="uid://5vcyd3ng07i8" path="res://src/audio/homunculimb 1.mp3" id="7_kgtp0"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lke40"]
 height = 0.1
@@ -23,13 +25,21 @@ attack_range = 0.25
 attack_windup = 0.5
 attack_cooldown = 1.2
 
+[node name="AttackAudio" type="AudioStreamPlayer" parent="." unique_id=1833509278]
+stream = ExtResource("6_an5nw")
+bus = &"SFX"
+
+[node name="DeathAudio" type="AudioStreamPlayer" parent="." unique_id=1934669262]
+stream = ExtResource("7_kgtp0")
+bus = &"SFX"
+
 [node name="Health" type="Node" parent="." unique_id=1838159398]
 script = ExtResource("2_mq5bb")
 max_health = 20.0
 
 [node name="fleshmound" parent="." unique_id=1536687203 instance=ExtResource("2_ml2bp")]
 
-[node name="fleshmound" parent="fleshmound" index="0" unique_id=681569111]
+[node name="fleshmound" parent="fleshmound" index="0" unique_id=1307303394]
 transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, -0.084329724, 0.05623561, 0.0041656718)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1532499648]

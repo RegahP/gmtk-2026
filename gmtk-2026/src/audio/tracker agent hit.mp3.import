@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dtki3jrh6ojta"
+path="res://.godot/imported/tracker agent hit.mp3-2251c1a044e3d3043b8d347b43648d90.mp3str"
+
+[deps]
+
+source_file="res://src/audio/tracker agent hit.mp3"
+dest_files=["res://.godot/imported/tracker agent hit.mp3-2251c1a044e3d3043b8d347b43648d90.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

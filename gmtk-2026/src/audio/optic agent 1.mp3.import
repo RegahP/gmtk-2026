@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b7a0idhgouh3d"
+path="res://.godot/imported/optic agent 1.mp3-b346b5f043b04d754b012a8d46d7c6c2.mp3str"
+
+[deps]
+
+source_file="res://src/audio/optic agent 1.mp3"
+dest_files=["res://.godot/imported/optic agent 1.mp3-b346b5f043b04d754b012a8d46d7c6c2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

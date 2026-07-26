@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://5vcyd3ng07i8"
+path="res://.godot/imported/homunculimb 1.mp3-3be3b9c42928f5a83a1d4218085dd91b.mp3str"
+
+[deps]
+
+source_file="res://src/audio/homunculimb 1.mp3"
+dest_files=["res://.godot/imported/homunculimb 1.mp3-3be3b9c42928f5a83a1d4218085dd91b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

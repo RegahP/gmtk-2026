@@ -53,4 +53,5 @@ func _attack_windup() -> void:
 	fleshbud.global_position = global_position
 	get_parent().add_child(fleshbud)
 	fleshbud.player = player
+	attack_audio.play()
 	birthed.emit(fleshbud)

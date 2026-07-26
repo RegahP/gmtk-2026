@@ -17,7 +17,6 @@ func _process(delta: float) -> void:
 	
 	if currpos == targetpos:
 		transitioning = false
-		transitiontime = 0.0
 
 func _on_start_pressed() -> void:
 	print("start")

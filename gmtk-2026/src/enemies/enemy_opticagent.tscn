@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://eok2yga4einq" path="res://src/scripts/enemy_opticagent.gd" id="1_hkga2"]
 [ext_resource type="PackedScene" uid="uid://djiud8u7tx5c5" path="res://src/models/modmodel_OPTIC_AGENT.glb" id="2_hkga2"]
 [ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/enemy_health.gd" id="2_rd1fl"]
+[ext_resource type="AudioStream" uid="uid://b7a0idhgouh3d" path="res://src/audio/optic agent 1.mp3" id="2_yx6k3"]
+[ext_resource type="AudioStream" uid="uid://b4oo33spbx83c" path="res://src/audio/optic agent hit.mp3" id="3_3iuwq"]
 [ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="4_65syu"]
 [ext_resource type="Resource" uid="uid://c730b8q3pdaay" path="res://src/resources/opticagent_attack.tres" id="5_hwkkn"]
 [ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="6_b1hcx"]
@@ -22,21 +24,20 @@ attack_range = 0.4
 attack_windup = 0.5
 attack_cooldown = 0.8
 
+[node name="AttackAudio" type="AudioStreamPlayer" parent="." unique_id=805242915]
+stream = ExtResource("2_yx6k3")
+bus = &"SFX"
+
+[node name="DeathAudio" type="AudioStreamPlayer" parent="." unique_id=744872679]
+stream = ExtResource("3_3iuwq")
+bus = &"SFX"
+
 [node name="Health" type="Node" parent="." unique_id=630045776]
 script = ExtResource("2_rd1fl")
 max_health = 10.0
 
 [node name="modmodel_OPTIC_AGENT" parent="." unique_id=40847803 instance=ExtResource("2_hkga2")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-
-[node name="NurbsPath" parent="modmodel_OPTIC_AGENT" index="1" unique_id=2054644527]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.4430973, 0.38121825, -0.41441455)
-
-[node name="NurbsPath_010" parent="modmodel_OPTIC_AGENT" index="2" unique_id=399387111]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.049643755, 0.5546445, -0.39924252)
-
-[node name="NurbsPath_011" parent="modmodel_OPTIC_AGENT" index="3" unique_id=700962478]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.39161366, 0.4856635, -0.4514397)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1532499648]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)

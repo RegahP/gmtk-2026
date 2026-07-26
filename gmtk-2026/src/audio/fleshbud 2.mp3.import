@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dcnycaya32bws"
+path="res://.godot/imported/fleshbud 2.mp3-b85ca41679a8b7983aed98b92ef4cea8.mp3str"
+
+[deps]
+
+source_file="res://src/audio/fleshbud 2.mp3"
+dest_files=["res://.godot/imported/fleshbud 2.mp3-b85ca41679a8b7983aed98b92ef4cea8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

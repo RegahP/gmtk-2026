@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://bjp1k6ocw7bop" path="res://src/scripts/enemy_trackeragent.gd" id="1_8n6yl"]
 [ext_resource type="PackedScene" uid="uid://d1focyc3eqf6n" path="res://src/enemies/projectile_trackeragent.tscn" id="2_t86bj"]
 [ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/enemy_health.gd" id="2_wpu7a"]
+[ext_resource type="AudioStream" uid="uid://diksci0xs2lun" path="res://src/audio/fleshbud 1.mp3" id="3_houi3"]
 [ext_resource type="PackedScene" uid="uid://183lkt2aux3t" path="res://src/models/mobmodel_TRACKER_AGENT.glb" id="3_t86bj"]
 [ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="4_houi3"]
+[ext_resource type="AudioStream" uid="uid://dtki3jrh6ojta" path="res://src/audio/tracker agent hit.mp3" id="4_rigim"]
 [ext_resource type="Resource" uid="uid://c54v4bbduuckp" path="res://src/resources/trackeragent_attack.tres" id="5_rigim"]
 [ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="6_pyftt"]
 [ext_resource type="Script" uid="uid://bcs5two2yu1o" path="res://src/scripts/enemy_hitbox.gd" id="7_m3k6u"]
@@ -24,6 +26,15 @@ attack_range = 1.2
 attack_windup = 0.3
 attack_cooldown = 0.8
 
+[node name="AttackAudio" type="AudioStreamPlayer" parent="." unique_id=1752409058]
+stream = ExtResource("3_houi3")
+bus = &"SFX"
+
+[node name="DeathAudio" type="AudioStreamPlayer" parent="." unique_id=1887679983]
+stream = ExtResource("4_rigim")
+volume_db = 6.0
+bus = &"SFX"
+
 [node name="Health" type="Node" parent="." unique_id=1924828349]
 script = ExtResource("2_wpu7a")
 max_health = 20.0
@@ -31,7 +42,7 @@ max_health = 20.0
 [node name="mobmodel_TRACKER_AGENT" parent="." unique_id=926685796 instance=ExtResource("3_t86bj")]
 transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.13881409, 0.21712369)
 
-[node name="tracker agent" parent="mobmodel_TRACKER_AGENT" index="1" unique_id=488591873]
+[node name="tracker agent" parent="mobmodel_TRACKER_AGENT" index="1" unique_id=389125460]
 transform = Transform3D(-5.0337007e-08, 3.0808086, -5.0337007e-08, 0, -1.3466642e-07, -1.1515765, -1.1515765, -1.3466642e-07, 2.2003004e-15, 0, 4.3788853, -2.718462)
 
 [node name="shoot_origin" type="Node3D" parent="mobmodel_TRACKER_AGENT/tracker agent" index="0" unique_id=955792360]

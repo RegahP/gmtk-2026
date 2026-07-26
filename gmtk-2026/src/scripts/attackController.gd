@@ -5,5 +5,5 @@ extends Node
 @onready var weapon: Weapon = $"../Weapon"
 
 func attack():
-	#print("AttackController")
+	
 	weapon.attack(attackData)

@@ -14,13 +14,16 @@ var is_moving := true
 @onready var attack_controller: EnemyAttackController = $AttackController
 var meshes: Array[Node] = []
 
+@onready var attack_audio: AudioStreamPlayer = $AttackAudio
+
+
 signal died()
 
 func _ready() -> void:
 	meshes = find_children("*", "MeshInstance3D", true, false)
 	health.died.connect(_on_died)
 	health.took_damage.connect(_on_take_damage)
-
+	
 func _physics_process(delta: float) -> void:
 	return
 
@@ -34,6 +37,7 @@ func _attack_windup() -> void:
 	await get_tree().create_timer(attack_windup).timeout
 	var distance = global_position.distance_to(player.global_position)
 	if distance <= attack_range:
+		attack_audio.play()
 		_attack_player()
 	else:
 		is_moving = true
@@ -46,7 +50,7 @@ func _attack_player() -> void:
 
 func _on_died() -> void:
 	died.emit()
-
+	
 func _on_take_damage() -> void:
 	var mat = StandardMaterial3D.new()
 	mat.albedo_color = Color.WHITE
