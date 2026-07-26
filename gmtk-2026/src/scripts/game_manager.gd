@@ -5,6 +5,14 @@ extends Node3D
 @onready var timerUi: Timer = $CountdownUI/Timer
 @onready var deathscreenUi: Panel = $DeathscreenUI/Panel
 
+@onready var nextroomUi: Panel = $NextRoomUI/Panel
+@onready var clearroomUi: Panel = $NextRoomUI/Panel2
+@onready var nextRoomTypeUi: Array[AnimatedSprite2D] = [
+	$NextRoomUI/Panel/hostile,
+	$NextRoomUI/Panel/pedestal,
+	$NextRoomUI/Panel/boss,
+	$NextRoomUI/Panel/machine]
+
 var roomCount: int
 @export var roomIdsByCount: Array[Vector2i] = []
 
@@ -83,10 +91,14 @@ func _clear_room() -> void:
 
 func _add_roombase() -> void:
 	currRoomBase = roomBases[_randi(roomBases.size())].instantiate()
-	currRoomBase.doorEntered.connect(_show_nextroom_panel)
-	currRoomBase.doorExited.connect(_hide_nextroom_panel)
+
 	if (currEnemySet == null):
 		currRoomBase.doorPicked.connect(_loadroom)
+		currRoomBase.doorEntered.connect(_show_nextroom_panel)
+		currRoomBase.doorExited.connect(_hide_nextroom_panel)
+	else:
+		currRoomBase.doorEntered.connect(_show_clearroom_panel)
+		currRoomBase.doorExited.connect(_hide_clearroom_panel)
 	print("roomIds = " + str(_get_roomidsbycount()))
 	currRoomBase._setdoor_nextroomids(_get_roomidsbycount())
 	add_child(currRoomBase)
@@ -113,15 +125,31 @@ func _add_pedestal() -> void:
 
 func _show_nextroom_panel(nextRoomId: int) -> void:
 	print("showing nextroom panel")
-	print("nextroom id: " + str(nextRoomId))
+	nextroomUi.visible = true
+	for ui in nextRoomTypeUi:
+		ui.visible = false
+	nextRoomTypeUi[nextRoomId].visible = true
+	
 	if (currEnemySet != null):
 		print("room cleared: " + str(currEnemySet.setCount == 0))
 
 func _hide_nextroom_panel() -> void:
 	print("hidden nextroom panel")
+	nextroomUi.visible = false
+
+func _show_clearroom_panel(nextRoomId: int) -> void:
+	clearroomUi.visible = true
+	
+func _hide_clearroom_panel() -> void:
+	clearroomUi.visible = false
 
 func _on_room_cleared() -> void:
+	currRoomBase.doorEntered.disconnect(_show_clearroom_panel)
+	#currRoomBase.doorExited.disconnect(_hide_clearroom_panel)
+	
 	currRoomBase.doorPicked.connect(_loadroom)
+	currRoomBase.doorEntered.connect(_show_nextroom_panel)
+	currRoomBase.doorExited.connect(_hide_nextroom_panel)
 
 func _reset_player_pos() -> void:
 	player.global_position = Vector3(-1.2, 0, 0)
