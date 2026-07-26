@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://f51jpmnkwf8o" path="res://src/scripts/room_base.gd" id="1_mqfls"]
 [ext_resource type="Script" uid="uid://b6ioxcahnqgnr" path="res://src/scripts/doorData.gd" id="2_14p4x"]
+[ext_resource type="Texture2D" uid="uid://b5j0tv3tm6f60" path="res://src/models/homunculardwb_texture 5.png" id="2_kgdsh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xvblb"]
 size = Vector3(1, 0.1, 1)
@@ -14,6 +15,11 @@ size = Vector3(0.05, 1, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_14p4x"]
 size = Vector3(0.05, 1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hc01l"]
+shading_mode = 0
+albedo_texture = ExtResource("2_kgdsh")
+uv1_scale = Vector3(10, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_gh0ne"]
 size = Vector3(29, 0.3, 3)
@@ -52,6 +58,7 @@ shape = SubResource("BoxShape3D_14p4x")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor" unique_id=1948164620]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
+material_override = SubResource("StandardMaterial3D_hc01l")
 mesh = SubResource("BoxMesh_gh0ne")
 
 [node name="entrancedoor" type="MeshInstance3D" parent="floor" unique_id=95359321]

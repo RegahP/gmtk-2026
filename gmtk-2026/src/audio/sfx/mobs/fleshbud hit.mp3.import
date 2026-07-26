@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c7nf6i1v1v5sq"
+path="res://.godot/imported/fleshbud hit.mp3-09a3bf5253bd75715427ff8594e1371e.mp3str"
+
+[deps]
+
+source_file="res://src/audio/sfx/mobs/fleshbud hit.mp3"
+dest_files=["res://.godot/imported/fleshbud hit.mp3-09a3bf5253bd75715427ff8594e1371e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

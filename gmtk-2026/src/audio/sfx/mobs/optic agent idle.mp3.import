@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://7ljwsm4io7se"
+path="res://.godot/imported/optic agent idle.mp3-8d0a769d83ea06b14cf93a9000782d15.mp3str"
+
+[deps]
+
+source_file="res://src/audio/sfx/mobs/optic agent idle.mp3"
+dest_files=["res://.godot/imported/optic agent idle.mp3-8d0a769d83ea06b14cf93a9000782d15.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

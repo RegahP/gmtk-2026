@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bx30ud3eunqbo"
+path="res://.godot/imported/fleshmound born.mp3-7bde8603584239b4517fb93c0e8c53f3.mp3str"
+
+[deps]
+
+source_file="res://src/audio/sfx/mobs/fleshmound born.mp3"
+dest_files=["res://.godot/imported/fleshmound born.mp3-7bde8603584239b4517fb93c0e8c53f3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

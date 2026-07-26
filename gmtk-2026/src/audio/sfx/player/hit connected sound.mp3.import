@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cx4vbvlh6yd4e"
+path="res://.godot/imported/hit connected sound.mp3-f4cc92300572af6b25dae214ba047993.mp3str"
+
+[deps]
+
+source_file="res://src/audio/sfx/player/hit connected sound.mp3"
+dest_files=["res://.godot/imported/hit connected sound.mp3-f4cc92300572af6b25dae214ba047993.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

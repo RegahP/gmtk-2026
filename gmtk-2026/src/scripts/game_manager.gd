@@ -19,8 +19,12 @@ var roomCount: int
 @export var roomBases: Array[PackedScene]
 @export var machineRoom: PackedScene
 @export var enemySets: Array[PackedScene]
+@export var bossSets: Array[PackedScene]
 @export var pedestal: PackedScene
 @export var player: Node3D
+
+var enemySetIds: Array[int] = []
+var bossSetIds: Array[int] = []
 
 var currRoomBase: Node3D
 var currEnemySet: Node3D
@@ -78,7 +82,7 @@ func _loadroom(nextRoomId: int) -> void:
 		_add_pedestal()
 		
 	if (nextRoomId == 2): # boss room
-		print("boss room")
+		_add_bossset()
 		
 	roomCount += 1
 	#print("loaded nextroom of id " + str(nextRoomId))
@@ -110,13 +114,32 @@ func _add_machineroom() -> void:
 	#print("added machineroom")
 
 func _add_enemyset() -> void:
-	currEnemySet = enemySets[_randi(enemySets.size())].instantiate()
+	if enemySetIds.size() == enemySets.size(): enemySetIds.clear()
+	var setId = _randi(enemySets.size())
+	while(enemySetIds.has(setId)):
+		setId = _randi(enemySets.size())
+	enemySetIds.append(setId)
+	
+	currEnemySet = enemySets[setId].instantiate()
 	add_child(currEnemySet)
 	currEnemySet._set_enemies(player)
 	currEnemySet.enemies_cleared.connect(_on_room_cleared)
 	#print("added enemyset")
 
+func _add_bossset() -> void:
+	if bossSetIds.size() == bossSets.size(): bossSetIds.clear()
+	var setId = _randi(bossSets.size())
+	while(bossSetIds.has(setId)):
+		setId = _randi(bossSets.size())
+	bossSetIds.append(setId)
+	
+	currEnemySet = bossSets[setId].instantiate()
+	add_child(currEnemySet)
+	currEnemySet._set_enemies(player)
+	currEnemySet.enemies_cleared.connect(_on_room_cleared)
+
 func _add_pedestal() -> void:
+	currEnemySet = null
 	currPedestal = pedestal.instantiate()
 	add_child(currPedestal)
 	# currPedestal.loadbioupgrade

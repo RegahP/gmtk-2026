@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://co4fp7neps81h"
+path="res://.godot/imported/heartbeat of doom.mp3-880c99f4e3ee40ce26f295449e6b2119.mp3str"
+
+[deps]
+
+source_file="res://src/audio/sfx/heartbeat of doom.mp3"
+dest_files=["res://.godot/imported/heartbeat of doom.mp3-880c99f4e3ee40ce26f295449e6b2119.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
