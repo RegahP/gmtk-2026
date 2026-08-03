@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 		var my_pos = global_position
 		var angle = atan2(my_pos.x - target_pos.x, my_pos.z - target_pos.z)
 		global_rotation.y = angle
-		attack_controller.weapon.rotation.y = angle
+		#attack_controller.weapon.rotation.y = angle
 		
 		target_velocity.x = direction.x * speed * sine
 		target_velocity.z = direction.z * speed * sine

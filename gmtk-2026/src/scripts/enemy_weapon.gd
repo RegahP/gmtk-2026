@@ -18,7 +18,7 @@ func attack(data: AttackData):
 
 	var damage := DamageInfo.new()
 
-	damage.amount = data.damage
+	damage.amount = data.damage.amount
 	damage.attacker = owner
 
 	hitbox.current_damage = damage

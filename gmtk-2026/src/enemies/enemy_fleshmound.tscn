@@ -4,30 +4,53 @@
 [ext_resource type="PackedScene" uid="uid://bc8dasom0u8gp" path="res://src/models/fleshmound.glb" id="2_ml2bp"]
 [ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/enemy_health.gd" id="2_mq5bb"]
 [ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="4_4jy0c"]
-[ext_resource type="Resource" uid="uid://nmam56tr4qqy" path="res://src/resources/fleshmound_attack.tres" id="5_k3ph4"]
-[ext_resource type="AudioStream" uid="uid://spgoejo6p88v" path="res://src/audio/fleshmound born.mp3" id="6_an5nw"]
-[ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="6_hr776"]
-[ext_resource type="Script" uid="uid://bcs5two2yu1o" path="res://src/scripts/enemy_hitbox.gd" id="7_iftcu"]
 [ext_resource type="AudioStream" uid="uid://5vcyd3ng07i8" path="res://src/audio/homunculimb 1.mp3" id="7_kgtp0"]
+[ext_resource type="AudioStream" uid="uid://dcnycaya32bws" path="res://src/audio/fleshbud 2.mp3" id="7_ocnxp"]
+[ext_resource type="Script" uid="uid://ci6lfp1vbxqmt" path="res://src/scripts/attack.gd" id="8_upupt"]
+[ext_resource type="Script" uid="uid://gxysbnpwf8aj" path="res://src/scripts/damageInfo.gd" id="9_1cx7v"]
+[ext_resource type="AudioStream" uid="uid://bwurf5mith8gm" path="res://src/audio/sfx/mobs/fleshmound birthing.mp3" id="10_7suss"]
+[ext_resource type="Script" uid="uid://c73gaou3tfp63" path="res://src/scripts/attackData.gd" id="10_ax56o"]
+[ext_resource type="AudioStream" uid="uid://bmh5yypf0l4wb" path="res://src/audio/sfx/mobs/fleshbud 2.mp3" id="10_ocnxp"]
+[ext_resource type="Script" uid="uid://duidbenc7ctlk" path="res://src/scripts/ability.gd" id="12_7suss"]
+[ext_resource type="Script" uid="uid://7dq2giwku4ei" path="res://src/scripts/hurtbox.gd" id="12_u2pqx"]
+[ext_resource type="Script" uid="uid://dxy5voosxn1fv" path="res://src/scripts/attackbox.gd" id="13_63xgx"]
+[ext_resource type="Script" uid="uid://cl7vvextjyf6p" path="res://src/scripts/abilityData.gd" id="14_1cx7v"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lke40"]
 height = 0.1
 radius = 0.18
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_iblbf"]
-radius = 0.6
+[sub_resource type="Resource" id="Resource_upupt"]
+script = ExtResource("9_1cx7v")
+amount = 1.0
+metadata/_custom_type_script = "uid://gxysbnpwf8aj"
+
+[sub_resource type="Resource" id="Resource_1cx7v"]
+script = ExtResource("10_ax56o")
+damage = SubResource("Resource_upupt")
+windup = 0.5
+cooldown = 0.7
+sound = ExtResource("10_ocnxp")
+metadata/_custom_type_script = "uid://c73gaou3tfp63"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ash0c"]
+radius = 0.45
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0hy2g"]
+radius = 0.3
+
+[sub_resource type="Resource" id="Resource_ax56o"]
+script = ExtResource("14_1cx7v")
+windup = 1.0
+cooldown = 2.4
+sound = ExtResource("10_7suss")
+metadata/_custom_type_script = "uid://cl7vvextjyf6p"
 
 [node name="enemy_fleshmound" type="CharacterBody3D" unique_id=1622673865]
 collision_mask = 0
 script = ExtResource("1_ml2bp")
 speed = 0.1
-attack_range = 0.25
-attack_windup = 0.5
-attack_cooldown = 1.2
-
-[node name="AttackAudio" type="AudioStreamPlayer" parent="." unique_id=1833509278]
-stream = ExtResource("6_an5nw")
-bus = &"SFX"
+enable_range = 2.0
 
 [node name="DeathAudio" type="AudioStreamPlayer" parent="." unique_id=1934669262]
 stream = ExtResource("7_kgtp0")
@@ -38,28 +61,50 @@ script = ExtResource("2_mq5bb")
 max_health = 20.0
 
 [node name="fleshmound" parent="." unique_id=1536687203 instance=ExtResource("2_ml2bp")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0)
 
-[node name="fleshmound" parent="fleshmound" index="0" unique_id=1307303394]
+[node name="fleshmound" parent="fleshmound" index="0" unique_id=1681088931]
 transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, -0.084329724, 0.05623561, 0.0041656718)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1532499648]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 shape = SubResource("CylinderShape3D_lke40")
 
-[node name="AttackController" type="Node" parent="." unique_id=1669553779]
+[node name="EnemyAttackController" type="Node3D" parent="." unique_id=1766846526]
 script = ExtResource("4_4jy0c")
-light_attack = ExtResource("5_k3ph4")
 
-[node name="Weapon" type="Node3D" parent="." unique_id=1987529354]
-script = ExtResource("6_hr776")
-metadata/_custom_type_script = "uid://di2aq3omvm40x"
+[node name="AttackAudio" type="AudioStreamPlayer" parent="EnemyAttackController" unique_id=2140318909]
+stream = ExtResource("7_ocnxp")
+pitch_scale = 0.6
+bus = &"SFX"
 
-[node name="Hitbox" type="Area3D" parent="Weapon" unique_id=1258992025]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
-monitoring = false
-script = ExtResource("7_iftcu")
+[node name="Attack" type="Node3D" parent="EnemyAttackController" unique_id=573347747]
+script = ExtResource("8_upupt")
+data = SubResource("Resource_1cx7v")
+is_passive = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=1134446879]
-shape = SubResource("SphereShape3D_iblbf")
+[node name="Hurtbox" type="Area3D" parent="EnemyAttackController/Attack" unique_id=715127753]
+script = ExtResource("12_u2pqx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyAttackController/Attack/Hurtbox" unique_id=1303805831]
+shape = SubResource("SphereShape3D_ash0c")
+
+[node name="Attackbox" type="Area3D" parent="EnemyAttackController/Attack" unique_id=1751977013]
+script = ExtResource("13_63xgx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyAttackController/Attack/Attackbox" unique_id=540700196]
+shape = SubResource("SphereShape3D_0hy2g")
+
+[node name="Birth" type="Node3D" parent="." unique_id=1191196632]
+script = ExtResource("12_7suss")
+data = SubResource("Resource_ax56o")
+
+[node name="AbilityAudio" type="AudioStreamPlayer" parent="Birth" unique_id=376363430]
+stream = ExtResource("7_ocnxp")
+bus = &"SFX"
+
+[connection signal="body_entered" from="EnemyAttackController/Attack/Hurtbox" to="EnemyAttackController/Attack/Hurtbox" method="_on_body_entered"]
+[connection signal="body_exited" from="EnemyAttackController/Attack/Hurtbox" to="EnemyAttackController/Attack/Hurtbox" method="_on_body_exited"]
+[connection signal="body_entered" from="EnemyAttackController/Attack/Attackbox" to="EnemyAttackController/Attack/Attackbox" method="_on_body_entered"]
 
 [editable path="fleshmound"]

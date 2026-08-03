@@ -8,6 +8,7 @@ extends Node3D
 
 @onready var nextroomUi: Panel = $NextRoomUI/Panel
 @onready var clearroomUi: Panel = $NextRoomUI/Panel2
+@onready var clearpedestalUi: Panel = $NextRoomUI/Panel3
 @onready var nextRoomTypeUi: Array[AnimatedSprite2D] = [
 	$NextRoomUI/Panel/hostile,
 	$NextRoomUI/Panel/pedestal,
@@ -54,7 +55,7 @@ func _ready() -> void:
 	timerUi.timeout.connect(_on_timer_timeout)
 	timerUi.timeout.connect(player._on_timer_timeout)
 
-func _process(delta: float) -> void:
+func _process(_float) -> void:
 	_timer_run()
 
 func _timer_run() -> void:
@@ -93,6 +94,9 @@ func _loadroom(nextRoomId: int) -> void:
 	_reset_player_pos()
 	_clear_room()
 	#nextRoomId = 3
+	if (nextRoomId in [-1, 0, 1, 2]):
+		_add_roombase()
+		
 	if (nextRoomId == -1): # init room
 		print("init room")
 	
@@ -101,9 +105,6 @@ func _loadroom(nextRoomId: int) -> void:
 	
 	if (nextRoomId == 1): # pedestal room
 		_add_pedestal()
-	
-	if ([-1, 0, 1, 2].has(nextRoomId)):
-		_add_roombase()
 	
 	if (nextRoomId == 2): # boss room
 		_add_bossset()
@@ -123,14 +124,11 @@ func _clear_room() -> void:
 
 func _add_roombase() -> void:
 	currRoomBase = roomBases[_randi(roomBases.size())].instantiate()
-
-	if (currEnemySet == null):
-		currRoomBase.doorPicked.connect(_loadroom)
-		currRoomBase.doorEntered.connect(_show_nextroom_panel)
-		currRoomBase.doorExited.connect(_hide_nextroom_panel)
-	else:
-		currRoomBase.doorEntered.connect(_show_clearroom_panel)
-		currRoomBase.doorExited.connect(_hide_clearroom_panel)
+	currRoomBase._doors_unlock()
+	currRoomBase.doorPicked.connect(_loadroom)
+	currRoomBase.doorEntered.connect(_show_nextroom_panel)
+	currRoomBase.doorExited.connect(_hide_panels)
+	currRoomBase.doorLocked.connect(_show_locked_panel)
 	print("roomIds = " + str(_get_roomidsbycount()))
 	currRoomBase._setdoor_nextroomids(_get_roomidsbycount())
 	add_child(currRoomBase)
@@ -148,24 +146,17 @@ func _add_machineroom() -> void:
 	music.stream = load("res://src/Music/cirno.mp3")
 	music.play()
 
-func _enddoor() -> void:
-	currRoomBase.doorPicked.connect(_end)
-	currRoomBase._set_enddoor()
-
-func _end() -> void:
-	get_tree().change_scene_to_file("res://src/main_menu.tscn")
-
 func _add_enemyset() -> void:
 	if enemySetIds.size() == enemySets.size(): enemySetIds.clear()
 	var setId = _randi(enemySets.size())
 	while(enemySetIds.has(setId)):
 		setId = _randi(enemySets.size())
 	enemySetIds.append(setId)
-	
+	currRoomBase._doors_lock()
 	currEnemySet = enemySets[setId].instantiate()
 	add_child(currEnemySet)
 	currEnemySet._set_enemies(player)
-	currEnemySet.enemies_cleared.connect(_on_room_cleared)
+	currEnemySet.enemies_cleared.connect(currRoomBase._doors_unlock)
 	currEnemySet.enemies_cleared.connect(_recover_time)
 
 func _add_bossset() -> void:
@@ -174,24 +165,32 @@ func _add_bossset() -> void:
 	while(bossSetIds.has(setId)):
 		setId = _randi(bossSets.size())
 	bossSetIds.append(setId)
-	
+	currRoomBase._doors_lock()
 	currEnemySet = bossSets[setId].instantiate()
 	add_child(currEnemySet)
 	currEnemySet._set_enemies(player)
-	currEnemySet.enemies_cleared.connect(_on_room_cleared)
-	currEnemySet.enemies_cleared.connect(_weapon_evolve)
+	currEnemySet.enemies_cleared.connect(_add_pedestal)
 
 func _add_pedestal() -> void:
 	currEnemySet = null
 	currPedestal = pedestal.instantiate()
 	add_child(currPedestal)
+	currRoomBase._doors_lock()
 	currPedestal.entered.connect(_show_weaponevo_panel)
 	currPedestal.exited.connect(_hide_weaponevo_panel)
 	currPedestal.picked.connect(_hide_weaponevo_panel)
+	currPedestal.picked.connect(currRoomBase._doors_unlock)
 	currPedestal.picked.connect(_weapon_evolve)
 
+func _enddoor() -> void:
+	currRoomBase.doorPicked.connect(_end)
+	currRoomBase._set_enddoor()
+
+func _end() -> void:
+	get_tree().change_scene_to_file("res://src/main_menu.tscn")
+
 func _show_nextroom_panel(nextRoomId: int) -> void:
-	print("showing nextroom panel")
+	#print("showing nextroom panel")
 	nextroomUi.visible = true
 	for ui in nextRoomTypeUi:
 		ui.visible = false
@@ -200,15 +199,17 @@ func _show_nextroom_panel(nextRoomId: int) -> void:
 	if (currEnemySet != null):
 		print("room cleared: " + str(currEnemySet.setCount == 0))
 
-func _hide_nextroom_panel() -> void:
-	print("hidden nextroom panel")
+func _hide_panels() -> void:
+	#print("hidden nextroom panel")
 	nextroomUi.visible = false
-
-func _show_clearroom_panel(nextRoomId: int) -> void:
-	clearroomUi.visible = true
-	
-func _hide_clearroom_panel() -> void:
 	clearroomUi.visible = false
+	clearpedestalUi.visible = false
+
+func _show_locked_panel() -> void:
+	if (currEnemySet != null && currEnemySet.setCount != 0):
+		clearroomUi.visible = true
+	elif (currPedestal != null && !currPedestal.used):
+		clearpedestalUi.visible = true
 
 func _show_weaponevo_panel() -> void:
 	weaponEvoUi.visible = true
@@ -222,14 +223,6 @@ func _weapon_evolve() -> void:
 	weaponEvo.frame = weapon_evolve_lvl + 1
 	if (weapon_evolve_lvl < weaponEvoAttackDatas.size()):
 		player._weapon_evolve(weaponEvoAttackDatas[weapon_evolve_lvl])
-
-func _on_room_cleared() -> void:
-	currRoomBase.doorEntered.disconnect(_show_clearroom_panel)
-	#currRoomBase.doorExited.disconnect(_hide_clearroom_panel)
-	
-	currRoomBase.doorPicked.connect(_loadroom)
-	currRoomBase.doorEntered.connect(_show_nextroom_panel)
-	currRoomBase.doorExited.connect(_hide_nextroom_panel)
 
 func _reset_player_pos() -> void:
 	player.global_position = Vector3(-1.2, 0, 0)

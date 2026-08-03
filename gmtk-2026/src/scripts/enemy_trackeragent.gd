@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		target_velocity = Vector3.ZERO
 
-func _attack_player() -> void:
+func _attack_player(_mute: bool = false) -> void:
 	var projectile = projectile.instantiate()
 	add_child(projectile)
 	projectile.position.y = shoot_origin.global_position.y

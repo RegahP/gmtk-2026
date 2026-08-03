@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 
 	var distance = global_position.distance_to(player.global_position)
 
-	if distance <= attack_range:
+	if distance <= enable_range:
 		if (is_moving):
 			_attack_windup()
 	
@@ -53,3 +53,14 @@ func _physics_process(delta: float) -> void:
 	else:
 		target_velocity = Vector3.ZERO
 		acceleration = 1
+
+func _attack_windup(_mute: bool = false) -> void:
+	#print("ATTACKING PLAYER")
+	is_moving = false
+	#await get_tree().create_timer(attack_windup).timeout
+	#if !attack_audio.playing: attack_audio.play()
+	var distance = global_position.distance_to(player.global_position)
+	#if distance <= attack_range:
+	#	_attack_player(false)
+	#else:
+	#	is_moving = true

@@ -27,9 +27,9 @@ func _physics_process(delta: float) -> void:
 		if (!is_leaping && can_leap):
 			_attack_leap()
 	
-	if distance <= attack_range:
-		if (is_moving || is_moving && is_leaping):
-			_attack_windup()
+	#if distance <= attack_range:
+	#	if (is_moving || is_moving && is_leaping):
+	#		_attack_windup()
 		
 	legs.rotation.y = 90 + sin(time * 6) *.5
 	
@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 		
 		_enemy_move()
 	
-	if is_moving:
+	if is_moving && distance <= enable_range:
 		var dist = global_position.distance_to(player.global_position)
 		if dist > 2: return
 		var direction = global_position.direction_to(player.global_position)
@@ -78,5 +78,5 @@ func _attack_leap() -> void:
 	is_leaping = false
 	is_moving = true
 	target_velocity = Vector3.ZERO
-	await get_tree().create_timer(attack_cooldown).timeout
+	await get_tree().create_timer(leap_cooldown).timeout
 	can_leap = true

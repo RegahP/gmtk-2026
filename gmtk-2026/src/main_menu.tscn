@@ -23,6 +23,18 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jpog"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1wfgh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1jpog"]
+font_size = 64
+font_color = Color(0.17254902, 0.43529412, 0.34509805, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_32mut"]
+font_size = 64
+font_color = Color(0.2901961, 0.58431375, 0.45882353, 1)
+
 [node name="MainMenu" type="Control" unique_id=496799830]
 layout_mode = 3
 anchors_preset = 15
@@ -32,6 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_stretch_ratio = 0.0
 script = ExtResource("1_bq8pk")
+skipintro = true
 
 [node name="CreditsPanel" type="Panel" parent="." unique_id=1122286126]
 layout_mode = 1
@@ -56,7 +69,6 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_bq8pk")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="." unique_id=1045488215]
 stream = ExtResource("4_d3tmf")
-volume_db = -8.0
 autoplay = true
 bus = &"Music"
 parameters/looping = true
@@ -222,7 +234,61 @@ theme_override_font_sizes/font_size = 64
 text = "Return"
 flat = true
 
+[node name="SkipIntro" type="Button" parent="." unique_id=1821906711]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -372.0
+offset_top = -82.0
+offset_right = -33.0
+offset_bottom = -17.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.17254902, 0.43529412, 0.34509805, 1)
+theme_override_colors/font_focus_color = Color(0.2901961, 0.58431375, 0.45882353, 1)
+theme_override_colors/font_pressed_color = Color(0.2901961, 0.58431375, 0.45882353, 1)
+theme_override_colors/font_hover_color = Color(0.2901961, 0.58431375, 0.45882353, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.3372549, 0.67058825, 0.49803922, 1)
+theme_override_fonts/font = ExtResource("3_6w7d7")
+theme_override_font_sizes/font_size = 54
+theme_override_styles/normal = SubResource("StyleBoxFlat_5elix")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1jpog")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1wfgh")
+toggle_mode = true
+text = "SKIP INTRO"
+flat = true
+alignment = 0
+
+[node name="Label9" type="Label" parent="SkipIntro" unique_id=91686428]
+layout_mode = 0
+offset_left = 296.0
+offset_right = 341.0
+offset_bottom = 65.0
+theme_override_fonts/font = ExtResource("3_6w7d7")
+theme_override_font_sizes/font_size = 32
+text = "O"
+label_settings = SubResource("LabelSettings_1jpog")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label10" type="Label" parent="SkipIntro" unique_id=1847591286]
+visible = false
+layout_mode = 0
+offset_left = 296.0
+offset_right = 341.0
+offset_bottom = 65.0
+theme_override_fonts/font = ExtResource("3_6w7d7")
+theme_override_font_sizes/font_size = 32
+text = "X"
+label_settings = SubResource("LabelSettings_32mut")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="SkipIntro" to="." method="_on_skipintro_toggle"]

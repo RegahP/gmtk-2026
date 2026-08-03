@@ -1,9 +1,15 @@
 [gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://8gg1mntvripk"]
 
 [ext_resource type="Script" uid="uid://c73gaou3tfp63" path="res://src/scripts/attackData.gd" id="1_0bc3k"]
+[ext_resource type="Script" uid="uid://gxysbnpwf8aj" path="res://src/scripts/damageInfo.gd" id="1_o3g5e"]
+
+[sub_resource type="Resource" id="Resource_grec7"]
+script = ExtResource("1_o3g5e")
+amount = 1.0
+metadata/_custom_type_script = "uid://gxysbnpwf8aj"
 
 [resource]
 script = ExtResource("1_0bc3k")
-damage = 1.0
-attack_windup = 0.25
-attack_cooldown = 0.5
+damage = SubResource("Resource_grec7")
+windup = 0.25
+cooldown = 0.5

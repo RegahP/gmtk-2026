@@ -61,20 +61,20 @@ func _spin_change() -> void:
 
 func _spike_attack() -> void:
 	attackAnim.play("slugga_spikes")
-	_spike_windup()
+	#_spike_windup()
 
 func _tong_attack() -> void:
 	attackAnim.play("slugga_tong")
 	$slugga_tong.visible = true
-	_attack_windup()
+	#_attack_windup()
 
-func _spike_windup() -> void:
-	#print("ATTACKING PLAYER")
-	is_moving = false
-	await get_tree().create_timer(attack_windup).timeout
-	var distance = global_position.distance_to(player.global_position)
-	if distance <= attack_range:
-		if !attack_audio2.playing: attack_audio2.play()
-		_attack_player()
-	else:
-		is_moving = true
+#func _spike_windup() -> void:
+	##print("ATTACKING PLAYER")
+	#is_moving = false
+	#await get_tree().create_timer(attack_windup).timeout
+	#var distance = global_position.distance_to(player.global_position)
+	#if distance <= attack_range:
+		#if !attack_audio2.playing: attack_audio2.play()
+		#_attack_player(true)
+	#else:
+		#is_moving = true

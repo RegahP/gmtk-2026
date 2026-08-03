@@ -75,7 +75,7 @@ func _jump_attack() -> void:
 func _jump_end() -> void:
 	is_jumping = false
 	attack_controller.attack()
-	attack_audio.play()
+	#attack_audio.play()
 	body.position.y = 0
 	spinTimer.start()
 	

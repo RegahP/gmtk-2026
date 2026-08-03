@@ -30,7 +30,6 @@ script = ExtResource("1_4eluf")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="." unique_id=1306206585]
 stream = ExtResource("2_s40bw")
 bus = &"Music"
-parameters/looping = true
 
 [node name="mesh" type="MeshInstance3D" parent="." unique_id=1125574105]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)

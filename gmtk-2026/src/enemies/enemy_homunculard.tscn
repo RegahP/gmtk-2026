@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bqjmtcd1c3705"]
 
 [ext_resource type="Script" uid="uid://bbjyftki3ye4e" path="res://src/scripts/enemy_homunculard.gd" id="1_ampmy"]
-[ext_resource type="AudioStream" uid="uid://dcnycaya32bws" path="res://src/audio/fleshbud 2.mp3" id="2_862ab"]
+[ext_resource type="AudioStream" uid="uid://dmfsteemmycff" path="res://src/audio/sfx/mobs/homunculard hit.mp3" id="2_862ab"]
 [ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/enemy_health.gd" id="2_ch1wu"]
 [ext_resource type="PackedScene" uid="uid://8pebql6gj55l" path="res://src/models/homunculardwb.glb" id="3_ch1wu"]
 [ext_resource type="AudioStream" uid="uid://d4kahfbe8eh2l" path="res://src/audio/fleshbud hit.mp3" id="3_kd0wb"]
@@ -10,18 +10,18 @@
 [ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="6_wya4f"]
 [ext_resource type="Script" uid="uid://bcs5two2yu1o" path="res://src/scripts/enemy_hitbox.gd" id="7_0uq1i"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xo4jp"]
-size = Vector3(0.3, 0.2, 0.15)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kd0wb"]
+height = 0.5
+radius = 0.15
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3imdb"]
-radius = 0.6
 
 [node name="enemy_homunculard" type="CharacterBody3D" unique_id=1622673865]
 script = ExtResource("1_ampmy")
 speed = 0.3
-attack_range = 0.4
-attack_windup = 1.0
-attack_cooldown = 0.6
+attack_range = 0.6
+attack_windup = 0.8
+attack_cooldown = 0.8
 
 [node name="AttackAudio" type="AudioStreamPlayer" parent="." unique_id=2059943339]
 stream = ExtResource("2_862ab")
@@ -40,8 +40,8 @@ max_health = 20.0
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1532499648]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-shape = SubResource("BoxShape3D_xo4jp")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("CylinderShape3D_kd0wb")
 
 [node name="AttackController" type="Node" parent="." unique_id=1434899864]
 script = ExtResource("4_b87re")
@@ -52,6 +52,7 @@ script = ExtResource("6_wya4f")
 metadata/_custom_type_script = "uid://di2aq3omvm40x"
 
 [node name="Hitbox" type="Area3D" parent="Weapon" unique_id=1924859129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
 monitoring = false
 script = ExtResource("7_0uq1i")
 

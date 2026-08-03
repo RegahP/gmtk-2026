@@ -6,5 +6,5 @@ func _ready() -> void:
 
 func _on_take_damage() -> void:
 	super()
-	if !attack_audio.playing:
-		attack_audio.play()
+	#if !attack_audio.playing:
+	#	attack_audio.play()
