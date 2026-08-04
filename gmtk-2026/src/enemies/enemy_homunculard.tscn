@@ -1,31 +1,47 @@
 [gd_scene format=3 uid="uid://bqjmtcd1c3705"]
 
 [ext_resource type="Script" uid="uid://bbjyftki3ye4e" path="res://src/scripts/enemy_homunculard.gd" id="1_ampmy"]
-[ext_resource type="AudioStream" uid="uid://dmfsteemmycff" path="res://src/audio/sfx/mobs/homunculard hit.mp3" id="2_862ab"]
 [ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/enemy_health.gd" id="2_ch1wu"]
 [ext_resource type="PackedScene" uid="uid://8pebql6gj55l" path="res://src/models/homunculardwb.glb" id="3_ch1wu"]
 [ext_resource type="AudioStream" uid="uid://d4kahfbe8eh2l" path="res://src/audio/fleshbud hit.mp3" id="3_kd0wb"]
 [ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="4_b87re"]
-[ext_resource type="Resource" uid="uid://b6j83rrjfqi14" path="res://src/resources/homunculard_attack.tres" id="5_ampmy"]
-[ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="6_wya4f"]
-[ext_resource type="Script" uid="uid://bcs5two2yu1o" path="res://src/scripts/enemy_hitbox.gd" id="7_0uq1i"]
+[ext_resource type="PackedScene" uid="uid://d2vuxok5tlptf" path="res://src/models/homunculard.glb" id="4_q5wx1"]
+[ext_resource type="AudioStream" uid="uid://dcnycaya32bws" path="res://src/audio/fleshbud 2.mp3" id="7_kru58"]
+[ext_resource type="Script" uid="uid://ci6lfp1vbxqmt" path="res://src/scripts/attack.gd" id="8_4eme7"]
+[ext_resource type="Script" uid="uid://gxysbnpwf8aj" path="res://src/scripts/damageInfo.gd" id="9_aw4e8"]
+[ext_resource type="Script" uid="uid://c73gaou3tfp63" path="res://src/scripts/attackData.gd" id="10_5rhlx"]
+[ext_resource type="AudioStream" uid="uid://dhw8i1ndl6wg6" path="res://src/audio/sfx/mobs/homunculard swoosh hit.mp3" id="11_q5wx1"]
+[ext_resource type="Script" uid="uid://7dq2giwku4ei" path="res://src/scripts/hurtbox.gd" id="12_lvn8o"]
+[ext_resource type="Script" uid="uid://dxy5voosxn1fv" path="res://src/scripts/attackbox.gd" id="13_wnr7y"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kd0wb"]
 height = 0.5
 radius = 0.15
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_3imdb"]
+[sub_resource type="Resource" id="Resource_7ogfu"]
+script = ExtResource("9_aw4e8")
+amount = 2.0
+stun = true
+metadata/_custom_type_script = "uid://gxysbnpwf8aj"
+
+[sub_resource type="Resource" id="Resource_6ok1g"]
+script = ExtResource("10_5rhlx")
+damage = SubResource("Resource_7ogfu")
+windup = 0.8
+cooldown = 0.7
+animation_name = &"attackanim"
+sound = ExtResource("11_q5wx1")
+metadata/_custom_type_script = "uid://c73gaou3tfp63"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3r5qb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e2iv3"]
+radius = 0.25
 
 [node name="enemy_homunculard" type="CharacterBody3D" unique_id=1622673865]
 script = ExtResource("1_ampmy")
 speed = 0.3
-attack_range = 0.6
-attack_windup = 0.8
-attack_cooldown = 0.8
-
-[node name="AttackAudio" type="AudioStreamPlayer" parent="." unique_id=2059943339]
-stream = ExtResource("2_862ab")
-bus = &"SFX"
+enable_range = 3.0
 
 [node name="DeathAudio" type="AudioStreamPlayer" parent="." unique_id=2077555643]
 stream = ExtResource("3_kd0wb")
@@ -36,27 +52,84 @@ bus = &"SFX"
 script = ExtResource("2_ch1wu")
 max_health = 20.0
 
+[node name="homunculard" parent="." unique_id=1351930073 instance=ExtResource("4_q5wx1")]
+transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 0, 0, 0)
+
+[node name="Skeleton3D" parent="homunculard/metarig" parent_id_path=PackedInt32Array(1351930073, 975933954) index="0" unique_id=324134128]
+bones/0/rotation = Quaternion(0.13053067, 0.08761655, -0.024614245, 0.98725843)
+bones/1/rotation = Quaternion(-0.06674653, -0.010563683, 0.010375556, 0.99766016)
+bones/2/rotation = Quaternion(-0.08227222, -0.011696001, 0.006092122, 0.9965227)
+bones/3/rotation = Quaternion(-0.00263319, -0.012113991, 0.0016190418, 0.99992186)
+bones/7/rotation = Quaternion(-0.61835027, -0.34745252, -0.36214238, 0.6047914)
+bones/8/position = Vector3(0.0510561, 0.31363818, 0.02820323)
+bones/8/rotation = Quaternion(-0.3349559, 0.6721337, -0.46125442, 0.4725307)
+bones/9/rotation = Quaternion(0.181804, 0.1513476, -0.11731958, 0.96450883)
+bones/10/rotation = Quaternion(-0.020868503, -0.026670812, -0.029830905, 0.99898124)
+bones/11/rotation = Quaternion(-0.60882705, 0.33521596, 0.3622257, 0.62108976)
+bones/12/rotation = Quaternion(0.3329572, 0.68733144, -0.43998095, -0.4723683)
+bones/13/rotation = Quaternion(0.1679948, -0.15243459, 0.10927445, 0.96778125)
+bones/14/rotation = Quaternion(-0.024306044, 0.026526937, 0.028278025, 0.9989525)
+bones/15/rotation = Quaternion(-3.3016292e-08, 0.6969363, 0.71713305, -2.8913314e-08)
+bones/16/rotation = Quaternion(-3.3016292e-08, 0.6969363, 0.71713305, -2.8913314e-08)
+bones/19/position = Vector3(0.18712571, 0.13993712, 0.027469467)
+bones/19/rotation = Quaternion(0.980086, -0.051005654, 0.01257435, 0.1914991)
+bones/20/rotation = Quaternion(0.07508197, 0.012427001, -0.17694719, 0.98127365)
+bones/21/rotation = Quaternion(-0.51720464, -0.0733817, 0.12090572, 0.84409505)
+bones/22/rotation = Quaternion(-0.00020712815, 0.9621008, -0.27269417, -6.142735e-05)
+bones/24/position = Vector3(-0.19349192, 0.13856441, 0.022144629)
+bones/24/rotation = Quaternion(0.9834145, -0.10705787, 0.0218831, 0.14476094)
+bones/25/rotation = Quaternion(0.11398024, -0.02332263, 0.051530343, 0.99187165)
+bones/26/rotation = Quaternion(-0.5220483, 0.08135742, -0.13094091, 0.838869)
+bones/27/rotation = Quaternion(1.3914095e-06, 0.96093696, -0.27676758, -1.1937572e-06)
+bones/28/rotation = Quaternion(-0.6797053, 0.67970574, -0.1949373, -0.19493681)
+bones/29/position = Vector3(0.33991283, 0.015915312, 0.15319413)
+bones/29/rotation = Quaternion(0.67004246, 2.389346e-06, 2.156691e-06, 0.7423228)
+bones/29/scale = Vector3(1, 1, 1.0000272)
+bones/30/position = Vector3(-0.3430959, 0.015915312, 0.15319413)
+bones/30/rotation = Quaternion(0.67004246, 2.389346e-06, 2.156691e-06, 0.7423228)
+bones/30/scale = Vector3(1, 1, 1.0000272)
+bones/31/position = Vector3(0.5714977, 0.5647642, -0.022916699)
+bones/31/rotation = Quaternion(0.6700424, 3.6270105e-06, 3.2786888e-06, 0.74232286)
+bones/32/position = Vector3(-0.4898866, 0.56476414, -0.022916693)
+bones/32/rotation = Quaternion(0.6700424, 3.6270105e-06, 3.2786888e-06, 0.74232286)
+
 [node name="homunculardwb" parent="." unique_id=407234383 instance=ExtResource("3_ch1wu")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1532499648]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 shape = SubResource("CylinderShape3D_kd0wb")
 
-[node name="AttackController" type="Node" parent="." unique_id=1434899864]
+[node name="EnemyAttackController" type="Node3D" parent="." unique_id=603809436]
 script = ExtResource("4_b87re")
-light_attack = ExtResource("5_ampmy")
 
-[node name="Weapon" type="Node3D" parent="." unique_id=1138143893]
-script = ExtResource("6_wya4f")
-metadata/_custom_type_script = "uid://di2aq3omvm40x"
+[node name="AttackAudio" type="AudioStreamPlayer" parent="EnemyAttackController" unique_id=1564551030]
+stream = ExtResource("7_kru58")
+bus = &"SFX"
 
-[node name="Hitbox" type="Area3D" parent="Weapon" unique_id=1924859129]
+[node name="Attack" type="Node3D" parent="EnemyAttackController" unique_id=1387292825]
+script = ExtResource("8_4eme7")
+data = SubResource("Resource_6ok1g")
+is_passive = true
+
+[node name="Hurtbox" type="Area3D" parent="EnemyAttackController/Attack" unique_id=1663084105]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
-monitoring = false
-script = ExtResource("7_0uq1i")
+script = ExtResource("12_lvn8o")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=1078278038]
-shape = SubResource("SphereShape3D_3imdb")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyAttackController/Attack/Hurtbox" unique_id=1549541597]
+shape = SubResource("SphereShape3D_3r5qb")
 
+[node name="Attackbox" type="Area3D" parent="EnemyAttackController/Attack" unique_id=1932734065]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+script = ExtResource("13_wnr7y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyAttackController/Attack/Attackbox" unique_id=2063782871]
+shape = SubResource("SphereShape3D_e2iv3")
+
+[connection signal="body_entered" from="EnemyAttackController/Attack/Hurtbox" to="EnemyAttackController/Attack/Hurtbox" method="_on_body_entered"]
+[connection signal="body_exited" from="EnemyAttackController/Attack/Hurtbox" to="EnemyAttackController/Attack/Hurtbox" method="_on_body_exited"]
+[connection signal="body_entered" from="EnemyAttackController/Attack/Attackbox" to="EnemyAttackController/Attack/Attackbox" method="_on_body_entered"]
+
+[editable path="homunculard"]
 [editable path="homunculardwb"]

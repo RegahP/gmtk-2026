@@ -16,15 +16,15 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_xo4jp"]
 size = Vector3(0.25, 0.2, 0.15)
 
-[sub_resource type="Resource" id="Resource_w3egr"]
+[sub_resource type="Resource" id="Resource_34m2n"]
 script = ExtResource("8_tvsfe")
 amount = 1.0
 metadata/_custom_type_script = "uid://gxysbnpwf8aj"
 
 [sub_resource type="Resource" id="Resource_ntcgf"]
 script = ExtResource("9_ftldd")
-damage = SubResource("Resource_w3egr")
-windup = 0.2
+damage = SubResource("Resource_34m2n")
+windup = 0.4
 cooldown = 0.4
 sound = ExtResource("10_34m2n")
 metadata/_custom_type_script = "uid://c73gaou3tfp63"

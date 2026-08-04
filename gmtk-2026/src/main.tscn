@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bur25qsrx35y4" path="res://src/pedestal.tscn" id="4_kmhfv"]
 [ext_resource type="PackedScene" uid="uid://flgusbt82ku7" path="res://src/enemysets/bossSet_1.tscn" id="4_mgm53"]
 [ext_resource type="PackedScene" uid="uid://bccnke0whud0v" path="res://src/enemysets/enemySet_machine.tscn" id="4_ruk5h"]
-[ext_resource type="PackedScene" uid="uid://bmoccymvqk78t" path="res://src/enemysets/enemySet_2.tscn" id="5_prqr5"]
+[ext_resource type="PackedScene" uid="uid://ckw6chq1y87b0" path="res://src/enemysets/enemySet_7.tscn" id="6_7b4p7"]
 [ext_resource type="Texture2D" uid="uid://dwf2aus5gmr8x" path="res://src/textures/youdied.png" id="7_rlaii"]
 [ext_resource type="Texture2D" uid="uid://2wqn0xalgcnc" path="res://src/textures/cred_screen.png" id="8_mgm53"]
 [ext_resource type="Script" uid="uid://c73gaou3tfp63" path="res://src/scripts/attackData.gd" id="16_hxm6p"]
@@ -228,7 +228,7 @@ roomIdsByCount = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(2, 0)
 roomBases = Array[PackedScene]([ExtResource("1_5q4o7")])
 machineRoom = ExtResource("3_5mrjc")
 machineEnemies = ExtResource("4_ruk5h")
-enemySets = Array[PackedScene]([ExtResource("5_prqr5")])
+enemySets = Array[PackedScene]([ExtResource("6_7b4p7")])
 bossSets = Array[PackedScene]([ExtResource("19_sta5p"), ExtResource("4_mgm53")])
 pedestal = ExtResource("4_kmhfv")
 player = NodePath("player")
@@ -237,7 +237,6 @@ weaponEvoAttackDatas = Array[ExtResource("16_hxm6p")]([ExtResource("17_lj71n"), 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="." unique_id=1212353131]
 stream = ExtResource("23_lj71n")
 volume_db = -8.0
-autoplay = true
 bus = &"Music"
 parameters/looping = true
 

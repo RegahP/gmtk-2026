@@ -3,6 +3,7 @@ class_name EnemyBase
 
 @onready var health: EnemyHealth = $Health
 @onready var attack_controller: EnemyAttackController = $EnemyAttackController
+@export var animation: AnimationPlayer
 
 var player: Node3D
 var meshes: Array[Node] = []

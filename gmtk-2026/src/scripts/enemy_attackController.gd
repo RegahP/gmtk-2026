@@ -30,7 +30,8 @@ func _attack(atkId: int) -> void:
 		if (attacks[atkId]._windup()):
 			is_attacking = true
 			currAttack = attacks[atkId]
-			#animation.play(attacks[atkId].data.anim)
+			if (!currAttack.data.animation_name.is_empty()):
+				animation.play(attacks[atkId].data.animation_name)
 
 func _get_attack(atkId: int) -> Attack:
 	return attacks[atkId]

@@ -71,7 +71,7 @@ func _attack_leap() -> void:
 	can_leap = false
 	is_leaping = true
 	is_moving = false
-	await get_tree().create_timer(.2).timeout
+	await get_tree().create_timer(.3).timeout
 	leap_target = player.global_position + player.target_velocity.normalized() * .25
 	leap_origin = global_position
 	await get_tree().create_timer(leap_cooldown).timeout
