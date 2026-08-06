@@ -3,30 +3,43 @@
 [ext_resource type="Script" uid="uid://eok2yga4einq" path="res://src/scripts/enemy_opticagent.gd" id="1_hkga2"]
 [ext_resource type="PackedScene" uid="uid://djiud8u7tx5c5" path="res://src/models/modmodel_OPTIC_AGENT.glb" id="2_hkga2"]
 [ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/enemy_health.gd" id="2_rd1fl"]
-[ext_resource type="AudioStream" uid="uid://b7a0idhgouh3d" path="res://src/audio/optic agent 1.mp3" id="2_yx6k3"]
 [ext_resource type="AudioStream" uid="uid://b4oo33spbx83c" path="res://src/audio/optic agent hit.mp3" id="3_3iuwq"]
 [ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="4_65syu"]
-[ext_resource type="Resource" uid="uid://c730b8q3pdaay" path="res://src/resources/opticagent_attack.tres" id="5_hwkkn"]
-[ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="6_b1hcx"]
-[ext_resource type="Script" uid="uid://bcs5two2yu1o" path="res://src/scripts/enemy_hitbox.gd" id="7_gwovt"]
+[ext_resource type="AudioStream" uid="uid://dcnycaya32bws" path="res://src/audio/fleshbud 2.mp3" id="6_ss6x7"]
+[ext_resource type="Script" uid="uid://ci6lfp1vbxqmt" path="res://src/scripts/attack.gd" id="7_xglam"]
+[ext_resource type="Script" uid="uid://gxysbnpwf8aj" path="res://src/scripts/damageInfo.gd" id="8_c7tb5"]
+[ext_resource type="Script" uid="uid://c73gaou3tfp63" path="res://src/scripts/attackData.gd" id="9_f4pkb"]
+[ext_resource type="AudioStream" uid="uid://c837ivdqhpbkd" path="res://src/audio/sfx/mobs/optic agent 1.mp3" id="10_ss6x7"]
+[ext_resource type="Script" uid="uid://7dq2giwku4ei" path="res://src/scripts/hurtbox.gd" id="11_6yx8h"]
+[ext_resource type="Script" uid="uid://dxy5voosxn1fv" path="res://src/scripts/attackbox.gd" id="12_j13u6"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0eo6c"]
-height = 0.5
-radius = 0.15
+height = 0.3
+radius = 0.1
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_ql8if"]
+[sub_resource type="Resource" id="Resource_wyix2"]
+script = ExtResource("8_c7tb5")
+amount = 1.0
+metadata/_custom_type_script = "uid://gxysbnpwf8aj"
+
+[sub_resource type="Resource" id="Resource_5ds7f"]
+script = ExtResource("9_f4pkb")
+damage = SubResource("Resource_wyix2")
+windup = 0.3
+cooldown = 0.9
+sound = ExtResource("10_ss6x7")
+metadata/_custom_type_script = "uid://c73gaou3tfp63"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xuklj"]
+radius = 0.35
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jukah"]
+radius = 0.25
 
 [node name="enemy_opticagent" type="CharacterBody3D" unique_id=1622673865]
-collision_layer = 2
 script = ExtResource("1_hkga2")
 speed = 0.4
-attack_range = 0.4
-attack_windup = 0.5
-attack_cooldown = 0.8
-
-[node name="AttackAudio" type="AudioStreamPlayer" parent="." unique_id=805242915]
-stream = ExtResource("2_yx6k3")
-bus = &"SFX"
+enable_range = 2.0
 
 [node name="DeathAudio" type="AudioStreamPlayer" parent="." unique_id=744872679]
 stream = ExtResource("3_3iuwq")
@@ -40,23 +53,35 @@ max_health = 10.0
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1532499648]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
 shape = SubResource("CylinderShape3D_0eo6c")
 
-[node name="AttackController" type="Node" parent="." unique_id=1756029465]
+[node name="EnemyAttackController" type="Node3D" parent="." unique_id=2067680092]
 script = ExtResource("4_65syu")
-light_attack = ExtResource("5_hwkkn")
 
-[node name="Weapon" type="Node3D" parent="." unique_id=202694196]
-script = ExtResource("6_b1hcx")
-metadata/_custom_type_script = "uid://di2aq3omvm40x"
+[node name="AttackAudio" type="AudioStreamPlayer" parent="EnemyAttackController" unique_id=499020780]
+stream = ExtResource("6_ss6x7")
+bus = &"SFX"
 
-[node name="Hitbox" type="Area3D" parent="Weapon" unique_id=1043417812]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
-monitoring = false
-script = ExtResource("7_gwovt")
+[node name="Attack" type="Node3D" parent="EnemyAttackController" unique_id=1450186691]
+script = ExtResource("7_xglam")
+data = SubResource("Resource_5ds7f")
+is_passive = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=1297875902]
-shape = SubResource("SphereShape3D_ql8if")
+[node name="Hurtbox" type="Area3D" parent="EnemyAttackController/Attack" unique_id=2077513908]
+script = ExtResource("11_6yx8h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyAttackController/Attack/Hurtbox" unique_id=629421417]
+shape = SubResource("SphereShape3D_xuklj")
+
+[node name="Attackbox" type="Area3D" parent="EnemyAttackController/Attack" unique_id=1631588355]
+script = ExtResource("12_j13u6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyAttackController/Attack/Attackbox" unique_id=1909443188]
+shape = SubResource("SphereShape3D_jukah")
+
+[connection signal="body_entered" from="EnemyAttackController/Attack/Hurtbox" to="EnemyAttackController/Attack/Hurtbox" method="_on_body_entered"]
+[connection signal="body_exited" from="EnemyAttackController/Attack/Hurtbox" to="EnemyAttackController/Attack/Hurtbox" method="_on_body_exited"]
+[connection signal="body_entered" from="EnemyAttackController/Attack/Attackbox" to="EnemyAttackController/Attack/Attackbox" method="_on_body_entered"]
 
 [editable path="modmodel_OPTIC_AGENT"]

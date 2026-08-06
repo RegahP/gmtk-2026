@@ -2,6 +2,7 @@ extends EnemyBase
 
 var body: Node3D
 var time: float
+var phys_time: float
 
 func _ready() -> void:
 	super()
@@ -33,8 +34,9 @@ func _physics_process(delta: float) -> void:
 			var angle = atan2(my_pos.x - target_pos.x, my_pos.z - target_pos.z)
 			global_rotation.y = angle
 			
-			target_velocity.x = direction.x * speed + sin(time * 2) * .15
-			target_velocity.z = direction.z * speed + sin(time * 3) * .15
+			phys_time += delta
+			target_velocity.x = direction.x * speed + sin(phys_time * 2) * .15
+			target_velocity.z = direction.z * speed + sin(phys_time * 3) * .15
 			
 			_enemy_move()
 		else:

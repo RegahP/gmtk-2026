@@ -16,6 +16,7 @@ extends Node3D
 	$NextRoomUI/Panel/machine]
 
 var roomCount: int
+var lastRoomId: int = 0
 @export var roomIdsByCount: Array[Vector2i] = []
 
 @export var roomBases: Array[PackedScene]
@@ -41,6 +42,8 @@ var weapon_evolve_lvl: int
 @onready var weaponEvoUi: Panel = $WeaponUI/Panel
 @onready var weaponEvo: AnimatedSprite2D = $WeaponUI/Panel/weapon2
 @onready var currWeapon: AnimatedSprite2D = $WeaponUI/weapon/weapon
+
+@onready var roomTracker: RoomTracker = $RoomTrackerUI
 
 @onready var music = $AudioStreamPlayer3D
 
@@ -112,6 +115,9 @@ func _loadroom(nextRoomId: int) -> void:
 	if (nextRoomId == 3): # machine room
 		_add_machineroom()
 		#print("machine room")
+	
+	roomTracker._update_room_icons(roomCount - 1, lastRoomId)
+	lastRoomId = nextRoomId
 	
 	roomCount += 1
 	#print("loaded nextroom of id " + str(nextRoomId))

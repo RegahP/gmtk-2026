@@ -1,12 +1,16 @@
 [gd_scene format=3 uid="uid://d1focyc3eqf6n"]
 
 [ext_resource type="Script" uid="uid://cfc6ukac0545j" path="res://src/scripts/projectile_base.gd" id="1_25eki"]
-[ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="1_u03vj"]
-[ext_resource type="Script" uid="uid://bcs5two2yu1o" path="res://src/scripts/enemy_hitbox.gd" id="2_25eki"]
 [ext_resource type="PackedScene" uid="uid://bhd3nr2waodcx" path="res://src/models/projectile.glb" id="2_p1kvy"]
 [ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="2_p1m70"]
 [ext_resource type="Texture2D" uid="uid://dttkop4bflvpn" path="res://src/models/slugga_texture 5.png" id="3_7nmcv"]
-[ext_resource type="Resource" uid="uid://c54v4bbduuckp" path="res://src/resources/trackeragent_attack.tres" id="3_p1kvy"]
+[ext_resource type="AudioStream" uid="uid://dcnycaya32bws" path="res://src/audio/fleshbud 2.mp3" id="5_nxwy3"]
+[ext_resource type="Script" uid="uid://ci6lfp1vbxqmt" path="res://src/scripts/attack.gd" id="6_hxmak"]
+[ext_resource type="Script" uid="uid://gxysbnpwf8aj" path="res://src/scripts/damageInfo.gd" id="7_12qdf"]
+[ext_resource type="Script" uid="uid://c73gaou3tfp63" path="res://src/scripts/attackData.gd" id="8_tqout"]
+[ext_resource type="AudioStream" uid="uid://bmh5yypf0l4wb" path="res://src/audio/sfx/mobs/fleshbud 2.mp3" id="9_7kr8q"]
+[ext_resource type="Script" uid="uid://7dq2giwku4ei" path="res://src/scripts/hurtbox.gd" id="10_ke2jx"]
+[ext_resource type="Script" uid="uid://dxy5voosxn1fv" path="res://src/scripts/attackbox.gd" id="11_shjkt"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pketm"]
 radius = 0.01
@@ -15,8 +19,25 @@ radius = 0.01
 shading_mode = 0
 albedo_texture = ExtResource("3_7nmcv")
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_p1m70"]
-radius = 0.15
+[sub_resource type="Resource" id="Resource_n3jrc"]
+script = ExtResource("7_12qdf")
+amount = 1.0
+metadata/_custom_type_script = "uid://gxysbnpwf8aj"
+
+[sub_resource type="Resource" id="Resource_upy6c"]
+script = ExtResource("8_tqout")
+damage = SubResource("Resource_n3jrc")
+cooldown = 0.2
+sound = ExtResource("9_7kr8q")
+metadata/_custom_type_script = "uid://c73gaou3tfp63"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nxwy3"]
+radius = 0.08
+height = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hxmak"]
+radius = 0.08
+height = 0.5
 
 [node name="projectile" type="CharacterBody3D" unique_id=668998068]
 collision_mask = 0
@@ -32,19 +53,34 @@ transform = Transform3D(-8.7422775e-10, 0, -0.02, 0, 0.02, 0, 0.02, 0, -8.742277
 [node name="Mball_004" parent="projectile" index="0" unique_id=1908741184]
 material_override = SubResource("StandardMaterial3D_d7ulx")
 
-[node name="AttackController" type="Node" parent="." unique_id=1263322842]
+[node name="EnemyAttackController" type="Node3D" parent="." unique_id=1973327643]
 script = ExtResource("2_p1m70")
-light_attack = ExtResource("3_p1kvy")
 
-[node name="Weapon" type="Node3D" parent="." unique_id=2032810417]
-script = ExtResource("1_u03vj")
-metadata/_custom_type_script = "uid://di2aq3omvm40x"
+[node name="AttackAudio" type="AudioStreamPlayer" parent="EnemyAttackController" unique_id=324448760]
+stream = ExtResource("5_nxwy3")
+bus = &"SFX"
 
-[node name="Hitbox" type="Area3D" parent="Weapon" unique_id=1246762922]
-monitoring = false
-script = ExtResource("2_25eki")
+[node name="Attack" type="Node3D" parent="EnemyAttackController" unique_id=1053290351]
+script = ExtResource("6_hxmak")
+data = SubResource("Resource_upy6c")
+is_passive = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=959071872]
-shape = SubResource("SphereShape3D_p1m70")
+[node name="Hurtbox" type="Area3D" parent="EnemyAttackController/Attack" unique_id=1993112355]
+script = ExtResource("10_ke2jx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyAttackController/Attack/Hurtbox" unique_id=320432333]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_nxwy3")
+
+[node name="Attackbox" type="Area3D" parent="EnemyAttackController/Attack" unique_id=390048082]
+script = ExtResource("11_shjkt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyAttackController/Attack/Attackbox" unique_id=1286438449]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_hxmak")
+
+[connection signal="body_entered" from="EnemyAttackController/Attack/Hurtbox" to="EnemyAttackController/Attack/Hurtbox" method="_on_body_entered"]
+[connection signal="body_exited" from="EnemyAttackController/Attack/Hurtbox" to="EnemyAttackController/Attack/Hurtbox" method="_on_body_exited"]
+[connection signal="body_entered" from="EnemyAttackController/Attack/Attackbox" to="EnemyAttackController/Attack/Attackbox" method="_on_body_entered"]
 
 [editable path="projectile"]

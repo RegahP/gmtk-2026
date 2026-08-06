@@ -5,8 +5,6 @@
 [ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/enemy_health.gd" id="1_ktb0o"]
 [ext_resource type="AudioStream" uid="uid://dmfsteemmycff" path="res://src/audio/sfx/mobs/homunculard hit.mp3" id="2_52w1q"]
 [ext_resource type="AudioStream" uid="uid://bx30ud3eunqbo" path="res://src/audio/sfx/mobs/fleshmound born.mp3" id="3_5w0pu"]
-[ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="3_eka7b"]
-[ext_resource type="Resource" uid="uid://bxd1gfrhbsan2" path="res://src/resources/Fleshbud Attack.tres" id="4_3qb3f"]
 [ext_resource type="AudioStream" uid="uid://cyowadlkqnop0" path="res://src/audio/sfx/mobs/all enemies death sound.mp3" id="4_ix5o5"]
 [ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="5_52w1q"]
 [ext_resource type="Script" uid="uid://bcs5two2yu1o" path="res://src/scripts/enemy_hitbox.gd" id="6_5w0pu"]
@@ -25,7 +23,6 @@ radius = 0.4
 script = ExtResource("1_eka7b")
 spinSpeed = 1.0
 speed = 1.0
-attack_cooldown = 0.3
 
 [node name="AttackAudio" type="AudioStreamPlayer" parent="." unique_id=1144301822]
 stream = ExtResource("2_52w1q")
@@ -58,10 +55,6 @@ shape = SubResource("CylinderShape3D_ix5o5")
 
 [node name="crawler" parent="." unique_id=1531747166 instance=ExtResource("1_3cjud")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
-
-[node name="AttackController" type="Node" parent="." unique_id=243073258]
-script = ExtResource("3_eka7b")
-light_attack = ExtResource("4_3qb3f")
 
 [node name="Weapon" type="Node3D" parent="." unique_id=1007883611]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

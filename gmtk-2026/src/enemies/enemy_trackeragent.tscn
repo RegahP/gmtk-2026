@@ -3,32 +3,52 @@
 [ext_resource type="Script" uid="uid://bjp1k6ocw7bop" path="res://src/scripts/enemy_trackeragent.gd" id="1_8n6yl"]
 [ext_resource type="PackedScene" uid="uid://d1focyc3eqf6n" path="res://src/enemies/projectile_trackeragent.tscn" id="2_t86bj"]
 [ext_resource type="Script" uid="uid://dwh6ahtkwka4j" path="res://src/scripts/enemy_health.gd" id="2_wpu7a"]
-[ext_resource type="AudioStream" uid="uid://diksci0xs2lun" path="res://src/audio/fleshbud 1.mp3" id="3_houi3"]
 [ext_resource type="PackedScene" uid="uid://183lkt2aux3t" path="res://src/models/mobmodel_TRACKER_AGENT.glb" id="3_t86bj"]
 [ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="4_houi3"]
 [ext_resource type="AudioStream" uid="uid://dtki3jrh6ojta" path="res://src/audio/tracker agent hit.mp3" id="4_rigim"]
-[ext_resource type="Resource" uid="uid://c54v4bbduuckp" path="res://src/resources/trackeragent_attack.tres" id="5_rigim"]
-[ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="6_pyftt"]
-[ext_resource type="Script" uid="uid://bcs5two2yu1o" path="res://src/scripts/enemy_hitbox.gd" id="7_m3k6u"]
+[ext_resource type="AudioStream" uid="uid://dcnycaya32bws" path="res://src/audio/fleshbud 2.mp3" id="8_8wqqr"]
+[ext_resource type="Script" uid="uid://ci6lfp1vbxqmt" path="res://src/scripts/attack.gd" id="9_21k78"]
+[ext_resource type="Script" uid="uid://gxysbnpwf8aj" path="res://src/scripts/damageInfo.gd" id="10_b8eqr"]
+[ext_resource type="Script" uid="uid://c73gaou3tfp63" path="res://src/scripts/attackData.gd" id="11_3ojsl"]
+[ext_resource type="Script" uid="uid://7dq2giwku4ei" path="res://src/scripts/hurtbox.gd" id="13_krlb0"]
+[ext_resource type="Script" uid="uid://dxy5voosxn1fv" path="res://src/scripts/attackbox.gd" id="14_rb1mu"]
+[ext_resource type="Script" uid="uid://duidbenc7ctlk" path="res://src/scripts/ability.gd" id="15_7uam3"]
+[ext_resource type="Script" uid="uid://cl7vvextjyf6p" path="res://src/scripts/abilityData.gd" id="16_xfp6s"]
+[ext_resource type="AudioStream" uid="uid://5cii6wec5xtn" path="res://src/audio/sfx/mobs/tracker agent hit.mp3" id="17_d3xlb"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0eo6c"]
 height = 0.70428467
 radius = 0.3
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_g7abn"]
-radius = 0.6
+[sub_resource type="Resource" id="Resource_kn1en"]
+script = ExtResource("10_b8eqr")
+metadata/_custom_type_script = "uid://gxysbnpwf8aj"
+
+[sub_resource type="Resource" id="Resource_8wqqr"]
+script = ExtResource("11_3ojsl")
+damage = SubResource("Resource_kn1en")
+windup = 0.6
+cooldown = 1.4
+metadata/_custom_type_script = "uid://c73gaou3tfp63"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ng5e5"]
+radius = 0.001
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ym3u3"]
+radius = 0.75
+
+[sub_resource type="Resource" id="Resource_msii2"]
+script = ExtResource("16_xfp6s")
+windup = 0.6
+cooldown = 1.4
+sound = ExtResource("17_d3xlb")
+metadata/_custom_type_script = "uid://cl7vvextjyf6p"
 
 [node name="enemy_trackeragent" type="CharacterBody3D" unique_id=1622673865]
 collision_mask = 0
 script = ExtResource("1_8n6yl")
 projectile = ExtResource("2_t86bj")
-attack_range = 1.2
-attack_windup = 0.3
-attack_cooldown = 0.8
-
-[node name="AttackAudio" type="AudioStreamPlayer" parent="." unique_id=1752409058]
-stream = ExtResource("3_houi3")
-bus = &"SFX"
+enable_range = 2.0
 
 [node name="DeathAudio" type="AudioStreamPlayer" parent="." unique_id=1887679983]
 stream = ExtResource("4_rigim")
@@ -42,7 +62,7 @@ max_health = 20.0
 [node name="mobmodel_TRACKER_AGENT" parent="." unique_id=926685796 instance=ExtResource("3_t86bj")]
 transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0.13881409, 0.21712369)
 
-[node name="tracker agent" parent="mobmodel_TRACKER_AGENT" index="1" unique_id=389125460]
+[node name="tracker agent" parent="mobmodel_TRACKER_AGENT" index="1" unique_id=1740876213]
 transform = Transform3D(-5.0337007e-08, 3.0808086, -5.0337007e-08, 0, -1.3466642e-07, -1.1515765, -1.1515765, -1.3466642e-07, 2.2003004e-15, 0, 4.3788853, -2.718462)
 
 [node name="shoot_origin" type="Node3D" parent="mobmodel_TRACKER_AGENT/tracker agent" index="0" unique_id=955792360]
@@ -52,20 +72,41 @@ transform = Transform3D(-4.37114e-08, 0, 1.0000002, 0, 1.0000002, 0, -1.0000002,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35128784, 0)
 shape = SubResource("CylinderShape3D_0eo6c")
 
-[node name="AttackController" type="Node" parent="." unique_id=1550604174]
+[node name="EnemyAttackController" type="Node3D" parent="." unique_id=1138503183]
 script = ExtResource("4_houi3")
-light_attack = ExtResource("5_rigim")
 
-[node name="Weapon" type="Node3D" parent="." unique_id=341413794]
-script = ExtResource("6_pyftt")
-metadata/_custom_type_script = "uid://di2aq3omvm40x"
+[node name="AttackAudio" type="AudioStreamPlayer" parent="EnemyAttackController" unique_id=1657835818]
+stream = ExtResource("8_8wqqr")
+pitch_scale = 0.6
+bus = &"SFX"
 
-[node name="Hitbox" type="Area3D" parent="Weapon" unique_id=1179545156]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
-monitoring = false
-script = ExtResource("7_m3k6u")
+[node name="Attack" type="Node3D" parent="EnemyAttackController" unique_id=1978236926]
+script = ExtResource("9_21k78")
+data = SubResource("Resource_8wqqr")
+is_passive = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon/Hitbox" unique_id=195397446]
-shape = SubResource("SphereShape3D_g7abn")
+[node name="Hurtbox" type="Area3D" parent="EnemyAttackController/Attack" unique_id=1986871026]
+script = ExtResource("13_krlb0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyAttackController/Attack/Hurtbox" unique_id=511514722]
+shape = SubResource("SphereShape3D_ng5e5")
+
+[node name="Attackbox" type="Area3D" parent="EnemyAttackController/Attack" unique_id=882587144]
+script = ExtResource("14_rb1mu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyAttackController/Attack/Attackbox" unique_id=956250958]
+shape = SubResource("SphereShape3D_ym3u3")
+
+[node name="Shoot" type="Node3D" parent="." unique_id=583080225]
+script = ExtResource("15_7uam3")
+data = SubResource("Resource_msii2")
+
+[node name="AbilityAudio" type="AudioStreamPlayer" parent="Shoot" unique_id=1399004235]
+stream = ExtResource("8_8wqqr")
+bus = &"SFX"
+
+[connection signal="body_entered" from="EnemyAttackController/Attack/Hurtbox" to="EnemyAttackController/Attack/Hurtbox" method="_on_body_entered"]
+[connection signal="body_exited" from="EnemyAttackController/Attack/Hurtbox" to="EnemyAttackController/Attack/Hurtbox" method="_on_body_exited"]
+[connection signal="body_entered" from="EnemyAttackController/Attack/Attackbox" to="EnemyAttackController/Attack/Attackbox" method="_on_body_entered"]
 
 [editable path="mobmodel_TRACKER_AGENT"]

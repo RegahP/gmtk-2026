@@ -27,6 +27,7 @@ func _on_take_damage() -> void:
 	
 	var mat = StandardMaterial3D.new()
 	mat.albedo_color = Color.WHITE
+	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	
 	for mesh in meshes:
 		mesh.set_surface_override_material(0, mat)

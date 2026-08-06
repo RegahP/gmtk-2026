@@ -1,12 +1,16 @@
 extends EnemyBase
 
 var head: Node3D
+
+@onready var shoot: Ability = $Shoot
 @export var projectile: PackedScene
 @onready var shoot_origin: Node3D = $"mobmodel_TRACKER_AGENT/tracker agent/shoot_origin"
 
 func _ready() -> void:
 	super()
 	head = $"mobmodel_TRACKER_AGENT/tracker agent"
+	shoot.casted.connect(_shoot)
+	attack_controller.attack_attempted.connect(_on_attack)
 
 func _physics_process(delta: float) -> void:
 	if player == null:
@@ -14,16 +18,12 @@ func _physics_process(delta: float) -> void:
 	
 	var distance = global_position.distance_to(player.global_position)
 	
-	if distance <= attack_range:
-		if (is_moving):
-			_attack_windup()
-	
-	var target_pos = player.global_position
-	var my_pos = head.global_position
-	var angle = atan2(my_pos.x - target_pos.x, my_pos.z - target_pos.z)
-	head.global_rotation.y = angle - 89.5
-	
-	if is_moving:
+	if distance <= enable_range:
+		var target_pos = player.global_position
+		var my_pos = head.global_position
+		var angle = atan2(my_pos.x - target_pos.x, my_pos.z - target_pos.z)
+		head.global_rotation.y = angle - 89.5
+		
 		var direction = global_position.direction_to(player.global_position)
 		direction = direction.normalized()
 		
@@ -34,11 +34,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		target_velocity = Vector3.ZERO
 
-func _attack_player(_mute: bool = false) -> void:
+func _shoot() -> void:
 	var projectile = projectile.instantiate()
+	projectile.player = player
 	add_child(projectile)
 	projectile.position.y = shoot_origin.global_position.y
 	projectile.rotation = shoot_origin.global_rotation
-	projectile.player = player
-	await get_tree().create_timer(attack_cooldown).timeout
-	is_moving = true
+
+func _on_attack() -> void:
+	shoot._windup()

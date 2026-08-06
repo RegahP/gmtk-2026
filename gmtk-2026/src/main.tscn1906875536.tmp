@@ -1,29 +1,26 @@
 [gd_scene format=3 uid="uid://bkf8kfj4bgkkk"]
 
 [ext_resource type="Script" uid="uid://b2m17b7y333ey" path="res://src/scripts/game_manager.gd" id="1_3cfgd"]
-[ext_resource type="PackedScene" uid="uid://c5jxvxuskenln" path="res://src/roombases/roomBase_0.tscn" id="1_5q4o7"]
+[ext_resource type="PackedScene" uid="uid://c5jxvxuskenln" path="res://src/roombases/roomBase.tscn" id="1_5q4o7"]
 [ext_resource type="PackedScene" uid="uid://d2ad2p1i4xtg7" path="res://src/player.tscn" id="1_eewff"]
 [ext_resource type="Script" uid="uid://dcu0akvpcuwk" path="res://src/scripts/camera_3d.gd" id="2_gh0ne"]
 [ext_resource type="PackedScene" uid="uid://br8rm4s0264ax" path="res://src/roombases/roomBase_machine.tscn" id="3_5mrjc"]
 [ext_resource type="PackedScene" uid="uid://bur25qsrx35y4" path="res://src/pedestal.tscn" id="4_kmhfv"]
 [ext_resource type="PackedScene" uid="uid://flgusbt82ku7" path="res://src/enemysets/bossSet_1.tscn" id="4_mgm53"]
 [ext_resource type="PackedScene" uid="uid://bccnke0whud0v" path="res://src/enemysets/enemySet_machine.tscn" id="4_ruk5h"]
-[ext_resource type="PackedScene" uid="uid://bubtp28alxkgt" path="res://src/enemysets/enemySet_3.tscn" id="5_bu6xm"]
-[ext_resource type="PackedScene" uid="uid://c50m2wqcexp8" path="res://src/enemysets/enemySet_0.tscn" id="5_lj71n"]
 [ext_resource type="PackedScene" uid="uid://ckw6chq1y87b0" path="res://src/enemysets/enemySet_7.tscn" id="6_7b4p7"]
-[ext_resource type="PackedScene" uid="uid://lrm5na7kj2lf" path="res://src/enemysets/enemySet_1.tscn" id="6_ruk5h"]
 [ext_resource type="Texture2D" uid="uid://dwf2aus5gmr8x" path="res://src/textures/youdied.png" id="7_rlaii"]
-[ext_resource type="PackedScene" uid="uid://bmoccymvqk78t" path="res://src/enemysets/enemySet_2.tscn" id="7_ye406"]
 [ext_resource type="Texture2D" uid="uid://2wqn0xalgcnc" path="res://src/textures/cred_screen.png" id="8_mgm53"]
-[ext_resource type="PackedScene" uid="uid://b3iyokbbxvd0k" path="res://src/enemysets/enemySet_4.tscn" id="9_lvuux"]
-[ext_resource type="PackedScene" uid="uid://b20f08pq0akjv" path="res://src/enemysets/enemySet_5.tscn" id="10_qbv60"]
-[ext_resource type="PackedScene" uid="uid://btr3jji3137qq" path="res://src/enemysets/enemySet_6.tscn" id="11_f6xxb"]
-[ext_resource type="PackedScene" uid="uid://bl5bcr6d6ljo4" path="res://src/enemysets/enemySet_8.tscn" id="13_s8ip4"]
 [ext_resource type="Script" uid="uid://c73gaou3tfp63" path="res://src/scripts/attackData.gd" id="16_hxm6p"]
 [ext_resource type="Resource" uid="uid://8gg1mntvripk" path="res://src/resources/player_attack1.tres" id="17_lj71n"]
 [ext_resource type="Texture2D" uid="uid://blpxbendpkwkp" path="res://src/textures/nextroom_icons.png" id="18_okx7f"]
+[ext_resource type="Resource" uid="uid://dfw8smtupcxer" path="res://src/resources/player_attack2.tres" id="18_ruk5h"]
 [ext_resource type="PackedScene" uid="uid://37nt01kuu7sk" path="res://src/enemysets/bossSet_0.tscn" id="19_sta5p"]
+[ext_resource type="Resource" uid="uid://sbkfu7ovbj0a" path="res://src/resources/player_attack3.tres" id="19_ye406"]
+[ext_resource type="Resource" uid="uid://cjse3v7oc65bs" path="res://src/resources/player_attack4.tres" id="20_lvuux"]
 [ext_resource type="Texture2D" uid="uid://ckmdrnx8n04ti" path="res://src/textures/FRAMES CORAZON/1.png" id="21_imvhg"]
+[ext_resource type="Resource" uid="uid://un30tg4mqwr" path="res://src/resources/player_attack5.tres" id="21_qbv60"]
+[ext_resource type="Resource" uid="uid://chmp34d4fg6xb" path="res://src/resources/player_attack6.tres" id="22_f6xxb"]
 [ext_resource type="Texture2D" uid="uid://qckulu43wecc" path="res://src/textures/FRAMES CORAZON/4.png" id="22_m07h4"]
 [ext_resource type="AudioStream" uid="uid://dv88ucv6vb82a" path="res://src/Music/despair.mp3" id="23_lj71n"]
 [ext_resource type="Texture2D" uid="uid://u8dqtatoqbs6" path="res://src/textures/FRAMES CORAZON/2_12.png" id="23_ui33j"]
@@ -54,8 +51,11 @@
 [ext_resource type="Texture2D" uid="uid://djh6n3mn20wr4" path="res://src/textures/weapon/arma5.png" id="47_ljw12"]
 [ext_resource type="Texture2D" uid="uid://b7cimqm8v1ovr" path="res://src/textures/weapon/arma6.png" id="48_q6ill"]
 [ext_resource type="Script" uid="uid://hfhpn2xry4e7" path="res://src/scripts/room_tracker_ui.gd" id="51_q6ill"]
+[ext_resource type="Texture2D" uid="uid://dmip6pqplnarp" path="res://src/textures/roomtracker_atlas.tres" id="52_mmgx3"]
 [ext_resource type="Texture2D" uid="uid://b1sjjmfebl7bt" path="res://src/textures/roomtracker_icons.png" id="53_hxm6p"]
-[ext_resource type="Texture2D" uid="uid://dcgestigelcsi" path="res://src/textures/roomtracker_atlas_next.tres" id="53_q6ill"]
+
+[sub_resource type="Environment" id="Environment_lj71n"]
+background_mode = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvuux"]
 transparency = 1
@@ -224,15 +224,12 @@ animations = [{
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlaii"]
 bg_color = Color(0, 0, 0, 0.5019608)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mmgx3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lj71n"]
 atlas = ExtResource("53_hxm6p")
-region = Rect2(256, 0, 128, 128)
+region = Rect2(128, 0, 128, 128)
+margin = Rect2(-32, 0, -56, 0)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hxm6p"]
-atlas = ExtResource("53_hxm6p")
-region = Rect2(384, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s8ip4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruk5h"]
 atlas = ExtResource("18_okx7f")
 region = Rect2(384, 0, 128, 128)
 
@@ -243,26 +240,28 @@ roomIdsByCount = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(2, 0)
 roomBases = Array[PackedScene]([ExtResource("1_5q4o7")])
 machineRoom = ExtResource("3_5mrjc")
 machineEnemies = ExtResource("4_ruk5h")
-enemySets = Array[PackedScene]([ExtResource("5_lj71n"), ExtResource("6_ruk5h"), ExtResource("7_ye406"), ExtResource("5_bu6xm"), ExtResource("9_lvuux"), ExtResource("10_qbv60"), ExtResource("11_f6xxb"), ExtResource("6_7b4p7"), ExtResource("13_s8ip4")])
+enemySets = Array[PackedScene]([ExtResource("6_7b4p7")])
 bossSets = Array[PackedScene]([ExtResource("19_sta5p"), ExtResource("4_mgm53")])
 pedestal = ExtResource("4_kmhfv")
 player = NodePath("player")
-weaponEvoAttackDatas = Array[ExtResource("16_hxm6p")]([ExtResource("17_lj71n"), ExtResource("17_lj71n"), ExtResource("17_lj71n"), ExtResource("17_lj71n"), ExtResource("17_lj71n"), ExtResource("17_lj71n")])
+weaponEvoAttackDatas = Array[ExtResource("16_hxm6p")]([ExtResource("17_lj71n"), ExtResource("18_ruk5h"), ExtResource("19_ye406"), ExtResource("20_lvuux"), ExtResource("21_qbv60"), ExtResource("22_f6xxb")])
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="." unique_id=1212353131]
 stream = ExtResource("23_lj71n")
 volume_db = -8.0
-autoplay = true
 bus = &"Music"
 parameters/looping = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1302385430]
+transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.7071068, 0.7071068, -0.7071068, -0.5, 0.5, 0, 0, 0)
 
 [node name="player" parent="." unique_id=1037035893 instance=ExtResource("1_eewff")]
 unique_name_in_owner = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=884260794 node_paths=PackedStringArray("follow_target")]
 transform = Transform3D(0.70710677, -0.3535534, 0.6123724, 0, 0.8660254, 0.50000006, -0.70710677, -0.3535534, 0.6123724, 2, 1.75, 2)
+environment = SubResource("Environment_lj71n")
 projection = 1
-fov = 24.0
 size = 2.0
 script = ExtResource("2_gh0ne")
 follow_target = NodePath("../player")
@@ -350,6 +349,7 @@ visible = false
 position = Vector2(360, 220)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_adv81")
+frame = 2
 speed_scale = 0.0
 
 [node name="Label2" type="Label" parent="NextRoomUI/Panel/hostile" unique_id=656714889]
@@ -399,7 +399,6 @@ visible = false
 position = Vector2(360, 220)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_adv81")
-frame = 2
 speed_scale = 0.0
 
 [node name="Label2" type="Label" parent="NextRoomUI/Panel/boss" unique_id=141372109]
@@ -677,8 +676,6 @@ offset_bottom = 143.99997
 grow_horizontal = 2
 scale = Vector2(0.55, 0.55)
 script = ExtResource("51_q6ill")
-room_icons = ExtResource("53_hxm6p")
-cleared_icons = ExtResource("18_okx7f")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="RoomTrackerUI" unique_id=156226562]
 layout_mode = 1
@@ -690,23 +687,71 @@ grow_vertical = 2
 
 [node name="Room" type="TextureRect" parent="RoomTrackerUI/HBoxContainer" unique_id=525714695]
 layout_mode = 2
-texture = SubResource("AtlasTexture_mmgx3")
+texture = ExtResource("52_mmgx3")
 
 [node name="Next" type="TextureRect" parent="RoomTrackerUI/HBoxContainer" unique_id=17918736]
 layout_mode = 2
-texture = ExtResource("53_q6ill")
+texture = SubResource("AtlasTexture_lj71n")
 
 [node name="Room2" type="TextureRect" parent="RoomTrackerUI/HBoxContainer" unique_id=1568944217]
 layout_mode = 2
-texture = SubResource("AtlasTexture_hxm6p")
+texture = ExtResource("52_mmgx3")
 
-[node name="Next8" type="TextureRect" parent="RoomTrackerUI/HBoxContainer" unique_id=1814399145]
+[node name="Next2" type="TextureRect" parent="RoomTrackerUI/HBoxContainer" unique_id=654868920]
 layout_mode = 2
-texture = ExtResource("53_q6ill")
+texture = SubResource("AtlasTexture_lj71n")
+
+[node name="Room3" type="TextureRect" parent="RoomTrackerUI/HBoxContainer" unique_id=1535654496]
+layout_mode = 2
+texture = ExtResource("52_mmgx3")
+
+[node name="Next3" type="TextureRect" parent="RoomTrackerUI/HBoxContainer" unique_id=43497800]
+layout_mode = 2
+texture = SubResource("AtlasTexture_lj71n")
+
+[node name="Room4" type="TextureRect" parent="RoomTrackerUI/HBoxContainer" unique_id=688441283]
+layout_mode = 2
+texture = ExtResource("52_mmgx3")
+
+[node name="Next4" type="TextureRect" parent="RoomTrackerUI/HBoxContainer" unique_id=2142867586]
+layout_mode = 2
+texture = SubResource("AtlasTexture_lj71n")
+
+[node name="Room5" type="TextureRect" parent="RoomTrackerUI/HBoxContainer" unique_id=768581306]
+layout_mode = 2
+texture = ExtResource("52_mmgx3")
+
+[node name="Next5" type="TextureRect" parent="RoomTrackerUI/HBoxContainer" unique_id=1555708147]
+layout_mode = 2
+texture = SubResource("AtlasTexture_lj71n")
+
+[node name="Room6" type="TextureRect" parent="RoomTrackerUI/HBoxContainer" unique_id=508183479]
+layout_mode = 2
+texture = ExtResource("52_mmgx3")
+
+[node name="Next6" type="TextureRect" parent="RoomTrackerUI/HBoxContainer" unique_id=2017851424]
+layout_mode = 2
+texture = SubResource("AtlasTexture_lj71n")
+
+[node name="Room7" type="TextureRect" parent="RoomTrackerUI/HBoxContainer" unique_id=756886024]
+layout_mode = 2
+texture = ExtResource("52_mmgx3")
+
+[node name="Next7" type="TextureRect" parent="RoomTrackerUI/HBoxContainer" unique_id=1600070661]
+layout_mode = 2
+texture = SubResource("AtlasTexture_lj71n")
+
+[node name="Room8" type="TextureRect" parent="RoomTrackerUI/HBoxContainer" unique_id=1042814940]
+layout_mode = 2
+texture = ExtResource("52_mmgx3")
+
+[node name="Next8" type="TextureRect" parent="RoomTrackerUI/HBoxContainer" unique_id=1505537610]
+layout_mode = 2
+texture = SubResource("AtlasTexture_lj71n")
 
 [node name="Machine" type="TextureRect" parent="RoomTrackerUI/HBoxContainer" unique_id=1388350643]
 layout_mode = 2
-texture = SubResource("AtlasTexture_s8ip4")
+texture = SubResource("AtlasTexture_ruk5h")
 
 [connection signal="timeout" from="DeathscreenUI/DeathTimer" to="." method="_end"]
 

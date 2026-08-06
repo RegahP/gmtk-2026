@@ -17,7 +17,6 @@ func _on_body_entered(body: Node3D) -> void:
 			current_damage.amount *= 3
 		body.find_child("Health").take_damage(current_damage)
 		damage_audio.play()
-	#print("Hit:", body.name)
 
 func reset():
 	hit_targets.clear()

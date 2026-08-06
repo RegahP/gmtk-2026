@@ -28,15 +28,16 @@ metadata/_custom_type_script = "uid://gxysbnpwf8aj"
 script = ExtResource("10_5rhlx")
 damage = SubResource("Resource_7ogfu")
 windup = 0.8
-cooldown = 0.7
+cooldown = 1.2
 animation_name = &"attackanim"
 sound = ExtResource("11_q5wx1")
 metadata/_custom_type_script = "uid://c73gaou3tfp63"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3r5qb"]
+radius = 0.35
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_e2iv3"]
-radius = 0.25
+radius = 0.2
 
 [node name="enemy_homunculard" type="CharacterBody3D" unique_id=1622673865]
 script = ExtResource("1_ampmy")
@@ -114,7 +115,7 @@ data = SubResource("Resource_6ok1g")
 is_passive = true
 
 [node name="Hurtbox" type="Area3D" parent="EnemyAttackController/Attack" unique_id=1663084105]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3)
 script = ExtResource("12_lvn8o")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyAttackController/Attack/Hurtbox" unique_id=1549541597]

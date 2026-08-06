@@ -19,13 +19,13 @@ stream = ExtResource("2_5yk2e")
 bus = &"Music"
 
 [node name="enemy_fleshbud" parent="." unique_id=1622673865 instance=ExtResource("2_m2gjy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14388943, 0, -0.80937874)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2831695, 0, -0.7129541)
 
 [node name="enemy_fleshbud2" parent="." unique_id=488187661 instance=ExtResource("2_m2gjy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14388943, 0, 0.80038595)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29388332, 0, 0.68610495)
 
 [node name="enemy_fleshbud3" parent="." unique_id=490571363 instance=ExtResource("2_m2gjy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14388943, 0, -1.1920929e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0046093166, 0, -1.1920929e-07)
 
 [node name="enemy_fleshbud4" parent="." unique_id=1824499514 instance=ExtResource("2_m2gjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98924065, 0, 0.33274502)
@@ -34,10 +34,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98924065, 0, 0.33274502)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98924065, 0, -0.46764106)
 
 [node name="enemy_homunculard" parent="." unique_id=1289662294 instance=ExtResource("2_lkgqq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5413518, 0, -0.5215995)
-
-[node name="enemy_homunculard2" parent="." unique_id=915754854 instance=ExtResource("2_lkgqq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5413518, 0, 0.50361377)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.541, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=798304545]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)

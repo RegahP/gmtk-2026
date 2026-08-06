@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="AttackData" format=3 uid="uid://cjse3v7oc65bs"]
-
-[ext_resource type="Script" uid="uid://c73gaou3tfp63" path="res://src/scripts/attackData.gd" id="1_v5ha7"]
-
-[resource]
-script = ExtResource("1_v5ha7")
-damage = 1.25
-attack_windup = 0.15
-attack_cooldown = 0.3

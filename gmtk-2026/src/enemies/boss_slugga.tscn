@@ -5,9 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://b4oo33spbx83c" path="res://src/audio/optic agent hit.mp3" id="2_k4pik"]
 [ext_resource type="AudioStream" uid="uid://d4kahfbe8eh2l" path="res://src/audio/fleshbud hit.mp3" id="3_27dtx"]
 [ext_resource type="PackedScene" uid="uid://c53b6ivcan7u6" path="res://src/models/slugga.glb" id="3_gn8l6"]
-[ext_resource type="Script" uid="uid://cfama8n641ckh" path="res://src/scripts/enemy_attackController.gd" id="4_27dtx"]
 [ext_resource type="AudioStream" uid="uid://5vcyd3ng07i8" path="res://src/audio/homunculimb 1.mp3" id="4_eu38p"]
-[ext_resource type="Resource" uid="uid://bxd1gfrhbsan2" path="res://src/resources/Fleshbud Attack.tres" id="5_2jj5d"]
 [ext_resource type="PackedScene" uid="uid://b2ttqip7j6rwq" path="res://src/models/slugga_attack.glb" id="5_eu38p"]
 [ext_resource type="Texture2D" uid="uid://cv6onnclk8ril" path="res://src/models/crawler_texture 7.png" id="6_ejj3h"]
 [ext_resource type="Script" uid="uid://06smgxej3n2a" path="res://src/scripts/enemy_weapon.gd" id="6_k4pik"]
@@ -107,9 +105,6 @@ size = Vector3(1.5, 1, 0.25)
 [node name="slugga" type="CharacterBody3D" unique_id=44551870]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_k4pik")
-attack_range = 1.6
-attack_windup = 0.15
-attack_cooldown = 0.3
 
 [node name="AttackAudio" type="AudioStreamPlayer" parent="." unique_id=1314798624]
 stream = ExtResource("2_k4pik")
@@ -151,7 +146,7 @@ transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_uiakd")
 
 [node name="slugga_tong" parent="." unique_id=1352962898 instance=ExtResource("7_v828f")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.471, 0)
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.471, 0)
 
 [node name="Cone_001" parent="slugga_tong" index="0" unique_id=658121418]
 transform = Transform3D(0.18, 0, 0, 0, 0.17606658, -0.037424106, 0, 0.037424106, 0.17606658, 0, 0, 0.401)
@@ -159,10 +154,6 @@ material_override = SubResource("StandardMaterial3D_lbtfd")
 
 [node name="slugga" parent="." unique_id=879703856 instance=ExtResource("3_gn8l6")]
 transform = Transform3D(-9.616506e-09, 0, 0.22, 0, 0.22, 0, -0.22, 0, -9.616506e-09, 0, 0, 0)
-
-[node name="AttackController" type="Node" parent="." unique_id=243073258]
-script = ExtResource("4_27dtx")
-light_attack = ExtResource("5_2jj5d")
 
 [node name="Weapon" type="Node3D" parent="." unique_id=1007883611]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

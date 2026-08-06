@@ -14,9 +14,6 @@ func _ready() -> void:
 	legs = $homunculimb/Cylinder_003
 	time += randf()
 
-func _process(delta: float) -> void:
-	time += delta
-
 func _physics_process(delta: float) -> void:
 	if player == null:
 		return
@@ -30,8 +27,6 @@ func _physics_process(delta: float) -> void:
 	#if distance <= attack_range:
 	#	if (is_moving || is_moving && is_leaping):
 	#		_attack_windup()
-		
-	legs.rotation.y = 90 + sin(time * 6) *.5
 	
 	if is_leaping:
 		await get_tree().create_timer(.3).timeout
@@ -58,6 +53,9 @@ func _physics_process(delta: float) -> void:
 		var my_pos = global_position
 		var angle = atan2(my_pos.x - target_pos.x, my_pos.z - target_pos.z)
 		global_rotation.y = angle
+		
+		time += delta
+		legs.rotation.y = 90 + sin(time * 6) *.5
 		
 		target_velocity.x = direction.x * speed
 		target_velocity.z = direction.z * speed

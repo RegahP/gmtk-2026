@@ -112,6 +112,8 @@ func take_damage(damage: DamageInfo): # esta funcion la invoca enemy al atacar e
 	if (damage.stun): stun(.5)
 	var mat = StandardMaterial3D.new()
 	mat.albedo_color = Color.RED
+	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	
 	for mesh in meshes:
 		mesh.set_surface_override_material(0, mat)
 		mesh.set_surface_override_material(1, mat)

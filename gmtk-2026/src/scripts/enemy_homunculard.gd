@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 		var angle = atan2(my_pos.x - target_pos.x, my_pos.z - target_pos.z)
 		global_rotation.y = angle
 		
-		acceleration += delta
+		acceleration += delta * .5
 		animation.play("walkanim", -1, acceleration)
 		target_velocity.x = direction.x * (speed * acceleration) + sin(time * 2) * .15
 		target_velocity.z = direction.z * (speed * acceleration) + sin(time * 3) * .15
